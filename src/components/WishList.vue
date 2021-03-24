@@ -13,6 +13,22 @@
 </div>
 </template>
 
+<script>
+import {EventPassing} from '../passingid.js'
+export default{
+	data(){
+		return {
+			doc_id:[]
+		}
+	}, 
+	created(){
+		EventPassing.$on("documentid", data=>{
+			this.doc_id.push(data)
+			console.log(this.doc_id[0])
+		})
+	}
+}
+</script>
 <style scoped>
 #wish{
   color:rgb(34, 150, 158);
