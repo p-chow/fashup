@@ -38,12 +38,12 @@
           <div>
         <ul>
           <li v-for='(item, id) in items' :key='id'>
-            <div class="polaroid">
+            <div class="polaroid" >
               <div class="fill"><img v-bind:src="item[1].picURL"/></div>
-              <div class="container">
+              <div class="container" >
                   <p id="brand">{{item[1].brand}}</p>
-                  <p>{{item[1].title}}</p>
-                  <p id="price">  ${{item[1].price}}  </p>
+                  <p id="click" v-bind:docid="item[0]" v-on:click="pressed($event)"> {{item[1].title}} </p>
+                  <p id="price">  ${{item[1].price}}</p>
               </div>
             </div>
           </li>
@@ -93,6 +93,14 @@ import {database} from '../firebase.js'
             console.log(newitem);
     });
 });
+      },
+      pressed(event){
+        let doc_id = event.target.getAttribute("docid");
+        console.log(doc_id);
+        this.$router.push({
+					name: 'product',
+					params: {docId: doc_id} 
+				})
       },
         },
         computed: {
@@ -185,7 +193,11 @@ div.polaroid {
    font-size: 20px;
 }
 
-li :hover {
+#click {
+    color: aquamarine;
+}
+
+#click :hover {
   background-color: #ddd;
   color: black;
 }
