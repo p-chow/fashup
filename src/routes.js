@@ -2,7 +2,7 @@
 import Shop from './components/Shop.vue'
 import News from './components/News.vue'
 //import  from './components/.vue'
-//import  from './components/.vue'
+import Sell from './components/Sell.vue'
 import Home from './components/Home.vue'
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
@@ -11,18 +11,22 @@ import PersonalHome from './components/PersonalHome.vue'
 import Change from './components/Change.vue'
 import ProductPage from './components/ProductPage.vue'
 import WishList from './components/WishList.vue'
+import Product from './components/ProductPage.vue'
 
 
 export default [
-	{ path: '/', component: Home },
-	{ path: '/SignUp', component: SignUp},
-	{ path: '/login', component: Login},
-	{ path: '/Forget', component: Forget},
-	{ path: '/Personal', name: 'personal', component: PersonalHome},
-	{ path: '/change', component: Change},
+    { path: '/', component: Home },
+    { path: '/SignUp', component: SignUp },
+    { path: '/login', component: Login },
+    { path: '/Forget', component: Forget },
+    { path: '/Personal', name: 'personal', component: PersonalHome },
+    { path: '/change', component: Change },
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
 	{ path: '/product', component: ProductPage},
 	{ path: '/wishlist', component: WishList}
+    { path: '/sell', component: Sell },
+    { path: '/product', name: 'product', props: true, component: Product },
+    { path: '/wishlist', component: WishList }
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
