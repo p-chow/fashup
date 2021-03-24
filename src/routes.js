@@ -9,6 +9,7 @@ import Login from './components/Login.vue'
 import Forget from './components/Forget.vue'
 import PersonalHome from './components/PersonalHome.vue'
 import Change from './components/Change.vue'
+import ProductPage from '/components/ProductPage.vue'
 
 
 export default [
@@ -20,5 +21,6 @@ export default [
 	{ path: '/change', component: Change},
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
+	{ path: '/product', component: ProductPage}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
