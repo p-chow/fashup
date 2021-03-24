@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link to="/sell" exact></router-link>
         <h1> Sell </h1>
         <div id="left">
             <div id="imgArea">

@@ -20,5 +20,6 @@ export default [
 	{ path: '/change', component: Change},
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
+	{ path: '/sell', component: Sell}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
