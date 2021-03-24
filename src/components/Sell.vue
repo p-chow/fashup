@@ -4,7 +4,7 @@
         <h1> Sell </h1>
         <div id="left">
             <div id="imgArea">
-            <imgInput v-model="imgFile" @change="imgChosen"></imgInput>
+            <imgInput v-model="imgFile"></imgInput>
             </div>
             <br> <br>
             <div id="buttonArea"><button id="send" v-on:click="submit()"> Submit </button></div>
@@ -55,13 +55,13 @@
 
 <script>
 import ImgInput from './ImgInput.vue';
-import database from "../firebase.js";
+import {database} from "../firebase.js";
 import firebase from "firebase";
 
 export default {
     data() {
         return {
-            imgFile: null,
+            imgFile: "",
             title: "",
             px: 0,
             cat: "",
@@ -76,41 +76,39 @@ export default {
     },
     methods: {
         submit: function() {
-            console.log(this.imgFile.name); //name of image file
+            //console.log(this.imgFile.name); //name of image file
             var pdtInfo = {
-                imgFile: "", //this.imgFile.name
+                imgFile: null,
                 title: this.title,
                 px: this.px,
                 cat: this.cat,
                 desc: this.desc,
                 size: this.size,
                 occasion: this.occasion,
-                tele: '@'+this.tele
+                tele: this.tele
             }
+            let imgURL;
             firebase.storage().ref().child(this.imgFile.name).put(this.imgFile).then(() =>
             firebase.storage().ref().child(this.imgFile.name).getDownloadURL()
-                .then((url) => 
-                    //console.log(url),
-                    pdtInfo['imgFile'] = url, //?? doesnt take in url dk why
-                    
-                    console.log(pdtInfo['imgFile']),
-                    ));
-            //send to products db
-            database.collection('products').add(pdtInfo).then(() => location.reload());
+                .then((url) => {
+                    console.log(pdtInfo['tele']),
+                    imgURL = url;
+                    pdtInfo['imgFile'] = imgURL;
+                    console.log(pdtInfo['imgFile']);}
+                )).then(() => {
+                    database.collection('products').add(pdtInfo); //send to products db
+                }).then(() => location.reload()); 
             
             //passes into firebase
             //need user id info
             //database.collection('users')
 
             //direct to home page after submission
-        },
-        imgChosen: function() {
-            console.log(this.imgFile.name);
         }
     },
-    created() {
+    /*created() {
         this.submit();
-    }
+    }*/
     
 }
 </script>
