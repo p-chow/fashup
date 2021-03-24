@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Shop from './components/Shop.vue'
+import Shop from './components/News.vue'
 
 export default {
   name: 'App',
