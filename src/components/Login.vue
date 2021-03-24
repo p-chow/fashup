@@ -14,7 +14,7 @@
 </div>
 </template>
 <script>
-import database from '../firebase.js';
+import {database} from '../firebase.js';
 import { EventListening } from '../listening.js';
 export default {
 	data(){
