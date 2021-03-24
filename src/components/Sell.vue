@@ -1,4 +1,3 @@
-import * from firebase
 <template>
     <div>
         <h1> Sell </h1>
@@ -55,7 +54,7 @@ import * from firebase
 
 <script>
 import ImgInput from './ImgInput.vue';
-import database from "./firebase.js";
+import database from "../firebase.js";
 import firebase from "firebase";
 
 export default {
