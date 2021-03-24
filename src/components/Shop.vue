@@ -1,7 +1,6 @@
 <template>
-
     <section>
-
+        <h2>SHOP</h2>
         <div class="sidenav">
         <h2 id="navi"><font-awesome-icon icon="coffee" />Filter</h2>
         <div v-on:click="seen1 = !seen1" class="filterTitle"> Shop for</div>
@@ -35,18 +34,16 @@
             <p>range: $0 - {{priceRange}}</p>
         </div>
         </div>
-
         <div class="content">
-         <h2>SHOP</h2>
           <div>
         <ul>
           <li v-for='(item, id) in items' :key='id'>
-            <div class="polaroid">
+            <div class="polaroid" >
               <div class="fill"><img v-bind:src="item[1].picURL"/></div>
-              <div class="container">
+              <div class="container" >
                   <p id="brand">{{item[1].brand}}</p>
-                  <p>{{item[1].title}}</p>
-                  <p id="price">  ${{item[1].price}}  </p>
+                  <p id="click" v-bind:docid="item[0]" v-on:click="pressed($event)"> {{item[1].title}} </p>
+                  <p id="price">  ${{item[1].price}}</p>
               </div>
             </div>
           </li>
@@ -75,8 +72,8 @@ import {database} from '../firebase.js'
         },
         methods:{
       fetchItems: function(){
-        database.collection('products-sharlene').get().then(snapshot => {
-        snapshot.docs.forEach(doc => {
+			database.collection('products_sharlene').get().then(snapshot =>{
+				snapshot.docs.forEach(doc => {
             let data = doc.data();
             let category = data["category"];
             let dressocc = data["dressocc"]; 
@@ -85,16 +82,25 @@ import {database} from '../firebase.js'
             let size = data["size"];
             let title = data["title"];
             let brand = data["brand"];
-            this.items.push([doc.id,[["cat", category], 
-                                     ["occ", dressocc], 
-                                     ["price", price],
-                                     ["size", size],
-                                     ["title", title],
-                                     ["picURL", pic],
-                                     ["brand", brand]]]);
-            console.log(brand);
+            let newitem = [doc.id,{"cat": category, 
+                                     "occ": dressocc, 
+                                     "price": price,
+                                     "size": size,
+                                     "title": title,
+                                     "picURL": pic,
+                                     "brand": brand}];
+            this.items.push(newitem);
+            console.log(newitem);
     });
 });
+      },
+      pressed(event){
+        let doc_id = event.target.getAttribute("docid");
+        console.log(doc_id);
+        this.$router.push({
+					name: 'product',
+					params: {docId: doc_id} 
+				})
       },
         },
         computed: {
@@ -111,6 +117,7 @@ import {database} from '../firebase.js'
         created(){
             this.fetchItems();
         },
+        
     }
 </script>
 
@@ -121,15 +128,11 @@ import {database} from '../firebase.js'
 }
 
 .sidenav {
-  height: 100%;
   width: 300px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  height: 800px;
   background-color: #111;
-  overflow-x: hidden;
   padding: 10px;
+  float: left;
 }
 
 .sidenav h2 {
@@ -186,9 +189,15 @@ div.polaroid {
    display:inline-block;
    padding: 5px;
    font-weight: 700;
+   color: #111;
+   font-size: 20px;
 }
 
-li :hover {
+#click {
+    color: aquamarine;
+}
+
+#click :hover {
   background-color: #ddd;
   color: black;
 }

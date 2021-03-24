@@ -23,9 +23,13 @@ export default {
             product: []
         }
     },
+    props: { 
+            docId:String
+    },
     methods: {
         fetchProduct: function() {
-            database.collection('products_sharlene').doc('7NtdNzVMnH6GXuY23wty').get().then(doc=> {
+            console.log(this.docId);
+            database.collection('products_sharlene').doc(this.docId).get().then(doc=> {
                 this.product = [doc.data(), doc.id]
             })
         },
@@ -40,7 +44,7 @@ export default {
         }
     },
     created() {
-        this.fetchProduct()
+        this.fetchProduct();
     }
 }
 </script>

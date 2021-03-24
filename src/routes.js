@@ -10,19 +10,20 @@ import Forget from './components/Forget.vue'
 import PersonalHome from './components/PersonalHome.vue'
 import Change from './components/Change.vue'
 import WishList from './components/WishList.vue'
+import Product from './components/ProductPage.vue'
 
 
 export default [
-	{ path: '/', component: Home },
-	{ path: '/SignUp', component: SignUp},
-	{ path: '/login', component: Login},
-	{ path: '/Forget', component: Forget},
-	{ path: '/Personal', name: 'personal', component: PersonalHome},
-	{ path: '/change', component: Change},
+    { path: '/', component: Home },
+    { path: '/SignUp', component: SignUp },
+    { path: '/login', component: Login },
+    { path: '/Forget', component: Forget },
+    { path: '/Personal', name: 'personal', component: PersonalHome },
+    { path: '/change', component: Change },
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
-	{ path: '/sell', component: Sell },
-
-	{ path: '/wishlist', component: WishList}
+    { path: '/sell', component: Sell },
+    { path: '/product', name: 'product', props: true, component: Product },
+    { path: '/wishlist', component: WishList }
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
