@@ -16,6 +16,8 @@
 
 <script>
 import {database} from '../firebase.js';
+import {EventPassing} from '../passingid.js'
+
 export default {
 	data(){
 		return {
@@ -48,6 +50,7 @@ export default {
 					}
 				})
 			});
+			EventPassing.$emit("documentid", this.user_id)
 		}
 
 	},
