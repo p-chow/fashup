@@ -1,7 +1,6 @@
 <template>
-
     <section>
-
+        <h2>SHOP</h2>
         <div class="sidenav">
         <h2 id="navi"><font-awesome-icon icon="coffee" />Filter</h2>
         <div v-on:click="seen1 = !seen1" class="filterTitle"> Shop for</div>
@@ -35,9 +34,7 @@
             <p>range: $0 - {{priceRange}}</p>
         </div>
         </div>
-
         <div class="content">
-         <h2>SHOP</h2>
           <div>
         <ul>
           <li v-for='(item, id) in items' :key='id'>
@@ -75,8 +72,8 @@ import {database} from '../firebase.js'
         },
         methods:{
       fetchItems: function(){
-        database.collection('products-sharlene').get().then(snapshot => {
-        snapshot.docs.forEach(doc => {
+			database.collection('products_sharlene').get().then(snapshot =>{
+				snapshot.docs.forEach(doc => {
             let data = doc.data();
             let category = data["category"];
             let dressocc = data["dressocc"]; 
@@ -85,14 +82,15 @@ import {database} from '../firebase.js'
             let size = data["size"];
             let title = data["title"];
             let brand = data["brand"];
-            this.items.push([doc.id,[["cat", category], 
-                                     ["occ", dressocc], 
-                                     ["price", price],
-                                     ["size", size],
-                                     ["title", title],
-                                     ["picURL", pic],
-                                     ["brand", brand]]]);
-            console.log(brand);
+            let newitem = [doc.id,{"cat": category, 
+                                     "occ": dressocc, 
+                                     "price": price,
+                                     "size": size,
+                                     "title": title,
+                                     "picURL": pic,
+                                     "brand": brand}];
+            this.items.push(newitem);
+            console.log(newitem);
     });
 });
       },
@@ -111,6 +109,7 @@ import {database} from '../firebase.js'
         created(){
             this.fetchItems();
         },
+        
     }
 </script>
 
@@ -121,15 +120,11 @@ import {database} from '../firebase.js'
 }
 
 .sidenav {
-  height: 100%;
   width: 300px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  height: 800px;
   background-color: #111;
-  overflow-x: hidden;
   padding: 10px;
+  float: left;
 }
 
 .sidenav h2 {
@@ -186,6 +181,8 @@ div.polaroid {
    display:inline-block;
    padding: 5px;
    font-weight: 700;
+   color: #111;
+   font-size: 20px;
 }
 
 li :hover {
