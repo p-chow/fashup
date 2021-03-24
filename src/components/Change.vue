@@ -5,6 +5,8 @@
 		<router-link to="/Personal" id = "profile">Profile Page</router-link>
 		<br>
 		<router-link to="/change" id="change">Change Password</router-link>
+		<br>
+		<router-link to="/wishlist" id = "wishlist">Wishlist</router-link>
 	</nav> 
 	<nav2>
 	<br><br><br>
@@ -195,6 +197,11 @@ p{
 	color:rgb(34, 150, 158)
 }
 #profile{
+	font-size:25px;
+	text-decoration-line: none;
+	color:rgb(34, 150, 158)
+}
+#wishlist{
 	font-size:25px;
 	text-decoration-line: none;
 	color:rgb(34, 150, 158)

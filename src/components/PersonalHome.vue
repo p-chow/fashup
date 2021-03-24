@@ -5,6 +5,8 @@
 		<router-link to="/Personal" id = "profile">Profile Page</router-link>
 		<br>
 		<router-link to="/change" id="change">Change Password</router-link>
+		<br>
+		<router-link to="/wishlist" id = "wishlist">Wishlist</router-link>
 	</nav>
 	<nav2>
 		<h3 v-bind='this.getName()'>Hi {{name}}! </h3> 
@@ -97,5 +99,9 @@ nav2{
 	background:rgb(182, 243, 238);
 	margin-top:1cm;
 }
-
+#wishlist{
+	font-size:25px;
+	text-decoration-line: none;
+	color:rgb(34, 150, 158)
+}
 </style>
