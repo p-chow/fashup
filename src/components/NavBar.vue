@@ -14,7 +14,7 @@
 		<router-link to="/sell" exact> Sell </router-link>
 		</li>
 		<li>
-		<router-link to="/shop" exact> Gaia News </router-link>
+		<router-link to="/news" exact> Gaia News </router-link>
 		</li>
       </ul>
     </nav>
