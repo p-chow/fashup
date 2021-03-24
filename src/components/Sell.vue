@@ -76,24 +76,25 @@ export default {
     },
     methods: {
         submit: function() {
-            console.log(this.imgFile.name); //name of image file
+            //console.log(this.imgFile.name); //name of image file
             var pdtInfo = {
-                imgFile: "", //this.imgFile.name
+                imgFile: "",
                 title: this.title,
-                px: this.px,
+                px: `$${this.px}`,
                 cat: this.cat,
                 desc: this.desc,
                 size: this.size,
                 occasion: this.occasion,
-                tele: '@'+this.tele
+                tele: `@${this.tele}`
             }
             firebase.storage().ref().child(this.imgFile.name).put(this.imgFile).then(() =>
             firebase.storage().ref().child(this.imgFile.name).getDownloadURL()
-                .then((url) => 
-                    //console.log(url),
-                    pdtInfo['imgFile'] = url, //?? doesnt take in url dk why
+                .then((url) => {
+                    console.log(pdtInfo['tele']),
+                    //imgURL = url;
+                    pdtInfo['imgFile'] = url; //?? doesnt take in url dk why
                     
-                    console.log(pdtInfo['imgFile']),
+                    console.log(pdtInfo['imgFile']);}
                     ));
             //send to products db
             database.collection('products').add(pdtInfo).then(() => location.reload());
@@ -108,9 +109,9 @@ export default {
             console.log(this.imgFile.name);
         }
     },
-    created() {
+    /*created() {
         this.submit();
-    }
+    }*/
     
 }
 </script>
