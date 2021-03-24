@@ -15,17 +15,46 @@
 
 <script>
 import {EventPassing} from '../passingid.js'
+import {database} from '../firebase.js';
 export default{
 	data(){
 		return {
-			doc_id:[]
+			doc_id:[],
+			wishList:[],
+			productswish: []
+
 		}
 	}, 
+	methods:{
+		getWishList(){
+			var specificId = this.doc_id[0];
+			database.collection('users').get().then(snapshot => {
+				snapshot.docs.forEach(doc=> {
+					if (doc.id === specificId) {
+						var curr = doc.get("wishList");
+						for (var i = 0; i < curr.length; i++){
+							this.wishList.push(curr[i])
+						}
+						console.log(this.wishList)
+						database.collection('products_sharlene').get().then(snapshot => {
+							snapshot.docs.forEach(doc=> {
+								if (this.wishList.includes(doc.id)){
+									this.productswish.push(doc.get('title'))
+								}	
+							})
+							console.log(this.productswish)
+						})
+					}
+				});
+			});
+		}
+	},
 	created(){
 		EventPassing.$on("documentid", data=>{
 			this.doc_id.push(data)
 			console.log(this.doc_id[0])
-		})
+		});
+		this.getWishList();
 	}
 }
 </script>

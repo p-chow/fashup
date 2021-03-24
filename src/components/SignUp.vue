@@ -2,7 +2,7 @@
 <div id="signup">
 	<router-link to="/SignUp" exact></router-link>	
 	<br>	
-	<img :src="imageSource" ALIGN ="left"> <br clear="center"> <br>
+	<img :src="imageSource" ALIGN ="left" id="imagedp"> <br clear="center"> <br>
 	<label for = "fname">First Name : </label> 
 	<input type = "text" id = "fname" name = "fname"> <br> <br>
 	<label for = "lname">Last Name  : </label> 
@@ -179,7 +179,7 @@ button{
 	border-color: rgb(140, 228, 255);
 }
 
-img {
+#imagedp {
 	height: 410px;
 	border-radius:50%;
 	margin-left:8cm;
