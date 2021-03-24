@@ -1,6 +1,6 @@
-import * from firebase
 <template>
     <div>
+        <router-link to="/sell" exact></router-link>
         <h1> Sell </h1>
         <div id="left">
             <div id="imgArea">
@@ -55,7 +55,7 @@ import * from firebase
 
 <script>
 import ImgInput from './ImgInput.vue';
-import database from "./firebase.js";
+import database from "../firebase.js";
 import firebase from "firebase";
 
 export default {

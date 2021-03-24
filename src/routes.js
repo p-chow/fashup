@@ -2,7 +2,7 @@
 import Shop from './components/Shop.vue'
 import News from './components/News.vue'
 //import  from './components/.vue'
-//import  from './components/.vue'
+/import  from './components/Sell.vue'
 import Home from './components/Home.vue'
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
@@ -21,6 +21,8 @@ export default [
 	{ path: '/change', component: Change},
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
+	{ path: '/sell', component: Sell },
+
 	{ path: '/wishlist', component: WishList}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
