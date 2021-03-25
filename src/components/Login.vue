@@ -6,7 +6,7 @@
 	<label for = "email">Email: </label><br> 
 	<input type = "text" id = "email" name = "email" required> <br> <br>
 	<label for = "pw">Password: </label><br>
-	<input type = "text" id = "pw" name = "pw"> <br> <br>
+	<input type = "password" id = "pw" name = "pw"> <br> <br>
 	<button v-on:click="logintoacc()" type ="button">Login</button>
 	<button v-on:click="forget()" type ="button">Forget password</button>
 	<br><br><br><br>
