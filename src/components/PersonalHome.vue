@@ -2,14 +2,20 @@
 <div id="personal">
 	<nav id="navbar1">
 		<br><br><br>
-		<router-link to="/Personal" id = "profile">Profile Page</router-link>
+		<router-link to="/Personal" id = "profile">
+		<span @click="pushtoPersonal()">Profile Page</span>
+		</router-link>
 		<br>
-		<router-link to="/change" id="change">Change Password</router-link>
+		<router-link to="/change" id="change">
+		<span @click="pushtoChange()">Change Password</span>
+		</router-link>
 		<br>
-		<router-link to="/wishlist" id = "wishlist">Wishlist</router-link>
+		<router-link to="/wishlist" id = "wishlist" >
+		<span @click="pushtoWish()">Wishlist</span>
+		</router-link>
 	</nav>
 	<nav2>
-		<h3 v-bind='this.getName()'>Hi {{name}}! </h3> 
+		<h3> hi there</h3> 
 	</nav2>
 </div>
 </template>
@@ -17,7 +23,6 @@
 <script>
 import {database} from '../firebase.js';
 import {EventPassing} from '../passingid.js'
-
 export default {
 	data(){
 		return {
@@ -27,13 +32,7 @@ export default {
 		}
 	}, 
 	methods: {
-		retrieveInfo() {
-			database.collection('users').doc(this.user_id).get()
-			console.log(database.collection('users').doc(this.user_id).get())
-
-		},
 		profilepic(){
-			console.log(this.user_id)
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc => {
 					if (doc.id === this.user_id) {
@@ -42,22 +41,31 @@ export default {
 				})
 			});	
 		},
-		getName(){
-			database.collection('users').get().then(snapshot => {
-				snapshot.docs.forEach(doc => {
-					if (doc.id === this.user_id) {
-						this.name = doc.get('Name')
-					}
-				})
-			});
+		pushtoWish(){
 			EventPassing.$emit("documentid", this.user_id)
+			console.log(this.user_id)
+			this.$router.push({
+				name: 'wishlist',
+				params: { id: this.user_id} 
+			})
+			
+		}, 
+		pushtoPersonal(){
+			this.$router.push({
+				name: 'personal',
+				params: { id: this.user_id} 
+			})
+		},
+		pushtoChange(){
+			this.$router.push({
+				name: 'change',
+				params: { id: this.user_id} 
+			})
 		}
 
 	},
 	created(){
-		this.retrieveInfo(),
-		this.profilepic(),
-		this.getName()
+		this.profilepic();
 	}
 }
 </script>

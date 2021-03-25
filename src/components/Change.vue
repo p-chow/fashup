@@ -2,11 +2,17 @@
 <div id = "changepw">
 	<nav>
 		<br><br><br>
-		<router-link to="/Personal" id = "profile">Profile Page</router-link>
+		<router-link to="/Personal" id = "profile">
+		<span @click="pushtoPersonal()">Profile Page</span>
+		</router-link>
 		<br>
-		<router-link to="/change" id="change">Change Password</router-link>
+		<router-link to="/change" id="change">
+		<span @click="pushtoChange()">Change Password</span>
+		</router-link>
 		<br>
-		<router-link to="/wishlist" id = "wishlist">Wishlist</router-link>
+		<router-link to="/wishlist" id = "wishlist" >
+		<span @click="pushtoWish()">Wishlist</span>
+		</router-link>
 	</nav> 
 	<nav2>
 	<br><br><br>
@@ -30,6 +36,7 @@ export default {
 	data(){
 		return {
 			datapacket:'',
+			id_user: this.$route.params.id,
 			checked: false,
 			changed: false
 		}
@@ -85,21 +92,39 @@ export default {
 			}
 		},
 		reset() {
+			console.log(this.id_user)
 			var newPassword = document.getElementById('pw').value
 			var emailAddress = document.getElementById('email').value
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc=> {
 					if (doc.get('Email')== emailAddress) {
 						this.datapacket = this.datapacket + doc.id;
-						console.log(doc.get('Password'))
-						console.log(this.datapacket)
 						database.collection('users').doc(this.datapacket).update({
 							Password: newPassword});
 					}
 				})
 			});
 			this.changed = true
-		}
+		},
+		pushtoWish(){
+			this.$router.push({
+				name: 'wishlist',
+				params: { id: this.id_user} 
+			})
+			
+		}, 
+		pushtoPersonal(){
+			this.$router.push({
+				name: 'personal',
+				params: { id: this.id_user} 
+			})
+		},
+		pushtoChange(){
+			this.$router.push({
+				name: 'change',
+				params: { id: this.id_user} 
+			})
+		},
 	}	
 }
 </script>
