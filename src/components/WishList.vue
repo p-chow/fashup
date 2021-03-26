@@ -18,7 +18,7 @@
 		<ul id="mywishlist">
 			<li v-for="item in productswish" v-bind:key="item.title">
 				<button type="button" v-bind:id="item[0]" v-on:click ="deleteItem($event)">X</button> <br>
-				{{item[0]}} {{item[1]}} <br> <br> <img v-on:click="redirectToProduct()" v-bind:src = "item[2]"> <br> Price: ${{item[3]}}
+				{{item[1]}} <br> <br> <img v-on:click="redirectToProduct()" v-bind:src = "item[2]"> <br> Price: ${{item[3]}}
 			</li>
 		</ul>
 	</nav2>
@@ -34,8 +34,8 @@ export default{
 		return {
 			doc_id:this.$route.params.id,
 			wishList:[],
-			productswish: []
-
+			productswish: [],
+			newWL: []
 		}
 	}, 
 	created(){
@@ -94,11 +94,14 @@ export default{
 		deleteItem(event){
 			console.log(this.doc_id)
 			let itemId = event.target.getAttribute("id")
-			var index = this.wishList.indexOf(itemId)
-			var wl = this.wishList.splice(index,1)
+			for (var i =0; i< this.wishList.length ; i++){
+				if (this.wishList[i] != itemId){
+					this.newWL.push(this.wishList[i])
+				}
+			}
 			database.collection('users').doc(this.doc_id).update({
-				wishList : wl
-			});
+				wishList : this.newWL
+			}).then()
 		}
 	}
 }
