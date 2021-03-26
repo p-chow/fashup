@@ -24,6 +24,6 @@ export default [
     { path: '/news', component: News },
     { path: '/sell', component: Sell },
     { path: '/product', name: 'product', props: true, component: Product },
-    { path: '/wishlist', component: WishList }
+    { path: '/wishlist', name:'wishlist', component: WishList }
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
