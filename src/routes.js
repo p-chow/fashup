@@ -19,7 +19,7 @@ export default [
     { path: '/login', component: Login },
     { path: '/Forget', component: Forget },
     { path: '/Personal', name: 'personal', component: PersonalHome },
-    { path: '/change', component: Change },
+    { path: '/change', name:'change', component: Change },
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
     { path: '/sell', component: Sell },

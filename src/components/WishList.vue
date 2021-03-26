@@ -2,35 +2,56 @@
 <div id="wish">
 	<nav id="navbar1">
 		<br><br><br>
-		<router-link to="/Personal" id = "profile">Profile Page</router-link>
+		<router-link to="/Personal" id = "profile">
+		<span @click="pushtoPersonal()">Profile Page</span>
+		</router-link>
 		<br>
-		<router-link to="/change" id="change">Change Password</router-link>
+		<router-link to="/change" id="change">
+		<span @click="pushtoChange()">Change Password</span>
+		</router-link>
 		<br>
-		<router-link to="/wishlist" id = "wishlist">Wishlist</router-link>
+		<router-link to="/wishlist" id = "wishlist" >
+		<span @click="pushtoWish()">Wishlist</span>
+		</router-link>
 	</nav>
 	<nav2> 
+		<ul id="mywishlist">
+			<li v-for="item in productswish" v-bind:key="item.title">
+				<button type="button" v-bind:id="item[0]" v-on:click ="deleteItem($event)">X</button> <br>
+				{{item[0]}} {{item[1]}} <br> <br> <img v-on:click="redirectToProduct()" v-bind:src = "item[2]"> <br> Price: ${{item[3]}}
+			</li>
+		</ul>
 	</nav2>
 </div>
 </template>
 
 <script>
-import {EventPassing} from '../passingid.js'
+import { EventPassing } from '../passingid.js'
 import {database} from '../firebase.js';
+//import {fv} from '../firebase.js'
 export default{
 	data(){
 		return {
-			doc_id:[],
+			doc_id:this.$route.params.id,
 			wishList:[],
 			productswish: []
 
 		}
 	}, 
+	created(){
+		EventPassing.$on("documentid", data =>{
+				this.doc_id = data
+				console.log(data)
+				console.log(this.doc_id)
+		});
+		this.getWishList();
+	},
 	methods:{
 		getWishList(){
-			var specificId = this.doc_id[0];
+			console.log(this.doc_id)
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc=> {
-					if (doc.id === specificId) {
+					if (doc.id === this.doc_id) {
 						var curr = doc.get("wishList");
 						for (var i = 0; i < curr.length; i++){
 							this.wishList.push(curr[i])
@@ -39,7 +60,7 @@ export default{
 						database.collection('products_sharlene').get().then(snapshot => {
 							snapshot.docs.forEach(doc=> {
 								if (this.wishList.includes(doc.id)){
-									this.productswish.push(doc.get('title'))
+									this.productswish.push([doc.id,doc.get('title'), doc.get('pic'), doc.get('price')])
 								}	
 							})
 							console.log(this.productswish)
@@ -47,14 +68,38 @@ export default{
 					}
 				});
 			});
+		},
+		pushtoWish(){
+			this.$router.push({
+				name: 'wishlist',
+				params: { id: this.doc_id} 
+			})
+			
+		}, 
+		pushtoPersonal(){
+			this.$router.push({
+				name: 'personal',
+				params: { id: this.doc_id} 
+			})
+		},
+		pushtoChange(){
+			this.$router.push({
+				name: 'change',
+				params: { id: this.doc_id} 
+			})
+		},
+		redirectToProduct(){
+			//push to the product page
+		},
+		deleteItem(event){
+			console.log(this.doc_id)
+			let itemId = event.target.getAttribute("id")
+			var index = this.wishList.indexOf(itemId)
+			var wl = this.wishList.splice(index,1)
+			database.collection('users').doc(this.doc_id).update({
+				wishList : wl
+			});
 		}
-	},
-	created(){
-		EventPassing.$on("documentid", data=>{
-			this.doc_id.push(data)
-			console.log(this.doc_id[0])
-		});
-		this.getWishList();
 	}
 }
 </script>
@@ -106,5 +151,26 @@ nav2{
 	font-size:25px;
 	text-decoration-line: none;
 	color:rgb(34, 150, 158)
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  flex-grow: 1;
+  flex-basis: 300px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #222;
+  margin: 10px;
+}
+img {
+  width: 135px;
+  height: 135px;
+}
+button{
+	float:right
 }
 </style>
