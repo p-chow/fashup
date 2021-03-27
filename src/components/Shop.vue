@@ -17,13 +17,14 @@
         </div>
         <div v-on:click="seen3 = !seen3" class="filterTitle"> Occasion </div>
         <div v-if="seen3" id="hide" class="filter"> 
-            <p>Formal</p>
-            <p>Casual</p>
+            <input type="checkbox" id="formal" value="formal" v-model="occ">Formal<br> 
+            <input type="checkbox" id="casual" value="casual" v-model="occ">Casual<br> 
         </div>
         <div v-on:click="seen4 = !seen4" class="filterTitle"> Size </div>
         <div v-if="seen4" id="hide" class="filter"> 
-            <p>S / EU 36 / UK 8 / US 4</p>
-            <p>M / EU 38 / UK 10 / US 6</p>
+            <input type="checkbox" id="S" value="S" v-model="size">S / EU 36 / UK 8 / US 4<br>
+            <input type="checkbox" id="M" value="M" v-model="size">M / EU 38 / UK 10 / US 6<br>
+            <input type="checkbox" id="L" value="L" v-model="size">L / EU 40 / UK 12 / US 8<br>
         </div>
         <div v-on:click="seen5 = !seen5" class="filterTitle"> Price Range </div>
         <div v-if="seen5" id="hide" class="filter"> 
@@ -37,7 +38,7 @@
         <div class="content">
           <div>
         <ul>
-          <li v-for='(item, id) in filteredProducts' :key='id'>
+          <li v-for='(item, id) in items' :key='id'>
             <div class="polaroid" >
               <div class="fill"><img v-bind:src="item[1].picURL"/></div>
               <div class="container" >
@@ -70,6 +71,8 @@ import {database} from '../firebase.js'
                 items:[],
                 cat: [],
                 shop: [],
+                occ: [],
+                size: [],
             }
         },
         methods:{
@@ -105,7 +108,25 @@ import {database} from '../firebase.js'
               })
           },
           filtered: function() {
-            this.filteredProducts;
+            var updateList = [];
+            for (var i = 0; i < this.items.length; i++) {
+              var temp = this.items[i];
+              console.log('temp:' + temp);
+              console.log('occ:' + temp[1].size);
+              if (temp[1].occ in this.occ) {
+                console.log('filtered 1');
+                updateList.add(temp);
+              } else if (temp[1].cat in this.shop) {
+                console.log('filtered 2');
+                updateList.push(temp);
+              } else if (this.size.includes(temp[1].size)) {
+                console.log('filtered 3');
+                updateList.push(temp);
+              } 
+            }
+            console.log(updateList);
+            this.items = updateList;
+
           },
         },
         computed: {
@@ -138,6 +159,8 @@ import {database} from '../firebase.js'
   background-color: #111;
   padding: 10px;
   float: left;
+  font-size: 20px;
+  text-align: left;
 }
 
 .sidenav h2 {
