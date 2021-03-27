@@ -15,7 +15,8 @@
 		</router-link>
 	</nav>
 	<nav2>
-		<h3> hi there</h3> 
+		<h3> Hi {{name}}!</h3> 
+		<p>Check out the latest seasonal donation drive that is happening on 11th April 2021!</p>
 	</nav2>
 </div>
 </template>
@@ -61,11 +62,21 @@ export default {
 				name: 'change',
 				params: { id: this.user_id} 
 			})
+		},
+		getUserName() {
+			database.collection('users').get().then(snapshot => {
+				snapshot.docs.forEach(doc => {
+					if (doc.id === this.user_id) {
+						this.name = doc.get('Name')
+					}
+				})
+			});	
 		}
 
 	},
 	created(){
 		this.profilepic();
+		this.getUserName();
 	}
 }
 </script>
