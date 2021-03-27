@@ -5,15 +5,16 @@
         <h2 id="navi">Filter</h2>
         <div v-on:click="seen1 = !seen1" class="filterTitle"> Shop for</div>
         <div v-if="seen1" id="hide" class="filter"> 
-            <input type="checkbox" id="shopW" value="women" v-model="shop">Women<br> 
-            <input type="checkbox" id="shopM" value="men" v-model="shop">Men<br>
-            <input type="checkbox" id="shopC" value="children" v-model="shop">Children<br>
+            <input type="checkbox" id="women" value="women" v-model="shop">Women<br> 
+            <input type="checkbox" id="men" value="men" v-model="shop">Men<br>
+            <input type="checkbox" id="kids" value="kids" v-model="shop">Kids<br>
         </div>
         <div v-on:click="seen2 = !seen2" class="filterTitle">Category</div>
         <div v-if="seen2" id="hide" class="filter"> 
             <input type="checkbox" id="top" value="top" v-model="cat">Top<br> 
             <input type="checkbox" id="bottom" value="bottom" v-model="cat">Bottom<br>
-            <input type="checkbox" id="full" value="full" v-model="cat">Full<br>
+            <input type="checkbox" id="dress" value="dress" v-model="cat">Dresses<br>
+            <input type="checkbox" id="acc" value="acc" v-model="cat">Accessories<br>
         </div>
         <div v-on:click="seen3 = !seen3" class="filterTitle"> Occasion </div>
         <div v-if="seen3" id="hide" class="filter"> 
@@ -38,7 +39,7 @@
         <div class="content">
           <div>
         <ul>
-          <li v-for='(item, id) in items' :key='id'>
+          <li v-for='(item, id) in display' :key='id'>
             <div class="polaroid" >
               <div class="fill"><img v-bind:src="item[1].picURL"/></div>
               <div class="container" >
@@ -73,6 +74,7 @@ import {database} from '../firebase.js'
                 shop: [],
                 occ: [],
                 size: [],
+                display: [],
             }
         },
         methods:{
@@ -87,14 +89,17 @@ import {database} from '../firebase.js'
             let size = data["size"];
             let title = data["title"];
             let brand = data["brand"];
+            let shop = data["shop"];
             let newitem = [doc.id,{"cat": category, 
                                      "occ": dressocc, 
                                      "price": price,
                                      "size": size,
                                      "title": title,
                                      "picURL": pic,
-                                     "brand": brand}];
+                                     "brand": brand,
+                                     "shop": shop}];
             this.items.push(newitem);
+            this.display.push(newitem);
             console.log(newitem);
     });
 });
@@ -109,36 +114,21 @@ import {database} from '../firebase.js'
           },
           filtered: function() {
             var updateList = [];
+            // console.log('price' + this.priceRange);
             for (var i = 0; i < this.items.length; i++) {
               var temp = this.items[i];
-              console.log('temp:' + temp);
-              console.log('occ:' + temp[1].size);
-              if (temp[1].occ in this.occ) {
-                console.log('filtered 1');
-                updateList.add(temp);
-              } else if (temp[1].cat in this.shop) {
-                console.log('filtered 2');
-                updateList.push(temp);
-              } else if (this.size.includes(temp[1].size)) {
-                console.log('filtered 3');
-                updateList.push(temp);
+              if (this.occ.length==0||this.occ.includes(temp[1].occ)) {
+                if (this.shop.length==0||this.shop.includes(temp[1].shop)) {
+                  if (this.size.length==0||this.size.includes(temp[1].size)) {
+                    if (temp[1].price < this.priceRange) {
+                      updateList.push(temp);
+                    }
+                  }
+                }
               } 
             }
-            console.log(updateList);
-            this.items = updateList;
-
+            this.display = updateList;
           },
-        },
-        computed: {
-            // filteredProducts() {
-            //   console.log("called filter");
-            //   if (this.shop !== '') {
-            //     return this.items.filter((item) => {
-            //       return this.shop.includes(item[1].cat);
-            //   });
-            //   }
-            // return this.items;
-            // },
         },
         created(){
             this.fetchItems();
