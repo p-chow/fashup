@@ -20,13 +20,13 @@ export default [
     { path: '/login', component: Login },
     { path: '/Forget', component: Forget },
     { path: '/Personal', name: 'personal', component: PersonalHome },
-    { path: '/change', component: Change },
+    { path: '/change', name:'change', component: Change },
     { path: '/shop', component: Shop },
     { path: '/news', component: News },
 	{ path: '/product', component: ProductPage},
 	{ path: '/wishlist', component: WishList},
     { path: '/sell', component: Sell },
     { path: '/product', name: 'product', props: true, component: Product },
-    { path: '/wishlist', component: WishList }
+    { path: '/wishlist', name:'wishlist', component: WishList }
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
