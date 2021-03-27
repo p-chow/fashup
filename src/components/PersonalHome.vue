@@ -34,7 +34,7 @@
 				<p v-bind:docid= "product[0]" v-on:click= "redirectToProduct($event)">{{product[3]}}</p><br> 
 				<img v-bind:src= "product[1]"><br> 
 				<p>Price: ${{product[2]}}</p><br> 
-				
+				<button type="button" v-bind:docid= "product[0]" v-on:click= "deleteProduct($event); updateProductsListed($event)">Remove product</button> <br>
 			</li>
 		</ul>
 	</div>
@@ -43,6 +43,7 @@
 
 <script>
 import {database} from '../firebase.js';
+import {fv} from '../firebase.js';
 import {EventPassing} from '../passingid.js'
 import PersonalDashboard from './PersonalDashboard.vue' 
 
@@ -116,6 +117,18 @@ export default {
 			this.$router.push({
 				name: 'product',
 				params: {docId: doc_id}
+			})
+		},
+		deleteProduct(event) {
+			let doc_id = event.target.getAttribute("docid");
+			database.collection('products_sharlene').doc(doc_id).delete().then(() => {
+				location.reload()
+			})
+		},
+		updateProductsListed(event) {
+			let doc_id = event.target.getAttribute("docid");
+			database.collection("users").doc(this.user_id).update({
+				productsListed: fv.arrayRemove(doc_id)
 			})
 		}
 	},
@@ -194,6 +207,25 @@ li {
 img {
   width: 135px;
   height: 135px;
+}
+
+button{
+	background-color: rgb(140, 228, 255);
+	border-color: rgb(140, 228, 255);
+	width: 110px;
+	height: 40px;
+	font-size: 13px;
+	float:none;
+	right: 10cm;
+	max-width: 70%;
+	margin: 20px;
+	margin-top:10px;
+	padding: 0 5px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	border-width: 1px;
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-style: italic;
 }
 
 </style>
