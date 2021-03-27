@@ -27,6 +27,17 @@
 		<p>See you there!</p>
 		<personalDB></personalDB>
 	</nav2>
+	<div id="products">
+		<h3>{{name}}'s Products</h3>
+		<ul id="products">
+			<li v-for= "product in products" v-bind:key= "product.id">
+				<p>{{product[3]}}</p><br> 
+				<img v-bind:src= "product[1]"><br> 
+				<p>Price: ${{product[2]}}</p><br> 
+				
+			</li>
+		</ul>
+	</div>
 </div>
 </template>
 
@@ -40,7 +51,9 @@ export default {
 		return {
 			user_id: this.$route.params.id,
 			pic: "", 
-			name:""
+			name:"",
+			productsId: [],
+			products: []
 		}
 	}, 
 	components: {
@@ -85,12 +98,24 @@ export default {
 					}
 				})
 			});	
+		},
+		getProductsListed: function() {
+			database.collection('users').doc(this.user_id).get().then((snapshot) => {
+				this.productsId = snapshot.data().productsListed;
+				database.collection('products_sharlene').get().then(snapshot => {
+					snapshot.docs.forEach(doc=> {
+						if (this.productsId.includes(doc.id)){
+							this.products.push([doc.id, doc.get('pic'), doc.get('price'), doc.get('title')])
+						}	
+					})
+				})
+			})
 		}
-
 	},
 	created(){
 		this.profilepic();
 		this.getUserName();
+		this.getProductsListed();
 	}
 }
 </script>
@@ -144,4 +169,24 @@ img{
 	width:300px;
 	float:left;
 }
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  flex-grow: 1;
+  flex-basis: 300px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #222;
+  margin: 10px;
+}
+img {
+  width: 135px;
+  height: 135px;
+}
+
 </style>
