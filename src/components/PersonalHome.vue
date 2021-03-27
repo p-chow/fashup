@@ -17,6 +17,7 @@
 	<nav2>
 		<h3> hi there</h3> 
 		<personalDB></personalDB>
+
 	</nav2>
 </div>
 </template>
