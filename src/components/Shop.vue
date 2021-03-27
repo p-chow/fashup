@@ -2,7 +2,7 @@
     <section>
         <h2>SHOP</h2>
         <div class="sidenav">
-        <h2 id="navi"><font-awesome-icon icon="coffee" />Filter</h2>
+        <h2 id="navi">Filter</h2>
         <div v-on:click="seen1 = !seen1" class="filterTitle"> Shop for</div>
         <div v-if="seen1" id="hide" class="filter"> 
             <input type="checkbox" id="shopW" value="women" v-model="shop">Women<br> 
@@ -11,10 +11,9 @@
         </div>
         <div v-on:click="seen2 = !seen2" class="filterTitle">Category</div>
         <div v-if="seen2" id="hide" class="filter"> 
-            <p>Top</p>
-            <p>Bottom</p>
-            <p>Shoes</p>
-            <p>Bags</p>
+            <input type="checkbox" id="top" value="top" v-model="cat">Top<br> 
+            <input type="checkbox" id="bottom" value="bottom" v-model="cat">Bottom<br>
+            <input type="checkbox" id="full" value="full" v-model="cat">Full<br>
         </div>
         <div v-on:click="seen3 = !seen3" class="filterTitle"> Occasion </div>
         <div v-if="seen3" id="hide" class="filter"> 
@@ -33,11 +32,12 @@
             </div>
             <p>range: $0 - {{priceRange}}</p>
         </div>
+            <button v-on:click="filtered">Search!</button>
         </div>
         <div class="content">
           <div>
         <ul>
-          <li v-for='(item, id) in items' :key='id'>
+          <li v-for='(item, id) in filteredProducts' :key='id'>
             <div class="polaroid" >
               <div class="fill"><img v-bind:src="item[1].picURL"/></div>
               <div class="container" >
@@ -68,10 +68,12 @@ import {database} from '../firebase.js'
                 seen5: false,
                 priceRange: 50,
                 items:[],
+                cat: [],
+                shop: [],
             }
         },
         methods:{
-      fetchItems: function(){
+          fetchItems: function(){
 			database.collection('products_sharlene').get().then(snapshot =>{
 				snapshot.docs.forEach(doc => {
             let data = doc.data();
@@ -93,26 +95,29 @@ import {database} from '../firebase.js'
             console.log(newitem);
     });
 });
-      },
-      pressed(event){
-        let doc_id = event.target.getAttribute("docid");
-        console.log(doc_id);
-        this.$router.push({
-					name: 'product',
-					params: {docId: doc_id} 
-				})
-      },
+          },
+          pressed(event){
+            let doc_id = event.target.getAttribute("docid");
+            console.log(doc_id);
+            this.$router.push({
+              name: 'product',
+              params: {docId: doc_id} 
+              })
+          },
+          filtered: function() {
+            this.filteredProducts;
+          },
         },
         computed: {
-            filteredProducts() {
-                if(this.cat === '') {
-                    return this.Products;
-                } else {
-                    const category = this.selectedCategory;
-                    return this.Products
-                               .filter((product) => product.attributes.tog === category)
-                }
-            }
+            // filteredProducts() {
+            //   console.log("called filter");
+            //   if (this.shop !== '') {
+            //     return this.items.filter((item) => {
+            //       return this.shop.includes(item[1].cat);
+            //   });
+            //   }
+            // return this.items;
+            // },
         },
         created(){
             this.fetchItems();
