@@ -57,10 +57,13 @@
 import ImgInput from './ImgInput.vue';
 import {database} from "../firebase.js";
 import firebase from "firebase";
+import {EventPassing} from '../passingid.js'
 
 export default {
     data() {
         return {
+            user_id: this.$route.params.id,
+            prodListed:[],
             imgFile: "",
             title: "",
             px: 0,
@@ -76,7 +79,7 @@ export default {
     },
     methods: {
         submit: function() {
-            //console.log(this.imgFile.name); //name of image file
+            console.log(this.imgFile.name); //name of image file
             var pdtInfo = {
                 imgFile: null,
                 title: this.title,
@@ -87,6 +90,8 @@ export default {
                 occasion: this.occasion,
                 tele: this.tele
             }
+            this.prodListed.push(pdtInfo);
+
             let imgURL;
             firebase.storage().ref().child(this.imgFile.name).put(this.imgFile).then(() =>
             firebase.storage().ref().child(this.imgFile.name).getDownloadURL()
@@ -99,16 +104,25 @@ export default {
                     database.collection('products').add(pdtInfo); //send to products db
                 }).then(() => location.reload()); 
             
-            //passes into firebase
-            //need user id info
-            //database.collection('users')
+            //add into user info array pdtlisted
+            database.collection('users').document(this.user_id).update({productsListed: this.prodListed});
 
-            //direct to home page after submission
+        },
+        getProdListed: function() {
+            database.collection('users').document(this.user_id).then(userInfo => { 
+                var curr = userInfo.get("wishList");
+                this.prodListed = curr;
+            })
         }
     },
-    /*created() {
-        this.submit();
-    }*/
+    created(){
+		EventPassing.$on("documentid", data =>{
+				this.user_id = data
+				console.log(data)
+				console.log(this.user_id)
+		});
+		this.getProdListed();
+	},
     
 }
 </script>

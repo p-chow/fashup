@@ -16,6 +16,7 @@
 	</nav>
 	<nav2>
 		<h3> hi there</h3> 
+		<personalDB></personalDB>
 	</nav2>
 </div>
 </template>
@@ -23,6 +24,8 @@
 <script>
 import {database} from '../firebase.js';
 import {EventPassing} from '../passingid.js'
+import PersonalDashboard from './PersonalDashboard.vue' 
+
 export default {
 	data(){
 		return {
@@ -30,6 +33,9 @@ export default {
 			pic: "", 
 			name:""
 		}
+	}, 
+	components: {
+		personalDB: PersonalDashboard
 	}, 
 	methods: {
 		profilepic(){
