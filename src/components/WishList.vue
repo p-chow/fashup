@@ -6,12 +6,12 @@
 		<span @click="pushtoPersonal()">Profile Page</span>
 		</router-link>
 		<br>
-		<router-link to="/change" id="change">
-		<span @click="pushtoChange()">Change Password</span>
-		</router-link>
-		<br>
 		<router-link to="/wishlist" id = "wishlist" >
 		<span @click="pushtoWish()">Wishlist</span>
+		</router-link>
+		<br>
+		<router-link to="/change" id="change">
+		<span @click="pushtoChange()">Change Password</span>
 		</router-link>
 	</nav>
 	<nav2> 
