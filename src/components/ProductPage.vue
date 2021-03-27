@@ -34,7 +34,7 @@ export default {
             })
         },
         updateWishList: function(productId) {
-            database.collection("users").doc('XM8HBLwRH7jX5cm31Kti').update({
+            database.collection("users").doc(this.docId).update({
                 wishList: fv.arrayUnion(productId)
             })
             alert("Added to your wishlist!")
