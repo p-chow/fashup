@@ -126,7 +126,7 @@ import {database} from '../firebase.js'
     }
 </script>
 
-<style>
+<style scoped>
 .content {
   margin-left: 300px;
   padding-left: 20px;

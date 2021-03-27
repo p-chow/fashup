@@ -5,10 +5,10 @@
 	<label for = "email" >Email Address: </label> <br><br>
 	<input type = "text" id = "email" name = "email"> <br> <br>
 	<label for = "pw" id="password" >New Password: </label><br><br>
-	<input type = "text" id = "pw" name = "pw" v-on:change='check()'>
+	<input type = "password" id = "pw" name = "pw" v-on:change='check()'>
 	<p id="passwordcheck"></p> 
 	<label for = "cpw" id="confirm">Confirm Password: </label> <br><br>
-	<input type = "text" id = "cpw" name = "cpw" v-on:change='matched()'> 
+	<input type = "password" id = "cpw" name = "cpw" v-on:change='matched()'> 
 	<p id="matching"></p>
 	<button v-on:click= "reset()" type ="button">Reset Password</button>
 </div>
