@@ -31,7 +31,7 @@
 		<h3>{{name}}'s Products</h3>
 		<ul id="products">
 			<li v-for= "product in products" v-bind:key= "product.id">
-				<p>{{product[3]}}</p><br> 
+				<p v-bind:docid= "product[0]" v-on:click= "redirectToProduct($event)">{{product[3]}}</p><br> 
 				<img v-bind:src= "product[1]"><br> 
 				<p>Price: ${{product[2]}}</p><br> 
 				
@@ -109,6 +109,13 @@ export default {
 						}	
 					})
 				})
+			})
+		},
+		redirectToProduct(event){
+			let doc_id = event.target.getAttribute("docid");
+			this.$router.push({
+				name: 'product',
+				params: {docId: doc_id}
 			})
 		}
 	},

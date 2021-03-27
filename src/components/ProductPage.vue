@@ -3,7 +3,6 @@
     <router-link to="/shop" exact> Back to Shop </router-link><br>
     <img v-bind:src= "this.product[0].pic"/><br>
     <div id="description">
-        <p>UserID: {{this.$route.params.id}}</p>
         <p>Title: {{ this.product[0].title }}</p>
         <p>Description: {{ this.product[0].description }}</p>
         <p>Size: {{ this.product[0].size }} </p>
@@ -62,9 +61,24 @@ img {
     margin-left: 10%;
     float: left;
 }
-button {
-    font-size: 20px;
-    background-color: rgb(127, 255, 148);
+
+button{
+	background-color: rgb(140, 228, 255);
+	border-color: rgb(140, 228, 255);
+	width: 110px;
+	height: 40px;
+	font-size: 13px;
+	float:none;
+	right: 10cm;
+	max-width: 70%;
+	margin: 20px;
+	margin-top:10px;
+	padding: 0 5px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	border-width: 1px;
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-style: italic;
 }
 
 .back {
