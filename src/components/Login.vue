@@ -87,11 +87,9 @@ export default {
 <style scoped>
 #login{
   color:rgb(34, 150, 158);
-  width: 1517px;
+  width: auto;
+  height: 100vh;
   float: center;
-  right: 50cm;
-  max-width: 100%;
-  margin: 50px;
   margin-top:135px;
   box-sizing: border-box;
   font-size: 20px;
