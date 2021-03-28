@@ -25,6 +25,7 @@
 		<p>Tampines Hub Level 1 Foyer</p>
 		<p>From 10am to 8pm, join us in the Fashup community movement by donating your clothings!</p>
 		<p>See you there!</p>
+		<br>
 		<personalDB></personalDB>
 	</nav2>
 </div>
