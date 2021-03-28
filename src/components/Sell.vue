@@ -62,7 +62,7 @@ import {EventPassing} from '../passingid.js'
 export default {
     data() {
         return {
-            user_id: this.$route.params.id,
+            user_id: null, //how to get userid? this.$route.params.id,
             prodListed:[],
             imgFile: "",
             title: "",
@@ -90,7 +90,9 @@ export default {
                 occasion: this.occasion,
                 tele: this.tele
             }
-            this.prodListed.push(pdtInfo);
+            this.prodListed.push(pdtInfo['title']);
+            //add into user info array pdtlisted
+            database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
 
             let imgURL;
             firebase.storage().ref().child(this.imgFile.name).put(this.imgFile).then(() =>
@@ -104,14 +106,13 @@ export default {
                     database.collection('products').add(pdtInfo); //send to products db
                 }).then(() => location.reload()); 
             
-            //add into user info array pdtlisted
-            database.collection('users').document(this.user_id).update({productsListed: this.prodListed});
-
         },
         getProdListed: function() {
-            database.collection('users').document(this.user_id).then(userInfo => { 
-                var curr = userInfo.get("wishList");
-                this.prodListed = curr;
+            database.collection('users').doc(this.user_id).get().then(userInfo => { 
+                var curr = userInfo.get("productsListed");
+                for (var i = 0; i < curr.length; i++){
+					this.prodListed.push(curr[i]);
+				}
             })
         }
     },
