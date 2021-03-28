@@ -92,6 +92,7 @@ export default {
             }
             this.prodListed.push(pdtInfo['title']);
             //add into user info array pdtlisted
+            //var user = fbase.currentUser;
             database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
 
             let imgURL;
