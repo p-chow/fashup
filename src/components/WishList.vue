@@ -19,6 +19,8 @@
 			<li v-for="item in productswish" v-bind:key="item.title">
 				<button type="button" v-bind:id="item[0]" v-on:click ="deleteItem($event)">X</button> <br>
 				{{item[1]}} <br> <br> <img v-on:click="redirectToProduct()" v-bind:src = "item[2]"> <br> Price: ${{item[3]}}
+				Available: {{available(item[4])}} <br><br>
+				{{soldAlready(item[4])}}
 			</li>
 		</ul>
 	</nav2>
@@ -101,7 +103,23 @@ export default{
 			}
 			database.collection('users').doc(this.doc_id).update({
 				wishList : this.newWL
-			}).then()
+			})
+			
+		},
+		available(bool){
+			let isAvail = bool
+			if (isAvail) {
+				return 'No'
+			} else {
+				return 'Yes'
+			}
+		},
+		soldAlready(bool){
+			if (bool) {
+				return 'Sorry the item is no longer available'
+			} else {
+				return ''
+			}
 		}
 	}
 }

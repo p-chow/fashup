@@ -16,6 +16,7 @@
 <script>
 import {database} from '../firebase.js';
 import { EventListening } from '../listening.js';
+import { fbase } from '../firebase.js'
 export default {
 	data(){
 		return {
@@ -67,6 +68,7 @@ export default {
 				alert("Incorrect password. Please try again.")
 			} else {
 				EventListening.$emit("Logging-in", this.display[this.getIndex(this.emailList,email)])
+				fbase.signInWithEmailAndPassword(email,password)
 				var docid = this.listOfIds[this.getIndex(this.emailList, email)]
 				this.$router.push({
 					name: 'personal',
