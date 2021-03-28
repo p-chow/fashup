@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="sell">
         <router-link to="/sell" exact></router-link>
         <h1> Sell </h1>
         <div id="left">
@@ -92,6 +92,7 @@ export default {
             }
             this.prodListed.push(pdtInfo['title']);
             //add into user info array pdtlisted
+            //var user = fbase.currentUser;
             database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
 
             let imgURL;
@@ -129,8 +130,11 @@ export default {
 </script>
 
 <style scoped>
+#sell {
+    height: 100vh;
+}
+
 h1 {
-    margin-left: 10%;
     font-size: 50px;
 }
 
@@ -146,7 +150,6 @@ h1 {
     float: left;
     padding: 20px;
     width: 48%;
-    background-color: white;
     font-size: 22px;
     position: relative;
 }
@@ -161,6 +164,6 @@ h1 {
     text-align: left;
     float: right;
     font-size: 25px;
-    background-color: white;
+    color: black;
 }
 </style>
