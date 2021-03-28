@@ -23,7 +23,9 @@
 
 <script>
 import { EventListening } from '../listening.js';
-import { EventLogout } from '../loggingout.js'
+import { EventLogout } from '../loggingout.js';
+import { fbase } from '../firebase.js'
+import { database } from '../firebase.js'
 export default {
 	data(){
 		return {
@@ -33,7 +35,16 @@ export default {
 	},
 	created(){
 		EventListening.$on("Logging-in", data => {
-			this.user_display.push(data)
+			var user = fbase.currentUser;
+			database.collection('users').get().then(snapshot => {
+				snapshot.docs.forEach(doc => {
+					if (doc.get('Email') === user.email) {
+						this.user_display.push(doc.get('DisplayName'))
+					}
+				})
+			})
+			console.log(this.user_display)
+			console.log(data)
 			this.login = true;
 			this.notLogged()
 		})
