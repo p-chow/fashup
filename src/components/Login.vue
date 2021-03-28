@@ -23,7 +23,8 @@ export default {
 			passwordList: [],
 			emailList: [],
 			display:[],
-			listOfIds:[]
+			listOfIds:[],
+			currID : ''
 		}
 	},
 	methods: {
@@ -67,13 +68,18 @@ export default {
 			} else if (this.passwordList.includes(password)===false) {
 				alert("Incorrect password. Please try again.")
 			} else {
-				EventListening.$emit("Logging-in", this.display[this.getIndex(this.emailList,email)])
+				EventListening.$emit("Logging-in", "loggedin")
 				fbase.signInWithEmailAndPassword(email,password)
-				var docid = this.listOfIds[this.getIndex(this.emailList, email)]
-				this.$router.push({
-					name: 'personal',
-					params: { id: docid} 
-				})
+				var user = fbase.currentUser
+				database.collection('users').get().then(snapshot => {
+					snapshot.docs.forEach(doc => {
+						if (doc.get('Email') === user.email) {
+							this.currID = doc.id
+						}
+					})
+				}).then(this.$router.push({
+					path: '/personal'
+				}))
 			}
 		}
 	}, 

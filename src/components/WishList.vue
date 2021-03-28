@@ -30,6 +30,7 @@
 <script>
 import { EventPassing } from '../passingid.js'
 import {database} from '../firebase.js';
+import {fbase} from '../firebase.js'
 //import {fv} from '../firebase.js'
 export default{
 	data(){
@@ -37,7 +38,8 @@ export default{
 			doc_id:this.$route.params.id,
 			wishList:[],
 			productswish: [],
-			newWL: []
+			newWL: [],
+			userEmail: ''
 		}
 	}, 
 	created(){
@@ -50,10 +52,12 @@ export default{
 	},
 	methods:{
 		getWishList(){
-			console.log(this.doc_id)
+			var user = fbase.currentUser;
+			this.userEmail = user.email
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc=> {
-					if (doc.id === this.doc_id) {
+					if (doc.get('Email') === this.userEmail) {
+						this.doc_id = doc.id
 						var curr = doc.get("wishList");
 						for (var i = 0; i < curr.length; i++){
 							this.wishList.push(curr[i])
@@ -94,17 +98,16 @@ export default{
 			//push to the product page
 		},
 		deleteItem(event){
-			console.log(this.doc_id)
 			let itemId = event.target.getAttribute("id")
 			for (var i =0; i< this.wishList.length ; i++){
 				if (this.wishList[i] != itemId){
 					this.newWL.push(this.wishList[i])
 				}
 			}
+			console.log(this.newWL)
 			database.collection('users').doc(this.doc_id).update({
 				wishList : this.newWL
 			})
-			
 		},
 		available(bool){
 			let isAvail = bool

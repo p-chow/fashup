@@ -58,7 +58,6 @@
 
 <script>
 import {database} from '../firebase.js'
-
     export default {
         name: 'Products',
         data() {
