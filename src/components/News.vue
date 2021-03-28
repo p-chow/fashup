@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="news">
         <h1 id="head">News Page</h1>
     <div>
         <ul>
@@ -64,7 +64,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+#news {
+  height: 100vh;
+}
 .container a {
     color: aliceblue;
     font-weight: 800;
