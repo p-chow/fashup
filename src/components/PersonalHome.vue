@@ -42,20 +42,87 @@ import {EventPassing} from '../passingid.js'
 import PersonalDashboard from './PersonalDashboard.vue' 
 import {fbase} from '../firebase.js'
 import {EventLogout} from '../loggingout.js'
+
 export default {
 	data(){
 		return {
-			user_id: this.$route.params.id,
+			user_id: '',
 			pic: "", 
 			name:"",
 			productsId: [],
-			products: []
+			products: [],
+			currUserId: []
 		}
 	}, 
 	components: {
 		personalDB: PersonalDashboard
 	}, 
 	methods: {
+		getUserName() {
+			var user = fbase.currentUser;
+			console.log(user.email)
+			database.collection('users').get().then(snapshot => {
+				snapshot.docs.forEach(doc => {
+					if (doc.get('Email') === user.email) {
+						this.name = doc.get('Name')
+					}
+				})
+			});	
+		},
+		getProductsListed: function() {
+			var user = fbase.currentUser;
+			console.log(user.email)
+			database.collection('users').get().then(snapshot => {
+				snapshot.docs.forEach(doc => {
+					if (doc.get('Email') === user.email) {
+						this.currUserId.push(doc.id)
+					}
+				})
+			});	
+			console.log(this.currUserId)
+			database.collection('users').get().then(snapshot => {
+				snapshot.docs.forEach(doc => {
+					if (doc.get('Email') === user.email) {
+						this.productsId = doc.get('productsListed')
+					}
+				})
+				console.log(this.productsId)
+				database.collection('products_sharlene').get().then(snapshot => {
+					snapshot.docs.forEach(doc=> {
+						if (this.productsId.includes(doc.id)){
+							this.products.push([doc.id, doc.get('pic'), doc.get('price'), doc.get('title')])
+						}	
+					})
+				})
+			})
+			console.log(this.productsId)
+		},
+		redirectToProduct(event){
+			let doc_id = event.target.getAttribute("docid");
+			this.$router.push({
+				name: 'product',
+				params: {docId: doc_id}
+			})
+		},
+		deleteProduct(event) {
+			let doc_id = event.target.getAttribute("docid");
+			database.collection('products_sharlene').doc(doc_id).delete().then(() => {
+				location.reload()
+			})
+		},
+		updateProductsListed(event) {
+			let doc_id = event.target.getAttribute("docid");
+			database.collection("users").doc(this.user_id).update({
+				productsListed: fv.arrayRemove(doc_id)
+			})
+		},
+		logout(){
+			fbase.signOut()
+			EventLogout.$emit('Logging-out', "loggingOutOfAcc")
+			this.$router.push({
+				path:'/'
+			})
+		},
 		profilepic(){
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc => {
@@ -84,55 +151,6 @@ export default {
 			this.$router.push({
 				name: 'change',
 				params: { id: this.user_id} 
-			})
-		},
-		getUserName() {
-			var user = fbase.currentUser;
-			console.log(user)
-			database.collection('users').get().then(snapshot => {
-				snapshot.docs.forEach(doc => {
-					if (doc.id === this.user_id) {
-						this.name = doc.get('Name')
-					}
-				})
-			});	
-		},
-		getProductsListed: function() {
-			database.collection('users').doc(this.user_id).get().then((snapshot) => {
-				this.productsId = snapshot.data().productsListed;
-				database.collection('products_sharlene').get().then(snapshot => {
-					snapshot.docs.forEach(doc=> {
-						if (this.productsId.includes(doc.id)){
-							this.products.push([doc.id, doc.get('pic'), doc.get('price'), doc.get('title')])
-						}	
-					})
-				})
-			})
-		},
-		redirectToProduct(event){
-			let doc_id = event.target.getAttribute("docid");
-			this.$router.push({
-				name: 'product',
-				params: {docId: doc_id}
-			})
-		},
-		deleteProduct(event) {
-			let doc_id = event.target.getAttribute("docid");
-			database.collection('products_sharlene').doc(doc_id).delete().then(() => {
-				location.reload()
-			})
-		},
-		updateProductsListed(event) {
-			let doc_id = event.target.getAttribute("docid");
-			database.collection("users").doc(this.user_id).update({
-				productsListed: fv.arrayRemove(doc_id)
-			})
-		},
-		logout(){
-			fbase.signOut()
-			EventLogout.$emit('Logging-out', "loggingOutOfAcc")
-			this.$router.push({
-				path:'/'
 			})
 		}
 	},
