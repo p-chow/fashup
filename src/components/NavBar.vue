@@ -23,6 +23,7 @@
 
 <script>
 import { EventListening } from '../listening.js';
+import { EventLogout } from '../loggingout.js'
 export default {
 	data(){
 		return {
@@ -34,6 +35,11 @@ export default {
 		EventListening.$on("Logging-in", data => {
 			this.user_display.push(data)
 			this.login = true;
+			this.notLogged()
+		})
+		EventLogout.$on('Logging-out', data => {
+			console.log(data)
+			this.login = false;
 			this.notLogged()
 		})
 	},
