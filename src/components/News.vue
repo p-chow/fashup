@@ -11,13 +11,18 @@
           </li>
       </ul>
       </div>
+    <div id= "communityDashboard">
+      <CommunityDashboard></CommunityDashboard>
+    </div>
   </section>
 </template>
 
 <script>
+import CommunityDashboard from './CommunityDashboard.vue'
 
 export default {
     components: {
+      CommunityDashboard
     },
     data(){
         return{
