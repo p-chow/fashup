@@ -37,6 +37,7 @@ export default {
 	font-size: 20px;
 	color: black;
 	background-color:azure;
+	height: 100vh;
 }
 button {
 	background-color: rgb(140, 228, 255);
