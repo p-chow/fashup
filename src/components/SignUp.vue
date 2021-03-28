@@ -27,6 +27,7 @@
 
 <script>
 import {database} from '../firebase.js';
+import {fbase} from '../firebase.js';
 export default {
 	data(){
 		return {
@@ -120,9 +121,14 @@ export default {
 					productsSold:[],
 					wishlist:[],
 					productsListed:[]
-				}).then(this.$router.push({
-				path: 'Login'
-				}));
+				})
+				fbase.createUserWithEmailAndPassword(email, password)
+				.catch(function (err) {
+					console.log('signin error',err)
+				});
+				this.$router.push({
+					path:'/login'
+				})
 			}
 		}
 	}

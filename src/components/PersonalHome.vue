@@ -13,6 +13,9 @@
 		<router-link to="/change" id="change">
 		<span @click="pushtoChange()">Change Password</span>
 		</router-link>
+		<br> <br> <br> <br> <br> <br> <br>  
+		<button type="button" id='logout' v-on:click= "logout()">Logout</button>
+	
 	</nav>
 	<nav2>
 		<h3> Hi {{name}}!</h3> 
@@ -47,6 +50,7 @@ import {database} from '../firebase.js';
 import {fv} from '../firebase.js';
 import {EventPassing} from '../passingid.js'
 import PersonalDashboard from './PersonalDashboard.vue' 
+import {fbase} from '../firebase.js'
 
 export default {
 	data(){
@@ -93,6 +97,8 @@ export default {
 			})
 		},
 		getUserName() {
+			var user = fbase.currentUser;
+			console.log(user)
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc => {
 					if (doc.id === this.user_id) {
@@ -131,6 +137,9 @@ export default {
 			database.collection("users").doc(this.user_id).update({
 				productsListed: fv.arrayRemove(doc_id)
 			})
+		},
+		logout(){
+			fbase.signOut()
 		}
 	},
 	created(){
@@ -170,7 +179,7 @@ nav{
 	background: rgb(222, 255, 255);
 	padding-left: 20px;
 	padding-top:100px;
-	height: 550px; 	
+	display: table;	
 }
 nav2{
 	font-size: 15px;
@@ -180,6 +189,7 @@ nav2{
 	padding-top:1px;
 	background:rgb(182, 243, 238);
 	margin-top:1cm;
+	display: table-cell;
 }
 #wishlist{
 	font-size:25px;
