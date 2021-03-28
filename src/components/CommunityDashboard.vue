@@ -1,16 +1,20 @@
 <template>
   <div class="chart">
     <h1>Community Dashboard</h1>
-    <chart></chart>
+    <p>Figures from Data.gov.sg</p>
+    <LineChart></LineChart> <br><br>
+    <BarChart></BarChart>
   </div>
 </template>
 
 <script>
-import Chart from "./CommunityDashboard.js";
+import LineChart from "./CommunityLineChart.vue";
+import BarChart from "./CommunityBarChart.vue"
 
 export default {
   components: {
-    Chart
+    LineChart,
+    BarChart
   }
 };
 </script>
