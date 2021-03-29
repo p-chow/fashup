@@ -30,7 +30,7 @@
 <script>
 import { EventPassing } from '../passingid.js'
 import {database} from '../firebase.js';
-import {fbase} from '../firebase.js'
+//import {fbase} from '../firebase.js'
 //import {fv} from '../firebase.js'
 export default{
 	data(){
@@ -52,11 +52,11 @@ export default{
 	},
 	methods:{
 		getWishList(){
-			var user = fbase.currentUser;
-			this.userEmail = user.email
+			//var user = fbase.currentUser;
+			//this.userEmail = user.email
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc=> {
-					if (doc.get('Email') === this.userEmail) {
+					if (doc.id === this.doc_id) {
 						this.doc_id = doc.id
 						var curr = doc.get("wishList");
 						for (var i = 0; i < curr.length; i++){

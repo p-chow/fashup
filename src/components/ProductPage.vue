@@ -16,7 +16,7 @@
 <script>
 import {database} from '../firebase.js'
 import {fv} from '../firebase.js'
-import {fbase} from '../firebase.js'
+//import {fbase} from '../firebase.js'
 
 export default {
     name: 'ProductPage',
@@ -37,22 +37,11 @@ export default {
             })
         },
         updateWishList: function(productId) {
-			var user = fbase.currentUser;
-			if (user === null) {
-				alert('Please login to your account to add to wishlist')
-			} else {
-				database.collection('users').get().then(snapshot=> {
-					snapshot.docs.forEach(doc => {
-						if (doc.get('Email') === user.email) {
-							this.userId = doc.id
-						}
-					})
-				})
-                database.collection("users").doc(this.userId).update({
-                    wishList: fv.arrayUnion(productId)
-                })
-                alert("Added to your wishlist!")
-			}
+			//var user = fbase.currentUser;
+			database.collection("users").doc('XM8HBLwRH7jX5cm31Kti').update({
+                wishList: fv.arrayUnion(productId)
+            })
+            alert("Added to your wishlist!")
         },
         telehandlePopUp: function(product) {
             alert("Message me " + product.telehandle + "! :)")

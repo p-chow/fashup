@@ -56,9 +56,9 @@
 <script>
 import ImgInput from './ImgInput.vue';
 import {database} from "../firebase.js";
-import firebase from "firebase";
+//import firebase from "firebase";
 import {EventPassing} from '../passingid.js'
-import {fbase} from '../firebase.js'
+//import {fbase} from '../firebase.js'
 export default {
     data() {
         return {
@@ -79,38 +79,22 @@ export default {
     },
     methods: {
         submit: function() {
-			var user = fbase.currentUser
-			if (user === null) {
-				alert("You need to login to your account to sell items on Fashup")
-			} else {
-				console.log(this.imgFile.name); //name of image file
-				var pdtInfo = {
-					imgFile: null,
-					title: this.title,
-					px: this.px,
-					cat: this.cat,
-					desc: this.desc,
-					size: this.size,
-					occasion: this.occasion,
-					tele: this.tele
-				}
-				this.prodListed.push(pdtInfo['title']);
-				//add into user info array pdtlisted
-				//var user = fbase.currentUser;
-				database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
-
-				let imgURL;
-				firebase.storage().ref().child(this.imgFile.name).put(this.imgFile).then(() =>
-				firebase.storage().ref().child(this.imgFile.name).getDownloadURL()
-					.then((url) => {
-						console.log(pdtInfo['tele']),
-						imgURL = url;
-						pdtInfo['imgFile'] = imgURL;
-						console.log(pdtInfo['imgFile']);}
-					)).then(() => {
-						database.collection('products').add(pdtInfo); //send to products db
-					}).then(() => location.reload()); 
-			}
+			//var user = fbase.currentUser
+			console.log(this.imgFile.name); //name of image file
+            var pdtInfo = {
+                imgFile: null,
+                title: this.title,
+                px: this.px,
+                cat: this.cat,
+                desc: this.desc,
+                size: this.size,
+                occasion: this.occasion,
+                tele: this.tele
+            }
+            this.prodListed.push(pdtInfo['title']);
+            //add into user info array pdtlisted
+            //var user = fbase.currentUser;
+            database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
         },
         getProdListed: function() {
             database.collection('users').doc(this.user_id).get().then(userInfo => { 
