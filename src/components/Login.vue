@@ -68,18 +68,13 @@ export default {
 			} else if (this.passwordList.includes(password)===false) {
 				alert("Incorrect password. Please try again.")
 			} else {
-				EventListening.$emit("Logging-in", "loggedin")
+				var docid = this.listOfIds[this.getIndex(this.emailList, email)]
+				EventListening.$emit("Logging-in", [this.display[this.getIndex(this.emailList,email)], docid])
 				fbase.signInWithEmailAndPassword(email,password)
-				var user = fbase.currentUser
-				database.collection('users').get().then(snapshot => {
-					snapshot.docs.forEach(doc => {
-						if (doc.get('Email') === user.email) {
-							this.currID = doc.id
-						}
-					})
-				}).then(this.$router.push({
-					path: '/personal'
-				}))
+				this.$router.push({
+					name: 'personal',
+					params: { id: docid} 
+				})
 			}
 		}
 	}, 

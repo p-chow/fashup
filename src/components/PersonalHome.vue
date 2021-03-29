@@ -46,7 +46,7 @@ import {EventLogout} from '../loggingout.js'
 export default {
 	data(){
 		return {
-			user_id: '',
+			user_id: this.$route.params.id,
 			pic: "", 
 			name:"",
 			productsId: [],
@@ -59,34 +59,17 @@ export default {
 	}, 
 	methods: {
 		getUserName() {
-			var user = fbase.currentUser;
-			console.log(user.email)
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc => {
-					if (doc.get('Email') === user.email) {
+					if (doc.id === this.user_id) {
 						this.name = doc.get('Name')
 					}
 				})
 			});	
 		},
 		getProductsListed: function() {
-			var user = fbase.currentUser;
-			console.log(user.email)
-			database.collection('users').get().then(snapshot => {
-				snapshot.docs.forEach(doc => {
-					if (doc.get('Email') === user.email) {
-						this.currUserId.push(doc.id)
-					}
-				})
-			});	
-			console.log(this.currUserId)
-			database.collection('users').get().then(snapshot => {
-				snapshot.docs.forEach(doc => {
-					if (doc.get('Email') === user.email) {
-						this.productsId = doc.get('productsListed')
-					}
-				})
-				console.log(this.productsId)
+			database.collection('users').doc(this.user_id).get().then((snapshot) => {
+				this.productsId = snapshot.data().productsListed;
 				database.collection('products_sharlene').get().then(snapshot => {
 					snapshot.docs.forEach(doc=> {
 						if (this.productsId.includes(doc.id)){
@@ -95,7 +78,6 @@ export default {
 					})
 				})
 			})
-			console.log(this.productsId)
 		},
 		redirectToProduct(event){
 			let doc_id = event.target.getAttribute("docid");

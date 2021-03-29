@@ -5,16 +5,24 @@
       <ul>
 		<li>
 		<router-link to="/" exact v-show="!notLogged()"> Home </router-link>
-		<router-link to="/Personal" exact v-show="notLogged()"> {{this.user_display[0]}}'s Home</router-link>
+		<router-link to="/Personal" exact v-show="notLogged()"> 
+		<span @click ="pushtoPersonal()">{{this.user_display[0]}}'s Home</span>
+		</router-link>
 		</li>
 		<li>
-		<router-link to="/shop" exact> Shop </router-link>
+		<router-link to="/shop" exact>
+		<span @click="pushtoShop()">Shop</span>
+		</router-link>
 		</li>
 		<li>
-		<router-link to="/sell" exact> Sell </router-link>
+		<router-link to="/sell" exact> 
+		<span @click="pushtoSell()">Sell </span>
+		</router-link>
 		</li>
 		<li>
-		<router-link to="/news" exact> Gaia News </router-link>
+		<router-link to="/news" exact>
+		<span @click="pushtoNews()"> Gaia News </span>
+		</router-link>
 		</li>
       </ul>
     </nav>
@@ -24,27 +32,20 @@
 <script>
 import { EventListening } from '../listening.js';
 import { EventLogout } from '../loggingout.js';
-import { fbase } from '../firebase.js'
-import { database } from '../firebase.js'
+//import { fbase } from '../firebase.js'
+//import { database } from '../firebase.js'
 export default {
 	data(){
 		return {
 			login:false,
-			user_display : []
+			user_display : [],
+			curr_userId: ''
 		}
 	},
 	created(){
 		EventListening.$on("Logging-in", data => {
-			var user = fbase.currentUser;
-			database.collection('users').get().then(snapshot => {
-				snapshot.docs.forEach(doc => {
-					if (doc.get('Email') === user.email) {
-						this.user_display.push(doc.get('DisplayName'))
-					}
-				})
-			})
-			console.log(this.user_display)
-			console.log(data)
+			this.user_display.push(data[0])
+			this.curr_userId = data[1]
 			this.login = true;
 			this.notLogged()
 		})
@@ -58,7 +59,30 @@ export default {
 		notLogged() {
 			return this.login
 		},
-
+		pushtoShop(){
+			this.$router.push({
+				name: 'shop',
+				params: { id: this.curr_userId} 
+			})
+		},
+		pushtoPersonal(){
+			this.$router.push({
+				name: 'personal',
+				params: { id: this.curr_userId} 
+			})
+		},
+		pushtoSell(){
+			this.$router.push({
+				name: 'sell',
+				params: { id: this.curr_userId} 
+			})
+		},
+		pushtoNews(){
+			this.$router.push({
+				name: 'news',
+				params: { id: this.curr_userId} 
+			})
+		}
 	}
 }
 </script>
