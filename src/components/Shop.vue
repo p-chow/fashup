@@ -108,7 +108,8 @@ import {database} from '../firebase.js'
             console.log(doc_id);
             this.$router.push({
               name: 'product',
-              params: {docId: doc_id} 
+              params: {docId: doc_id,
+						user: this.$route.params.id} 
               })
           },
           filtered: function() {

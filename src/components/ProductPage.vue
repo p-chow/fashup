@@ -23,7 +23,7 @@ export default {
     data() {
         return {
             product: [],
-			userId :''
+			userId :this.$route.params.user,
         }
     },
     props: { 
@@ -38,10 +38,15 @@ export default {
         },
         updateWishList: function(productId) {
 			//var user = fbase.currentUser;
-			database.collection("users").doc('XM8HBLwRH7jX5cm31Kti').update({
-                wishList: fv.arrayUnion(productId)
-            })
-            alert("Added to your wishlist!")
+			console.log(this.userId)
+			if (this.userId) {
+				database.collection("users").doc(this.userId).update({
+					wishList: fv.arrayUnion(productId)
+				})
+				alert("Added to your wishlist!")
+			} else {
+				alert("Please log into your account to add items to your wishlist")
+			}
         },
         telehandlePopUp: function(product) {
             alert("Message me " + product.telehandle + "! :)")
