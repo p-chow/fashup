@@ -62,7 +62,7 @@ import {EventPassing} from '../passingid.js'
 export default {
     data() {
         return {
-            user_id: null, //how to get userid? this.$route.params.id,
+            user_id: this.$route.params.id,
             prodListed:[],
             imgFile: "",
             title: "",
@@ -80,21 +80,25 @@ export default {
     methods: {
         submit: function() {
 			//var user = fbase.currentUser
-			console.log(this.imgFile.name); //name of image file
-            var pdtInfo = {
-                imgFile: null,
-                title: this.title,
-                px: this.px,
-                cat: this.cat,
-                desc: this.desc,
-                size: this.size,
-                occasion: this.occasion,
-                tele: this.tele
-            }
-            this.prodListed.push(pdtInfo['title']);
-            //add into user info array pdtlisted
-            //var user = fbase.currentUser;
-            database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
+			if (this.user_id) {
+				console.log(this.imgFile.name); //name of image file
+				var pdtInfo = {
+					imgFile: null,
+					title: this.title,
+					px: this.px,
+					cat: this.cat,
+					desc: this.desc,
+					size: this.size,
+					occasion: this.occasion,
+					tele: this.tele
+				}
+				this.prodListed.push(pdtInfo['title']);
+				//add into user info array pdtlisted
+				//var user = fbase.currentUser;
+				database.collection('users').doc(this.user_id).update({productsListed: this.prodListed});
+			} else {
+				alert("Please login to your Fashup account to start selling")
+			}
         },
         getProdListed: function() {
             database.collection('users').doc(this.user_id).get().then(userInfo => { 
