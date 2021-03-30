@@ -9,8 +9,8 @@ import BarChart from "../CommunityBarChart.js";
 
 export default {
   components: {
-    BarChart
-  }
+    BarChart,
+  },
 };
 </script>
 
