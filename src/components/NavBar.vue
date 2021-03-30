@@ -48,6 +48,7 @@ export default {
 			this.curr_userId = data[1]
 			this.login = true;
 			this.notLogged()
+			this.pushtoPersonal();
 		})
 		EventLogout.$on('Logging-out', data => {
 			console.log(data)
