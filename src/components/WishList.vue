@@ -18,7 +18,7 @@
 		<ul id="mywishlist">
 			<li v-for="item in productswish" v-bind:key="item.title">
 				<button type="button" v-bind:id="item[0]" v-on:click ="deleteItem($event)">X</button> <br>
-				{{item[1]}} <br> <br> <img v-on:click="redirectToProduct()" v-bind:src = "item[2]"> <br> Price: ${{item[3]}}
+				{{item[1]}} <br> <br> <img v-bind:id="item[0]" v-on:click="redirectToProduct($event)" v-bind:src = "item[2]"> <br> Price: ${{item[3]}}
 				Available: {{available(item[4])}} <br><br>
 				{{soldAlready(item[4])}}
 			</li>
@@ -30,6 +30,7 @@
 <script>
 import { EventPassing } from '../passingid.js'
 import {database} from '../firebase.js';
+import { EventUpdateWl } from '../updatingWishlist.js'
 //import {fbase} from '../firebase.js'
 //import {fv} from '../firebase.js'
 export default{
@@ -94,8 +95,12 @@ export default{
 				params: { id: this.doc_id} 
 			})
 		},
-		redirectToProduct(){
-			//push to the product page
+		redirectToProduct(event){
+			let doc_id = event.target.getAttribute("id");
+			this.$router.push({
+				name: 'product',
+				params: {docId: doc_id}
+			})
 		},
 		deleteItem(event){
 			let itemId = event.target.getAttribute("id")
@@ -108,6 +113,7 @@ export default{
 			database.collection('users').doc(this.doc_id).update({
 				wishList : this.newWL
 			})
+			EventUpdateWl.$emit('new-wishlist', this.doc_id)
 		},
 		available(bool){
 			let isAvail = bool
