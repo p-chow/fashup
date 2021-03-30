@@ -164,24 +164,25 @@ export default {
                 this.product["imgFile"] = url;
                 console.log("Image Url " + this.product["imgFile"]);
               })
-          );
-          const sortProduct = (obj) =>
-            Object.keys(obj)
-              .sort()
-              .reduce((res, key) => ((res[key] = obj[key]), res), {});
-          const sortedProduct = sortProduct(this.product);
-          database
-            .collection("products_sharlene")
-            .add(sortedProduct)
-            .then(function (docRef) {
-              database
-                .collection("users")
-                .doc(this.user_id)
-                .update({
-                  productsListed: fv.arrayUnion(docRef.id)
-                });
-            });
-        //.then(() => {
+              .then(() => {
+                const sortProduct = (obj) =>
+                  Object.keys(obj)
+                    .sort()
+                    .reduce((res, key) => ((res[key] = obj[key]), res), {});
+                const sortedProduct = sortProduct(this.product);
+                database
+                  .collection("products_sharlene")
+                  .add(sortedProduct)
+                  .then(function (docRef) {
+                    database
+                      .collection("users")
+                      .doc(this.user_id)
+                      .update({
+                        productsListed: fv.arrayUnion(docRef.id)
+                      });
+                  })
+              })
+          );//.then(() => {
                       //location.reload()
                   //});
       } else {
