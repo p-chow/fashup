@@ -71,6 +71,7 @@ export default {
 				var docid = this.listOfIds[this.getIndex(this.emailList, email)]
 				EventListening.$emit("Logging-in", [this.display[this.getIndex(this.emailList,email)], docid])
 				fbase.signInWithEmailAndPassword(email,password)
+				console.log(fbase.currentUser.email)
 				this.$router.push({
 					name: 'personal',
 					params: { id: docid} 
@@ -82,6 +83,7 @@ export default {
 		this.emailExists();
 		this.passwordMatch();
 		this.displayNames();
+		this.logintoacc();
 	}
 }			
 </script>
