@@ -1,6 +1,8 @@
 <template>
 <div>
-    <router-link to="/shop" exact> Back to Shop </router-link><br>
+    <router-link to="/shop" exact>
+	<span @click="pushtoShop()">Back to Shop</span>
+	</router-link>
     <img v-bind:src= "this.product[0].pic"/><br>
     <div id="description">
         <p>Title: {{ this.product[0].title }}</p>
@@ -50,7 +52,13 @@ export default {
         },
         telehandlePopUp: function(product) {
             alert("Message me " + product.telehandle + "! :)")
-        }
+        },
+		pushtoShop(){
+			this.$router.push({
+				name: 'shop',
+				params: { id: this.userId} 
+			})
+		},
     },
     created() {
         this.fetchProduct()
