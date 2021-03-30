@@ -9,8 +9,8 @@ import LineChart from "../CommunityLineChart.js";
 
 export default {
   components: {
-    LineChart
-  }
+    LineChart,
+  },
 };
 </script>
 

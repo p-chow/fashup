@@ -5,23 +5,23 @@ export default {
   extends: Line,
   data: function () {
     return {
-        datacollection: {
-            labels: [],
-            datasets: [{ 
-                backgroundColor: "006d77",
-                data: [],
-                fill: false
-            }]
+      datacollection: {
+        labels: [],
+        datasets: [{
+          backgroundColor: "006d77",
+          data: [],
+          fill: false
+        }]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Million tonnes of waste recycled per year'
         },
-        options: {
-            legend: { display: false },
-            title: {
-              display: true,
-              text: 'Million tonnes of waste recycled per year'
-            },
-            responsive: true,
-            maintainAspectRatio: false
-        }
+        responsive: true,
+        maintainAspectRatio: false
+      }
     }
   },
   methods: {
@@ -36,7 +36,7 @@ export default {
         })
     }
   },
-  created () {
+  created() {
     this.fetchItems()
   }
 }
