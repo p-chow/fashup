@@ -40,7 +40,8 @@ export default{
 			wishList:[],
 			productswish: [],
 			newWL: [],
-			userEmail: ''
+			userEmail: '',
+			delete: false
 		}
 	}, 
 	created(){
@@ -55,6 +56,7 @@ export default{
 		getWishList(){
 			//var user = fbase.currentUser;
 			//this.userEmail = user.email
+			console.log(this.doc_id)
 			database.collection('users').get().then(snapshot => {
 				snapshot.docs.forEach(doc=> {
 					if (doc.id === this.doc_id) {
@@ -113,7 +115,8 @@ export default{
 			database.collection('users').doc(this.doc_id).update({
 				wishList : this.newWL
 			})
-			EventUpdateWl.$emit('new-wishlist', this.doc_id)
+			this.delete = true;
+			EventUpdateWl.$emit('new-wishlist', [this.doc_id, this.delete]).then(this.pushtoPersonal())
 		},
 		available(bool){
 			let isAvail = bool

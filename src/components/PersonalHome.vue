@@ -42,6 +42,7 @@ import {EventPassing} from '../passingid.js'
 import PersonalDashboard from './PersonalDashboard.vue' 
 import {fbase} from '../firebase.js'
 import {EventLogout} from '../loggingout.js'
+import {EventUpdateWl} from '../updatingWishlist.js'
 
 export default {
 	data(){
@@ -140,6 +141,15 @@ export default {
 		this.profilepic();
 		this.getUserName();
 		this.getProductsListed();
+		EventUpdateWl.$on('new-wishlist', data => {
+			if (data[1]) {
+				this.pushtoWish()
+			}
+		})
+			/*this.$router.push({
+				name:'wishlist',
+				params: { id: data[0]} 
+			})*/
 	}
 }
 </script>
