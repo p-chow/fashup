@@ -1,5 +1,6 @@
 <template>
   <section id="news">
+    <NavBar></NavBar>
     <h1 id="head">News Page</h1>
     <div>
       <ul>
@@ -20,11 +21,13 @@
 </template>
 
 <script>
+import NavBar from "./NavBar.vue";
 import CommunityDashboard from "./CommunityDashboard.vue";
 
 export default {
   components: {
-    CommunityDashboard,
+    NavBar,
+    CommunityDashboard
   },
   data() {
     return {

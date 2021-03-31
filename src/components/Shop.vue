@@ -1,5 +1,6 @@
 <template>
     <section>
+      <NavBar></NavBar>
         <h2>SHOP</h2>
         <div class="sidenav">
         <h2 id="navi">Filter</h2>
@@ -58,8 +59,13 @@
 
 <script>
 import {database} from '../firebase.js'
+import NavBar from "./NavBar.vue";
+
     export default {
         name: 'Products',
+        components: {
+          NavBar
+        },
         data() {
             return {
                 seen1: false,
@@ -78,7 +84,7 @@ import {database} from '../firebase.js'
         },
         methods:{
           fetchItems: function(){
-			database.collection('products_sharlene').get().then(snapshot =>{
+			database.collection('products').get().then(snapshot =>{
 				snapshot.docs.forEach(doc => {
             let data = doc.data();
             let category = data["category"];
@@ -109,7 +115,8 @@ import {database} from '../firebase.js'
             this.$router.push({
               name: 'product',
               params: {docId: doc_id,
-						user: this.$route.params.id} 
+						// user: this.$route.params.id
+            } 
               })
           },
           filtered: function() {

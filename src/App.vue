@@ -1,17 +1,17 @@
 <template>
 <div id ="app">
 	<h1>Fashup</h1>
-	<NavBar></NavBar>
+	<!-- <NavBar></NavBar> -->
 	<router-view></router-view>
 </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
+// import NavBar from './components/NavBar.vue'
 export default{
-	components:{
-		"NavBar": NavBar
-	}
+	// components:{ 
+	// 	"NavBar": NavBar
+	// }
 }
 </script>
 

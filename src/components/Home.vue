@@ -1,5 +1,6 @@
 <template>
 <div id = "home">
+	<NavBar></NavBar>
 	<img src = "https://cdn.shopify.com/s/files/1/0140/4046/5508/articles/pasted_image_0_1090x.png?v=1601242462" height="400px"
     width="950px">
 	<p>Did you know that the fashion industry is responsible for emitting 10% of CO2 on Earth?</p> 
@@ -11,15 +12,20 @@
 </template>
 
 <script>
+import NavBar from "./NavBar.vue";
+
 export default {
 	data(){
 		return {
 		}
 	},
+	components: {
+		NavBar
+	},
 	methods: {
 		signup() {
 			this.$router.push({
-				path: 'SignUp'
+				path: 'signup'
 			})
 		},
 		login() {
