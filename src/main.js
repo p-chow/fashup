@@ -5,6 +5,7 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueRouter from 'vue-router'
 import Routes from './routes.js'
+import { fbase } from './firebase.js'
 
 library.add(faUserSecret)
 
@@ -17,8 +18,26 @@ const myRouter = new VueRouter({
     routes: Routes,
     mode: "history",
 });
+myRouter.beforeEach((to, from, next) => {
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    const isAuthenticated = fbase.currentUser;
+    console.log("isauthenticated", isAuthenticated);
+    if (requiresAuth && !isAuthenticated) {
+      next("/login");
+    } else {
+      next();
+    }
+  });
 
-new Vue({
-    render: h => h(App),
-    router: myRouter,
-}).$mount('#app')
+  let app;
+  fbase.onAuthStateChanged(() => {
+    if (!app) {
+        app = new Vue({
+            render: h => h(App),
+            router: myRouter,
+        }).$mount('#app')
+    }
+  })
+
+ 
+
