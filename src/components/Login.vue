@@ -1,7 +1,6 @@
 <template>
 <div id="login">
-	<router-link to="/login" exact></router-link>
-	<br>
+	<NavBar></NavBar>
 	<h3>Ready to start shopping/selling?</h3>
 	<label for = "email">Email: </label><br> 
 	<input type = "text" id = "email" name = "email" required> <br> <br>
@@ -16,7 +15,9 @@
 <script>
 import {database} from '../firebase.js';
 import { EventListening } from '../listening.js';
-import { fbase } from '../firebase.js'
+import { fbase } from '../firebase.js';
+import NavBar from "./NavBar.vue";
+
 export default {
 	data(){
 		return {
@@ -27,10 +28,13 @@ export default {
 			currID : ''
 		}
 	},
+	components: {
+		NavBar
+	},
 	methods: {
 		forget() {
 			this.$router.push({
-				path: 'Forget'
+				path: 'forget'
 			})
 		},
 		emailExists(){
@@ -41,6 +45,7 @@ export default {
 					this.listOfIds.push(doc.id)
 				})
 			})
+			console.log("emails " + this.emailList)
 		},
 		passwordMatch(){
 			//var password = document.getElementById("pw").value
@@ -67,15 +72,16 @@ export default {
 				alert("The email address does not exist in our system. Please register as new user.")
 			} else if (this.passwordList.includes(password)===false) {
 				alert("Incorrect password. Please try again.")
-			} else {
+			} 
+			else {
 				var docid = this.listOfIds[this.getIndex(this.emailList, email)]
 				EventListening.$emit("Logging-in", [this.display[this.getIndex(this.emailList,email)], docid])
-				fbase.signInWithEmailAndPassword(email,password)
-				console.log(fbase.currentUser.email)
-				this.$router.push({
+				fbase.signInWithEmailAndPassword(email,password).then(() => this.$router.push({
 					name: 'personal',
 					params: { id: docid} 
-				})
+				}))
+				console.log(fbase.currentUser.email)
+				
 			}
 		}
 	}, 
