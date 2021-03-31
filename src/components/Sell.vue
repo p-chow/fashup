@@ -1,5 +1,6 @@
 <template>
   <div id="sell">
+    <NavBar></NavBar>
     <router-link to="/sell" exact></router-link>
     <h1>Sell</h1>
     <div id="left">
@@ -119,12 +120,14 @@ import ImgInput from "./ImgInput.vue";
 import { database } from "../firebase.js";
 import { fv } from "../firebase.js";
 import firebase from "firebase";
-import { EventPassing } from "../passingid.js";
-//import {fbase} from '../firebase.js'
+//import { EventPassing } from "../passingid.js";
+import { fbase } from "../firebase.js";
+import NavBar from "./NavBar.vue";
+
 export default {
   data() {
     return {
-      user_id: this.$route.params.id,
+      //user_id: this.$route.params.id,
       imgFile: "",
       product: {
         brand: "",
@@ -143,11 +146,12 @@ export default {
   },
   components: {
     imgInput: ImgInput,
+    NavBar,
   },
   methods: {
     submit: function () {
-      if (this.user_id) {
-        console.log(this.user_id);
+      const user = fbase.currentUser;
+      if (user) {
         //var user = fbase.currentUser
         firebase
           .storage()
@@ -171,31 +175,46 @@ export default {
                     .reduce((res, key) => ((res[key] = obj[key]), res), {});
                 const sortedProduct = sortProduct(this.product);
                 database
-                  .collection("products_sharlene")
+                  .collection("products")
                   .add(sortedProduct)
                   .then(function (docRef) {
                     database
                       .collection("users")
-                      .doc(this.user_id)
+                      .doc(user.uid)
                       .update({
-                        productsListed: fv.arrayUnion(docRef.id)
-                      });
-                  })
+                        productsListed: fv.arrayUnion(docRef.id),
+                      })
+                      .then(() => location.reload());
+                  });
               })
-          );//.then(() => {
-                      //location.reload()
-                  //});
+          );
       } else {
         alert("Please login to your Fashup account to start selling");
       }
     },
+    loadUserData() {
+      const user = fbase.currentUser;
+      if (user) {
+        const uid = user.uid;
+        console.log("userid " + uid);
+        database
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then((doc) => {
+            this.userData = doc.data();
+            this.userData.id = doc.id;
+          });
+      }
+    },
   },
   created() {
-    EventPassing.$on("documentid", (data) => {
-      this.user_id = data;
-      console.log(data);
-      console.log(this.user_id);
-    });
+    // EventPassing.$on("documentid", (data) => {
+    //   this.user_id = data;
+    //   console.log(data);
+    //   console.log(this.user_id);
+    // });
+    this.loadUserData();
   },
 };
 </script>
