@@ -9,24 +9,21 @@ import Login from './components/Login.vue'
 import Forget from './components/Forget.vue'
 import PersonalHome from './components/PersonalHome.vue'
 import Change from './components/Change.vue'
-import ProductPage from './components/ProductPage.vue'
 import WishList from './components/WishList.vue'
-import Product from './components/ProductPage.vue'
+import Product from './components/Product.vue'
 
 
 export default [
-    { path: '/', component: Home },
-    { path: '/SignUp', component: SignUp },
-    { path: '/login', component: Login },
-    { path: '/Forget', component: Forget },
-    { path: '/Personal', name: 'personal', component: PersonalHome },
+    { path: '/', name: 'home', component: Home },
+    { path: '/signup', component: SignUp },
+    { path: '/login', name: 'login', component: Login },
+    { path: '/forget', name: 'forget', component: Forget },
+    { path: '/personal', name: 'personal', component: PersonalHome, meta: {requiresAuth: true} },
     { path: '/change', name:'change', component: Change },
     { path: '/shop', name: 'shop', component: Shop },
     { path: '/news', name:'news' , component: News },
-	{ path: '/product', component: ProductPage},
-	{ path: '/wishlist', component: WishList},
-    { path: '/sell', name:'sell', component: Sell },
-    { path: '/product', name: 'product', props: true, component: Product },
-    { path: '/wishlist', name:'wishlist', component: WishList }
+	{ path: '/wishlist', component: WishList, meta: {requiresAuth: true}},
+    { path: '/sell', name:'sell', component: Sell , meta: {requiresAuth: true}},
+    { path: '/product', name: 'product', props: true, component: Product , meta: {requiresAuth: true}},
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
