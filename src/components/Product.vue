@@ -1,8 +1,10 @@
 <template>
   <div>
+    <NavBar></NavBar>
     <div id="back">
       <router-link to="/shop" exact>
-        <span @click="pushtoShop()">Back to Shop</span>
+      Back to Shop
+        <!-- <span @click="pushtoShop()">Back to Shop</span> -->
       </router-link>
       <img v-bind:src="this.product[0].pic" /><br />
     </div>
@@ -30,39 +32,46 @@
 <script>
 import { database } from "../firebase.js";
 import { fv } from "../firebase.js";
-//import {fbase} from '../firebase.js'
+import {fbase} from '../firebase.js'
+import NavBar from "./NavBar.vue";
 
 export default {
   name: "ProductPage",
   data() {
     return {
-      product: [],
-      userId: this.$route.params.user,
+      product: []
+      //userId: this.$route.params.user,
     };
+  },
+  components: {
+    NavBar
   },
   props: {
     docId: String,
   },
   methods: {
     fetchProduct: function () {
-      console.log(this.doc_id);
+      const user = fbase.currentUser;
+      if (user) {
+      //console.log(this.doc_id);
       database
-        .collection("products_sharlene")
+        .collection("products")
         .doc(this.docId)
         .get()
         .then((doc) => {
           this.product = [doc.data(), doc.id];
         });
+      }
     },
     updateWishList: function (productId) {
-      //var user = fbase.currentUser;
-      console.log(this.userId);
-      if (this.userId) {
+      var user = fbase.currentUser;
+      //console.log(this.userId);
+      if (user) {
         database
           .collection("users")
-          .doc(this.userId)
+          .doc(user.uid)
           .update({
-            wishList: fv.arrayUnion(productId),
+            wishlist: fv.arrayUnion(productId),
           });
         alert("Added to your wishlist!");
       } else {
@@ -72,15 +81,31 @@ export default {
     telehandlePopUp: function (product) {
       alert("Message me " + product.telehandle + "! :)");
     },
-    pushtoShop() {
-      this.$router.push({
-        name: "shop",
-        params: { id: this.userId },
-      });
+    // pushtoShop() {
+    //   this.$router.push({
+    //     name: "shop",
+    //     params: { id: this.userId },
+    //   });
+    // },
+    loadUserData() {
+      const user = fbase.currentUser;
+      if (user) {
+        const uid = user.uid;
+        console.log("userid " + uid);
+        database
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then((doc) => {
+            this.userData = doc.data();
+            this.userData.id = doc.id;
+          });
+      }
     },
   },
   created() {
     this.fetchProduct();
+    this.loadUserData();
   },
 };
 </script>
