@@ -4,6 +4,7 @@ import firebase from "firebase"
 const firebaseConfig = {
     apiKey: "AIzaSyC9dSw2cBWu0PsPQgUkgxaWcFeCUBC8Q4c",
     authDomain: "fashup-6031a.firebaseapp.com",
+	databaseURL: "https://fashup-6031a-default-rtdb.firebaseio.com/",
     projectId: "fashup-6031a",
     storageBucket: "fashup-6031a.appspot.com",
     messagingSenderId: "267892476432",
@@ -15,4 +16,5 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.firestore();
 var fv = firebase.firestore.FieldValue;
 var fbase = firebase.auth();
-export {database, fv, fbase};
+var storage = firebase.storage();
+export {database, fv, fbase, storage};

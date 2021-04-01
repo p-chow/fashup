@@ -30,7 +30,7 @@
               {{ product[3] }}
             </p>
             <br />
-            <img v-bind:src="product[1]" /><br />
+            <img  v-bind:id="product[0]" v-bind:src="product[1]" /><br/>
             <p>Price: ${{ product[2] }}</p>
             <br />
             <button
@@ -101,14 +101,14 @@ export default {
           .then((snapshot) => {
             this.productsId = snapshot.data().productsListed;
             database
-              .collection("products_sharlene")
+              .collection("products")
               .get()
               .then((snapshot) => {
                 snapshot.docs.forEach((doc) => {
                   if (this.productsId.includes(doc.id)) {
                     this.products.push([
                       doc.id,
-                      doc.get("pic"),
+                      doc.get("imgFile"),
                       doc.get("price"),
                       doc.get("title"),
                     ]);

@@ -42,7 +42,7 @@
         <ul>
           <li v-for='(item, id) in display' :key='id'>
             <div class="polaroid" >
-              <div class="fill"><img v-bind:src="item[1].picURL"/></div>
+              <div class="fill"> <img v-bind:src="item[1].picURL"/></div>
               <div class="container" >
                   <p id="brand">{{item[1].brand}}</p>
                   <p id="click" v-bind:docid="item[0]" v-on:click="pressed($event)"> {{item[1].title}} </p>
@@ -59,7 +59,10 @@
 
 <script>
 import {database} from '../firebase.js'
-import NavBar from "./NavBar.vue";
+import NavBar from "./NavBar.vue"; 
+//import {storage} from '../firebase.js'
+import firebase from "firebase";
+//import ImgInput from "./ImgInput.vue"
 
     export default {
         name: 'Products',
@@ -80,6 +83,9 @@ import NavBar from "./NavBar.vue";
                 occ: [],
                 size: [],
                 display: [],
+				pictureUrl: [],
+				picUrlsAndTitle: [],
+				showImage : false
             }
         },
         methods:{
@@ -95,7 +101,14 @@ import NavBar from "./NavBar.vue";
             let title = data["title"];
             let brand = data["brand"];
             let shop = data["shop"];
-            let newitem = [doc.id,{"cat": category, 
+			this.picUrlsAndTitle.push([title, doc.id]);
+			/*var storageRef = storage.ref();
+			storageRef.child(pic).getDownloadURL().then(function(url) {
+				var test = url;
+				document.getElementById('imageInStorage').src = test;
+			})*/
+			//console.log(storageRef.child(pic).getDownloadURL());
+            var newitem = [doc.id,{"cat": category, 
                                      "occ": dressocc, 
                                      "price": price,
                                      "size": size,
@@ -103,10 +116,21 @@ import NavBar from "./NavBar.vue";
                                      "picURL": pic,
                                      "brand": brand,
                                      "shop": shop}];
+			firebase.database().ref('Pictures/').on('value', function(snapshot){
+					snapshot.forEach(function(userSnapshot){
+						if (userSnapshot.val().Name === title) {
+							var urlForPic= userSnapshot.val().Link;
+							newitem[1].picURL = urlForPic
+						}
+					})
+			})
             this.items.push(newitem);
             this.display.push(newitem);
+			//this.getImages();
+			//this.getImages();
             console.log(newitem);
     });
+	console.log(this.picUrlsAndTitle)
 });
           },
           pressed(event){
@@ -136,9 +160,24 @@ import NavBar from "./NavBar.vue";
             }
             this.display = updateList;
           },
+            getImages(){
+				for (var i = 0; i < this.picUrlsAndTitle.length; i++) {
+					firebase.database().ref('Pictures/' + this.picUrlsAndTitle[i][0]).on('value', function(snapshot){
+						snapshot.forEach(function(userSnapshot){
+							var urlForPic= userSnapshot.val().Link;
+							console.log(urlForPic)
+							this.items[i][1].picURL = urlForPic
+							console.log(this.items)
+						})
+						/*var urlForPic= snapshot.val().Link;
+						console.log(snapshot.val().Link)*/
+					});
+				}
+            }
         },
         created(){
             this.fetchItems();
+			this.getImages();
         },
         
     }
