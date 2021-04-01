@@ -9,6 +9,7 @@
       Upload an Image
     </span>
     <input
+      id = "myimg"
       class="picInput"
       ref="fileInput"
       type="file"
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import { EventPassing } from "../passingid.js";
 export default {
   data() {
     return {
@@ -30,9 +32,20 @@ export default {
   methods: {
     insertImg() {
       this.$refs.fileInput.click();
+      
     },
     onSelectFile() {
       const input = this.$refs.fileInput;
+      input.type = 'file';
+      input.onchange = e =>{
+        var files = e.target.files;
+        var reader = new FileReader();
+        reader.onload = function() {
+			document.getElementById("myimg").src = reader.result;
+		}
+		reader.readAsDataURL(files[0]);
+		EventPassing.$emit('pass-files', files[0])
+      }
       const files = input.files;
       if (files && files[0]) {
         const reader = new FileReader();
