@@ -136,7 +136,7 @@ ul {
 }
 li {
   flex-grow: 1;
-  flex-basis: 300px;
+  flex-basis: 200px;
   text-align: center;
   padding: 10px;
   border: 1px solid #222;
