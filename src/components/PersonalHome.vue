@@ -21,7 +21,9 @@
       <!-- <button type="button" id='logout' v-on:click= "logout()">Logout</button> -->
     </nav>
     <nav2>
-      <br />
+      <br />      
+      <personalDB></personalDB>
+
       <div id="products">
         <h1>{{ this.userData.Name }}'s Products</h1>
         <ul id="products">
@@ -47,7 +49,6 @@
           </li>
         </ul>
       </div>
-      <personalDB></personalDB>
     </nav2>
   </div>
 </template>
@@ -223,10 +224,9 @@ export default {
 <style scoped>
 #personal {
   color: rgb(34, 150, 158);
-  width: 1520px;
+  width: 100;
   float: left;
   right: 100cm;
-  max-width: 100%;
   margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
@@ -246,6 +246,7 @@ export default {
 nav {
   float: left;
   width: 23.5%;
+  height: 100vh;
   font-size: 35px;
   background: rgb(222, 255, 255);
   padding-left: 20px;
