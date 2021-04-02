@@ -159,7 +159,6 @@ export default {
                 Name: firstname + " " + lastname,
                 DisplayName: displayname,
                 Email: email,
-                Password: password,
                 ProfilePic: dp,
                 productsSold: [],
                 wishlist: [],
