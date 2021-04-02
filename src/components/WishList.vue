@@ -102,7 +102,7 @@ export default {
                   this.productswish.push([
                     doc.id,
                     doc.get("title"),
-                    doc.get("pic"),
+                    doc.get("imgFile"),
                     doc.get("price"),
                   ]);
                 }

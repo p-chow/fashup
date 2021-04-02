@@ -11,6 +11,8 @@
       <br />
       <div id="buttonArea">
         <button id="send" v-on:click.prevent="submit()">Submit</button>
+		<button id = "confirm" v-show='this.callsubmit' v-on:click.prevent ="callingSubmit()">Confirm submission</button>
+		<button id = "reload"  v-on:click.prevent = "reloadPage()">Click to sell another item!</button>
       </div>
     </div>
     <div id="info">
@@ -120,14 +122,15 @@ import ImgInput from "./ImgInput.vue";
 import { database } from "../firebase.js";
 import { fv } from "../firebase.js";
 import firebase from "firebase";
-//import { EventPassing } from "../passingid.js";
+import { EventPassing } from "../passingid.js";
 import { fbase } from "../firebase.js";
 import NavBar from "./NavBar.vue";
-
 export default {
   data() {
     return {
       //user_id: this.$route.params.id,
+      callsubmit: false,
+      fileneeded: [],
       imgFile: "",
       product: {
         brand: "",
@@ -174,6 +177,15 @@ export default {
                     .sort()
                     .reduce((res, key) => ((res[key] = obj[key]), res), {});
                 const sortedProduct = sortProduct(this.product);
+				var uploadTask = firebase.storage().ref('Images/' + this.product["title"] + '.jpeg').put(this.fileneeded)
+				uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
+					var imgUrl = url;
+				firebase.database().ref('Pictures/' + sortedProduct['title']).set({
+					Name: sortedProduct['title'],
+					Link : imgUrl
+				});
+				})
+				console.log(sortedProduct['title'])
                 database
                   .collection("products")
                   .add(sortedProduct)
@@ -183,11 +195,16 @@ export default {
                       .doc(user.uid)
                       .update({
                         productsListed: fv.arrayUnion(docRef.id),
-                      })
-                      .then(() => location.reload());
+                      })//.then(() => location.reload());
                   });
               })
           );
+			
+            if (this.callsubmit === false) {
+				this.callsubmit = !this.callsubmit
+			} else {
+				this.callsubmit = !this.callsubmit
+			}
       } else {
         alert("Please login to your Fashup account to start selling");
       }
@@ -207,6 +224,12 @@ export default {
           });
       }
     },
+	callingSubmit(){
+		this.submit().then(()=>this.reloadPage())
+	},
+	reloadPage(){
+		window.location.reload()
+	}
   },
   created() {
     // EventPassing.$on("documentid", (data) => {
@@ -214,6 +237,10 @@ export default {
     //   console.log(data);
     //   console.log(this.user_id);
     // });
+	EventPassing.$on('pass-files', data => {
+		this.fileneeded = data
+	})
+	console.log(this.fileneeded)
     this.loadUserData();
   },
 };
