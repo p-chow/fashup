@@ -66,14 +66,16 @@ export default {
 			return array.indexOf(field)
 		},
 		logintoacc(){
-			var email = document.getElementById("email").value
+			/*var email = document.getElementById("email").value
 			var password = document.getElementById("pw").value
 			if (this.emailList.includes(email) === false) {
 				alert("The email address does not exist in our system. Please register as new user.")
 			} else if (this.passwordList.includes(password)===false) {
 				alert("Incorrect password. Please try again.")
 			} 
-			else {
+			else {*/
+				var email = document.getElementById("email").value
+				var password = document.getElementById("pw").value
 				var docid = this.listOfIds[this.getIndex(this.emailList, email)]
 				EventListening.$emit("Logging-in", [this.display[this.getIndex(this.emailList,email)], docid])
 				fbase.signInWithEmailAndPassword(email,password).then(() => this.$router.push({
@@ -82,7 +84,7 @@ export default {
 				}))
 				console.log(fbase.currentUser.email)
 				
-			}
+		//	}
 		}
 	}, 
 	created(){
