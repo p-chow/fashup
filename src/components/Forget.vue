@@ -125,7 +125,6 @@ export default {
   height: 100vh;
   float: left;
   right: 100cm;
-  margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
   font-size: 20px;
