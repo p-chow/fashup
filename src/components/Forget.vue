@@ -121,11 +121,10 @@ export default {
 <style scoped>
 #forget {
   color: rgb(34, 150, 158);
-  width: 1520px;
+  width: 100%;
+  height: 100vh;
   float: left;
   right: 100cm;
-  max-width: 100%;
-  margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
   font-size: 20px;
