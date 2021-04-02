@@ -99,7 +99,6 @@ export default {
   width: auto;
   height: 100vh;
   float: center;
-  margin-top:135px;
   box-sizing: border-box;
   font-size: 20px;
   margin-left:2px;
