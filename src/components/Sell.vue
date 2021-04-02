@@ -12,7 +12,7 @@
       <div id="buttonArea">
         <button id="send" v-on:click.prevent="submit()">Submit</button>
 		<button id = "confirm" v-show='this.callsubmit' v-on:click.prevent ="callingSubmit()">Confirm submission</button>
-		<button id = "reload"  v-show='this.sellAnother' v-on:click.prevent = "reloadPage()">Click to sell another item!</button>
+		<button id = "reload"  v-on:click.prevent = "reloadPage()">Click to sell another item!</button>
       </div>
     </div>
     <div id="info">
@@ -130,8 +130,7 @@ export default {
     return {
       //user_id: this.$route.params.id,
       callsubmit: false,
-      fileneeded: [], 
-      sellAnother: false,
+      fileneeded: [],
       imgFile: "",
       product: {
         brand: "",
@@ -181,7 +180,7 @@ export default {
 				var uploadTask = firebase.storage().ref('Images/' + this.product["title"] + '.jpeg').put(this.fileneeded)
 				uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
 					var imgUrl = url;
-				firebase.database().ref('Pictures/' + sortedProduct['title']).set({
+				firebase.databagitse().ref('Pictures/' + sortedProduct['title']).set({
 					Name: sortedProduct['title'],
 					Link : imgUrl
 				});
@@ -226,9 +225,7 @@ export default {
       }
     },
 	callingSubmit(){
-		this.sellAnother = true
 		this.submit().then(()=>this.reloadPage())
-		
 	},
 	reloadPage(){
 		window.location.reload()
