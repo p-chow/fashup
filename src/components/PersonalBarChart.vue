@@ -10,11 +10,6 @@ import Chart from "../PersonalBarChart.js";
 export default {
   components: {
     Chart
-  },
-  props: {
-    user_id: {        
-      type: String,
-    },
   }
 };
 </script>
