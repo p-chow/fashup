@@ -7,6 +7,7 @@
         <!-- <span @click="pushtoShop()">Back to Shop</span> -->
       </router-link>
       <img v-bind:src="this.product[0].imgFile" /><br />
+	
     </div>
 
     <div id="description">
