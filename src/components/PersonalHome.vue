@@ -20,7 +20,7 @@
       <!-- <br> <br> <br> <br> <br> <br> <br>   -->
       <!-- <button type="button" id='logout' v-on:click= "logout()">Logout</button> -->
     </nav>
-    <nav2>
+    <nav2 id="navbar2">
       <br />
       <personalDB></personalDB>
 
@@ -242,9 +242,9 @@ export default {
   text-decoration-line: none;
   color: rgb(34, 150, 158);
 }
-nav {
+#navbar1 {
   float: left;
-  width: 23.5%;
+  width: 23%;
   height: 100vh;
   font-size: 35px;
   background: rgb(222, 255, 255);
@@ -252,11 +252,11 @@ nav {
   padding-top: 100px;
   display: table;
 }
-nav2 {
+#navbar2 {
   font-size: 15px;
   float: right;
   padding: 38px;
-  width: 70%;
+  width: 65%;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;
