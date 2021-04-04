@@ -195,7 +195,7 @@ export default {
 <style scoped>
 #wish {
   color: rgb(34, 150, 158);
-  width: 1520px;
+  width: 99vw;
   float: left;
   margin-top: -32px;
   padding: 0 5px;
@@ -206,12 +206,12 @@ export default {
 
 #navbar1 {
   float: left;
-  width: 23.5%;
+  width: 20vw;
   font-size: 35px;
   background: rgb(222, 255, 255);
   padding-left: 20px;
   padding-top: 100px;
-  height: 550px;
+  height: 100vh;
 }
 #nav2 {
   font-size: 15px;
