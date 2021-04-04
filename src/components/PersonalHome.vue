@@ -20,8 +20,8 @@
       <!-- <br> <br> <br> <br> <br> <br> <br>   -->
       <!-- <button type="button" id='logout' v-on:click= "logout()">Logout</button> -->
     </nav>
-    <nav2>
-      <br />      
+    <nav2 id="navbar2">
+      <br />
       <personalDB></personalDB>
 
       <div id="products">
@@ -32,7 +32,7 @@
               {{ product[3] }}
             </p>
             <br />
-            <img  v-bind:id="product[0]" v-bind:src="product[1]" /><br/>
+            <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
             <p>Price: ${{ product[2] }}</p>
             <br />
             <button
@@ -92,7 +92,7 @@ export default {
     //       });
     //     });
     // },
-    getProductsListed: function () {
+    getProductsListed: function() {
       const user = fbase.currentUser;
       if (user) {
         database
@@ -224,7 +224,6 @@ export default {
 <style scoped>
 #personal {
   color: rgb(34, 150, 158);
-  width: 39.8cm;
   float: left;
   right: 100cm;
   margin-top: -32px;
@@ -243,9 +242,10 @@ export default {
   text-decoration-line: none;
   color: rgb(34, 150, 158);
 }
-nav {
+#navbar1 {
   float: left;
-  width: 23.5%;
+  width: 20vw;
+  max-width: 100%;
   height: 100vh;
   font-size: 35px;
   background: rgb(222, 255, 255);
@@ -253,11 +253,11 @@ nav {
   padding-top: 100px;
   display: table;
 }
-nav2 {
+#navbar2 {
   font-size: 15px;
   float: right;
   padding: 38px;
-  width: 70%;
+  width: 65%;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;
