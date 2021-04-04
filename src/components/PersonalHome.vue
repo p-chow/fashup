@@ -21,7 +21,7 @@
       <!-- <button type="button" id='logout' v-on:click= "logout()">Logout</button> -->
     </nav>
     <nav2>
-      <br />      
+      <br />
       <personalDB></personalDB>
 
       <div id="products">
@@ -32,7 +32,7 @@
               {{ product[3] }}
             </p>
             <br />
-            <img  v-bind:id="product[0]" v-bind:src="product[1]" /><br/>
+            <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
             <p>Price: ${{ product[2] }}</p>
             <br />
             <button
@@ -92,7 +92,7 @@ export default {
     //       });
     //     });
     // },
-    getProductsListed: function () {
+    getProductsListed: function() {
       const user = fbase.currentUser;
       if (user) {
         database
@@ -224,7 +224,6 @@ export default {
 <style scoped>
 #personal {
   color: rgb(34, 150, 158);
-  width: 39.8cm;
   float: left;
   right: 100cm;
   margin-top: -32px;
