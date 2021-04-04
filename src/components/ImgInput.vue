@@ -63,8 +63,8 @@ export default {
 <style scoped>
 .imgArea {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   cursor: pointer;
   background-size: cover;
   background-position: center center;

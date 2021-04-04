@@ -224,7 +224,7 @@ export default {
 <style scoped>
 #personal {
   color: rgb(34, 150, 158);
-  width: 100;
+  width: 39.8cm;
   float: left;
   right: 100cm;
   margin-top: -32px;

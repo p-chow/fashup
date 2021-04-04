@@ -121,9 +121,9 @@ export default {
         //console.log(this.id_user);
         var newPassword = document.getElementById("pw").value;
         //var emailAddress = document.getElementById("email").value;
-        database.collection("users").doc(user.uid).update({
+        /*database.collection("users").doc(user.uid).update({
           Password: newPassword,
-        });
+        });*/
         user
           .updatePassword(newPassword)
           .then(() => {
