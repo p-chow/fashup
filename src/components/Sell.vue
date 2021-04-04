@@ -259,11 +259,11 @@ h1 {
 }
 
 #imgArea {
-  height: 300px;
+  height: 350px;
   margin-left: 30%;
 }
 #buttonArea {
-  margin-left: 30%;
+  margin-left: 13%;
 }
 
 #left {
@@ -283,7 +283,29 @@ h1 {
   padding: 20px 35px 20px 35px;
   text-align: left;
   float: right;
-  font-size: 25px;
+  font-size: 20px;
   color: black;
+}
+
+input {
+  border-block-color: rgb(0, 0, 0);
+  size: 15px;
+  width: 200px;
+  height: 23px;
+  flex: 0 0 200px;
+  margin-right: 200px;
+  float: center;
+  border-radius: 5px;
+}
+
+select {
+  border-block-color: rgb(0, 0, 0);
+  size: 15px;
+  width: 200px;
+  height: 23px;
+  flex: 0 0 200px;
+  margin-right: 200px;
+  float: center;
+  border-radius: 5px;
 }
 </style>
