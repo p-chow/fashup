@@ -197,7 +197,6 @@ export default {
   color: rgb(34, 150, 158);
   width: 1520px;
   float: left;
-  right: 100cm;
   margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
@@ -205,7 +204,7 @@ export default {
   background-color: rgb(182, 243, 238);
 }
 
-nav {
+#navbar1 {
   float: left;
   width: 23.5%;
   font-size: 35px;

@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div id="pdtPage">
     <NavBar></NavBar>
     <div id="back">
       <router-link to="/shop" exact>
-      Back to Shop
+        Back to Shop
         <!-- <span @click="pushtoShop()">Back to Shop</span> -->
       </router-link>
+      <br />
+      <br />
       <img v-bind:src="this.product[0].imgFile" /><br />
-	
     </div>
 
     <div id="description">
@@ -33,38 +34,38 @@
 <script>
 import { database } from "../firebase.js";
 import { fv } from "../firebase.js";
-import {fbase} from '../firebase.js'
+import { fbase } from "../firebase.js";
 import NavBar from "./NavBar.vue";
 
 export default {
   name: "ProductPage",
   data() {
     return {
-      product: []
+      product: [],
       //userId: this.$route.params.user,
     };
   },
   components: {
-    NavBar
+    NavBar,
   },
   props: {
     docId: String,
   },
   methods: {
-    fetchProduct: function () {
+    fetchProduct: function() {
       const user = fbase.currentUser;
       if (user) {
-      //console.log(this.doc_id);
-      database
-        .collection("products")
-        .doc(this.docId)
-        .get()
-        .then((doc) => {
-          this.product = [doc.data(), doc.id];
-        });
+        //console.log(this.doc_id);
+        database
+          .collection("products")
+          .doc(this.docId)
+          .get()
+          .then((doc) => {
+            this.product = [doc.data(), doc.id];
+          });
       }
     },
-    updateWishList: function (productId) {
+    updateWishList: function(productId) {
       var user = fbase.currentUser;
       //console.log(this.userId);
       if (user) {
@@ -79,7 +80,7 @@ export default {
         alert("Please log into your account to add items to your wishlist");
       }
     },
-    telehandlePopUp: function (product) {
+    telehandlePopUp: function(product) {
       alert("Message me " + product.telehandle + "! :)");
     },
     // pushtoShop() {
@@ -117,6 +118,9 @@ router-link {
   color: rgb(127, 255, 148);
 }
 
+#pdtPage {
+  height: 100vh;
+}
 img {
   height: 400px;
   margin-left: 10%;
@@ -143,16 +147,18 @@ button {
   font-style: italic;
 }
 
-.back {
+#back {
   float: left;
   margin-left: 10%;
+  font-size: 20px;
 }
 
-.description {
+#description {
   width: 42%;
   padding: 20px 35px 20px 35px;
   text-align: left;
   float: right;
   font-size: 25px;
+  color: black;
 }
 </style>
