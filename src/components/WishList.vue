@@ -18,8 +18,8 @@
         <!-- <span @click="pushtoChange()">Change Password</span> -->
       </router-link>
     </nav>
-    <nav2>
-      <h1>{{this.userData.DisplayName}}'s Wishlist</h1>
+    <nav2 id="nav2">
+      <h1>{{ this.userData.DisplayName }}'s Wishlist</h1>
       <ul id="mywishlist">
         <li v-for="item in productswish" v-bind:key="item.title">
           <button
@@ -63,7 +63,7 @@ export default {
       newWL: [],
       userEmail: "",
       delete: false,
-      userData: {}
+      userData: {},
     };
   },
   components: {
@@ -147,9 +147,12 @@ export default {
           }
         }
         console.log(this.newWL);
-        database.collection("users").doc(user.uid).update({
-          wishList: this.newWL,
-        });
+        database
+          .collection("users")
+          .doc(user.uid)
+          .update({
+            wishList: this.newWL,
+          });
         this.delete = true;
       }
       //   EventUpdateWl.$emit("new-wishlist", [this.doc_id, this.delete]).then(
@@ -195,7 +198,6 @@ export default {
   width: 1520px;
   float: left;
   right: 100cm;
-  max-width: 100%;
   margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
@@ -212,7 +214,7 @@ nav {
   padding-top: 100px;
   height: 550px;
 }
-nav2 {
+#nav2 {
   font-size: 15px;
   float: right;
   padding: 38px;

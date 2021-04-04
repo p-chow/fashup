@@ -18,7 +18,7 @@
         <!-- <span @click="pushtoChange()">Change Password</span> -->
       </router-link>
     </nav>
-    <nav2>
+    <nav2 id="nav2">
       <br /><br /><br />
       <label for="email" id="emailaddress">Email Address: </label> <br />
       <input type="text" id="email" name="email" /> <br />
@@ -129,7 +129,7 @@ export default {
           .then(() => {
             alert("Updated password successfully");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             alert(error);
           });
         //   //database
@@ -234,7 +234,7 @@ nav {
   padding-top: 100px;
   height: 550px;
 }
-nav2 {
+#nav2 {
   font-size: 15px;
   float: right;
   padding: 38px;
