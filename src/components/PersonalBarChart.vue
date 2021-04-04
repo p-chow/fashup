@@ -1,16 +1,15 @@
 <template>
   <div class="chart">
-    <h1 id="title">Total Number of products listed/sold</h1>
-    <chart></chart>
+    <BarChart></BarChart>
   </div>
 </template>
 
 <script>
-import Chart from "../PersonalBarChart.js";
+import BarChart from "../PersonalBarChart.js";
 export default {
   components: {
-    Chart
-  }
+    BarChart,
+  },
 };
 </script>
 
