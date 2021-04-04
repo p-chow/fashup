@@ -192,7 +192,7 @@ export default {
 <style scoped>
 #changepw {
   color: rgb(34, 150, 158);
-  width: 1520px;
+  width: 99vw;
   float: left;
   right: 100cm;
   max-width: 100%;
@@ -227,7 +227,7 @@ input {
 }
 nav {
   float: left;
-  width: 23.5%;
+  width: 20vw;
   font-size: 35px;
   background: rgb(222, 255, 255);
   padding-left: 20px;
@@ -238,7 +238,7 @@ nav {
   font-size: 15px;
   float: right;
   padding: 38px;
-  width: 70%;
+  width: 65vw;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;

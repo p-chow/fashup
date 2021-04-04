@@ -196,6 +196,7 @@ export default {
 #wish {
   color: rgb(34, 150, 158);
   width: 99vw;
+  max-width: 100%;
   float: left;
   margin-top: -32px;
   padding: 0 5px;
@@ -217,7 +218,7 @@ export default {
   font-size: 15px;
   float: right;
   padding: 38px;
-  width: 70%;
+  width: 70vw;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;

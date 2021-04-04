@@ -244,7 +244,8 @@ export default {
 }
 #navbar1 {
   float: left;
-  width: 23%;
+  width: 20vw;
+  max-width: 100%;
   height: 100vh;
   font-size: 35px;
   background: rgb(222, 255, 255);
