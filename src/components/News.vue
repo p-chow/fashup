@@ -27,7 +27,7 @@ import CommunityDashboard from "./CommunityDashboard.vue";
 export default {
   components: {
     NavBar,
-    CommunityDashboard
+    CommunityDashboard,
   },
   data() {
     return {
@@ -91,7 +91,6 @@ export default {
           imageURL:
             "https://cna-sg-res.cloudinary.com/image/upload/q_auto,f_auto/image/10599402/16x9/991/557/63325bb76cb1794e6ef64839c158a4f/TI/clothes-on-racks-in-a-thrift-shop.jpg",
         },
-
       ],
     };
   },
@@ -102,7 +101,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #news {
-  height: 275vh;
+  height: 350vh;
 }
 .container a {
   color: aliceblue;
