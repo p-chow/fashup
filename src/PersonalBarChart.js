@@ -14,7 +14,7 @@ export default {
         labels: [],
         datasets: [{
           label: "Quantity",
-          backgroundColor: ['blue', 'red'],
+          backgroundColor: ['blue', 'green'],
           data: []
         }]
       },
@@ -44,7 +44,6 @@ export default {
       }
 
       const user = fbase.currentUser;
-      //console.log(user.uid);
       if (user) {
         database
           .collection("users")
@@ -52,38 +51,21 @@ export default {
           .get()
           .then((snapshot) => {
             this.allProducts = snapshot.data().productsListed;
-          })
+            totalSum["Listings posted"] = this.allProducts.length;
+            console.log(totalSum["Listings posted"]);
 
-        console.log(this.allProducts.length);
-        totalSum["Listings posted"] = this.allProducts.length;
-
-        database
-          .collection("users")
-          .doc(user.uid)
-          .get()
-          .then((snapshot) => {
             this.productsSold = snapshot.data().productsSold;
+            totalSum["Products sold"] = this.productsSold.length;
+            console.log(totalSum["Products sold"]);
+
+            for (var info in totalSum) {
+              this.datacollection.datasets[0].data.push(totalSum[info])
+              this.datacollection.labels.push(info)
+            }
+
+            this.renderChart(this.datacollection, this.options)
           })
-
-        console.log(this.productsSold.length);
-        totalSum["Products sold"] = this.productsSold.length;
       }
-
-
-      for (var info in totalSum) {
-        this.datacollection.datasets[0].data.push(totalSum[info])
-        this.datacollection.labels.push(info)
-      }
-
-      this.renderChart(this.datacollection, this.options)
-
-      /*database.collection('user').doc('this.user_id').get().then(querySnapShot => {
-        var listedData = querySnapShot.get('productsListed')
-        var soldData = querySnapShot.get('productsSold')
-        totalSum["Listings posted"] = listedData.length
-        totalSum["Products sold"] = soldData.length
-      })*/
-
     },
     loadUserData() {
       const user = fbase.currentUser;
@@ -103,7 +85,7 @@ export default {
     }
   },
   created() {
-    this.fetchItems();
     this.loadUserData();
+    this.fetchItems();
   }
 }

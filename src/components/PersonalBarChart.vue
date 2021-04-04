@@ -1,5 +1,5 @@
 <template>
-  <div class="chart">
+  <div>
     <BarChart></BarChart>
   </div>
 </template>
@@ -13,11 +13,4 @@ export default {
 };
 </script>
 
-<style scoped>
-#title {
-  text-align: center;
-  font-size: 24px;
-  font-style: italic;
-  font-family: Verdana;
-}
-</style>
+<style scoped></style>
