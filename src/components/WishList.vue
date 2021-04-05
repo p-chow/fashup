@@ -18,8 +18,8 @@
         <!-- <span @click="pushtoChange()">Change Password</span> -->
       </router-link>
     </nav>
-    <nav2>
-      <h1>{{this.userData.DisplayName}}'s Wishlist</h1>
+    <nav2 id="nav2">
+      <h1>{{ this.userData.DisplayName }}'s Wishlist</h1>
       <ul id="mywishlist">
         <li v-for="item in productswish" v-bind:key="item.title">
           <button
@@ -63,7 +63,7 @@ export default {
       newWL: [],
       userEmail: "",
       delete: false,
-      userData: {}
+      userData: {},
     };
   },
   components: {
@@ -147,9 +147,12 @@ export default {
           }
         }
         console.log(this.newWL);
-        database.collection("users").doc(user.uid).update({
-          wishList: this.newWL,
-        });
+        database
+          .collection("users")
+          .doc(user.uid)
+          .update({
+            wishList: this.newWL,
+          });
         this.delete = true;
       }
       //   EventUpdateWl.$emit("new-wishlist", [this.doc_id, this.delete]).then(
@@ -192,10 +195,9 @@ export default {
 <style scoped>
 #wish {
   color: rgb(34, 150, 158);
-  width: 1520px;
-  float: left;
-  right: 100cm;
+  width: 99vw;
   max-width: 100%;
+  float: left;
   margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
@@ -203,20 +205,20 @@ export default {
   background-color: rgb(182, 243, 238);
 }
 
-nav {
+#navbar1 {
   float: left;
-  width: 23.5%;
+  width: 20vw;
   font-size: 35px;
   background: rgb(222, 255, 255);
   padding-left: 20px;
   padding-top: 100px;
-  height: 550px;
+  height: 100vh;
 }
-nav2 {
+#nav2 {
   font-size: 15px;
   float: right;
   padding: 38px;
-  width: 70%;
+  width: 70vw;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;

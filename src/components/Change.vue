@@ -18,7 +18,7 @@
         <!-- <span @click="pushtoChange()">Change Password</span> -->
       </router-link>
     </nav>
-    <nav2>
+    <nav2 id="nav2">
       <br /><br /><br />
       <label for="email" id="emailaddress">Email Address: </label> <br />
       <input type="text" id="email" name="email" /> <br />
@@ -121,15 +121,15 @@ export default {
         //console.log(this.id_user);
         var newPassword = document.getElementById("pw").value;
         //var emailAddress = document.getElementById("email").value;
-        database.collection("users").doc(user.uid).update({
+        /*database.collection("users").doc(user.uid).update({
           Password: newPassword,
-        });
+        });*/
         user
           .updatePassword(newPassword)
           .then(() => {
             alert("Updated password successfully");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             alert(error);
           });
         //   //database
@@ -192,7 +192,7 @@ export default {
 <style scoped>
 #changepw {
   color: rgb(34, 150, 158);
-  width: 1520px;
+  width: 99vw;
   float: left;
   right: 100cm;
   max-width: 100%;
@@ -227,18 +227,18 @@ input {
 }
 nav {
   float: left;
-  width: 23.5%;
+  width: 20vw;
   font-size: 35px;
   background: rgb(222, 255, 255);
   padding-left: 20px;
   padding-top: 100px;
   height: 550px;
 }
-nav2 {
+#nav2 {
   font-size: 15px;
   float: right;
   padding: 38px;
-  width: 70%;
+  width: 65vw;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;

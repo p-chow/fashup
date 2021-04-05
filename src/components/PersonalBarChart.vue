@@ -1,29 +1,16 @@
 <template>
-  <div class="chart">
-    <h1 id="title">Total Number of products listed/sold</h1>
-    <chart></chart>
+  <div>
+    <BarChart></BarChart>
   </div>
 </template>
 
 <script>
-import Chart from "../PersonalBarChart.js";
+import BarChart from "../PersonalBarChart.js";
 export default {
   components: {
-    Chart
+    BarChart,
   },
-  props: {
-    user_id: {        
-      type: String,
-    },
-  }
 };
 </script>
 
-<style scoped>
-#title {
-  text-align: center;
-  font-size: 24px;
-  font-style: italic;
-  font-family: Verdana;
-}
-</style>
+<style scoped></style>
