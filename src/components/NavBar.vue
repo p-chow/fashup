@@ -42,7 +42,7 @@ export default {
       login: false,
       //   user_display: [],
       //   curr_userId: "",
-      userData: {}
+      userData: {},
     };
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
     logout() {
       fbase.signOut().then(() => {
         this.$router.replace({
-          name: "home"
+          name: "home",
         });
       });
     },
@@ -111,9 +111,10 @@ export default {
     // 	this.login = false;
     // 	this.notLogged()
     // })
-  }
+  },
 };
 </script>
+
 <style scoped>
 a {
   text-decoration: none;

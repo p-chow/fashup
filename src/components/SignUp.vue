@@ -1,43 +1,52 @@
 <template>
-  <div id="signup">
-    <router-link to="/signup" exact></router-link>
-    <br />
-    <img :src="imageSource" ALIGN="left" id="imagedp" /> <br clear="center" />
-    <br />
-    <label for="fname">First Name : </label>
-    <input type="text" id="fname" name="fname" /> <br />
-    <br />
-    <label for="lname">Last Name : </label>
-    <input type="text" id="lname" name="lname" /> <br />
-    <br />
-    <label for="dname">Display Name: </label>
-    <input type="text" id="dname" name="name" /> <br /><br />
-    <label for="email">Email: </label>
-    <input type="text" id="email" name="email" /> <br /><br />
-    <label for="num">Contact No: </label>
-    <input type="text" id="num" name="num" /> <br /><br />
-    <label for="pw">Password: </label>
-    <input type="password" id="pw" name="pw" v-on:change="check()" />
-    <p id="passwordcheck"></p>
-    <label for="cpw">Confirm Password: </label>
-    <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
-    <p id="matching"></p>
-    <br /><br />
-    <button v-on:click="colourchange()" type="button" id="bgchange">
-      Switch Background
-    </button>
-    <br />
-    <button v-on:click="createacc()" type="button" id="account">
-      Create My FashUp!
-    </button>
-    <br />
-    <br />
+  <div>
+    <NavBar></NavBar>
+    <div id="signup">
+      <!-- <router-link to="/signup" exact></router-link> -->
+      <br />
+      <img :src="imageSource" ALIGN="left" id="imagedp" /> <br clear="center" />
+      <br />
+      <label for="fname">First Name : </label>
+      <input type="text" id="fname" name="fname" /> <br />
+      <br />
+      <label for="lname">Last Name : </label>
+      <input type="text" id="lname" name="lname" /> <br />
+      <br />
+      <label for="dname">Display Name: </label>
+      <input type="text" id="dname" name="name" /> <br /><br />
+      <label for="email">Email: </label>
+      <input type="text" id="email" name="email" /> <br /><br />
+      <label for="num">Contact No: </label>
+      <input type="text" id="num" name="num" /> <br /><br />
+      <label for="pw">Password: </label>
+      <input type="password" id="pw" name="pw" v-on:change="check()" />
+      <p id="passwordcheck"></p>
+      <label for="cpw">Confirm Password: </label>
+      <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
+      <p id="matching"></p>
+      <br /><br />
+      <button v-on:click="colourchange()" type="button" id="bgchange">
+        Switch Background
+      </button>
+      <br />
+      <button v-on:click="createacc()" type="button" id="account">
+        Create My FashUp!
+      </button>
+      <br />
+      <br />
+      <h3>
+        <router-link to="/login">Log in</router-link> if you already have an
+        accout.
+      </h3>
+    </div>
   </div>
 </template>
 
 <script>
 import { database } from "../firebase.js";
 import { fbase } from "../firebase.js";
+import NavBar from "./NavBar.vue";
+
 export default {
   data() {
     return {
@@ -52,6 +61,9 @@ export default {
       imageSource:
         "https://www.publicdomainpictures.net/pictures/40000/nahled/purple-polka-dot-background.jpg",
     };
+  },
+  components: {
+    NavBar,
   },
   methods: {
     hasNumber(fieldstring) {
@@ -235,9 +247,9 @@ button {
   margin-left: 8cm;
 }
 
-div {
+/* div {
   display: inline-block;
-}
+} */
 
 #bgchange {
   margin-right: 13cm;

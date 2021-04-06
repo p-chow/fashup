@@ -11,8 +11,20 @@
       <br />
       <div id="buttonArea">
         <button id="send" v-on:click.prevent="submit()">Submit</button>
-		<button id = "confirm" v-show='this.callsubmit' v-on:click.prevent ="callingSubmit()">Confirm submission</button>
-		<button id = "reload"  v-show='this.sellAnother' v-on:click.prevent = "reloadPage()">Click to sell another item!</button>
+        <!-- <button
+          id="confirm"
+          v-show="this.callsubmit"
+          v-on:click.prevent="callingSubmit()"
+        >
+          Confirm submission
+        </button>
+        <button
+          id="reload"
+          v-show="this.sellAnother"
+          v-on:click.prevent="reloadPage()"
+        >
+          Click to sell another item!
+        </button> -->
       </div>
     </div>
     <div id="info">
@@ -87,7 +99,7 @@
         <select id="size" name="size" v-model.lazy="product.size" required>
           <option value="baby">Baby (Preemie, 0-24 months)</option>
           <option value="toddler">Toddler (2T-6T)</option>
-          <option value="littleK" >Little Kid (4-6X)</option>
+          <option value="littleK">Little Kid (4-6X)</option>
           <option value="bigK">Big Kid or Tween (7-16)</option>
           <option value="freeA">Free Size (adults)</option>
           <option value="XXS">XXS / EU 32 / UK 4 / US 2</option>
@@ -137,8 +149,8 @@ export default {
   data() {
     return {
       //user_id: this.$route.params.id,
-      callsubmit: false,
-      fileneeded: [], 
+      //callsubmit: false,
+      fileneeded: [],
       sellAnother: false,
       newupload: null,
       sortedProductCurr: [],
@@ -188,44 +200,50 @@ export default {
                     .sort()
                     .reduce((res, key) => ((res[key] = obj[key]), res), {});
                 const sortedProduct = sortProduct(this.product);
-				this.sortedProductCurr = sortedProduct
-				var uploadTask = firebase.storage().ref('Images/' + this.product["title"] + '.jpeg').put(this.fileneeded)
-				this.newupload = uploadTask
-				uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
-					var imgUrl = url;
-				firebase.database().ref('Pictures/' + sortedProduct['title']).set({
-					Name: sortedProduct['title'],
-					Link : imgUrl
-				});
-				})
-				if (this.callsubmit === false) {
-					this.callsubmit = !this.callsubmit
-					console.log(sortedProduct['title'])
-                    database
-                      .collection("products")
-                      .add(sortedProduct)
-                      .then(function (docRef) {
-                        database
-                          .collection("users")
-                          .doc(user.uid)
-                          .update({
-                            productsListed: fv.arrayUnion(docRef.id),
-                          })//.then(() => location.reload());
-                      });
-				} else {
-					this.callsubmit = !this.callsubmit
-				
-				}
-            })
+                //this.sortedProductCurr = sortedProduct;
+                var uploadTask = firebase
+                  .storage()
+                  .ref("Images/" + this.product["title"] + ".jpeg")
+                  .put(this.fileneeded);
+                this.newupload = uploadTask;
+                uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                  var imgUrl = url;
+                  firebase
+                    .databagitse()
+                    .ref("Pictures/" + sortedProduct["title"])
+                    .set({
+                      Name: sortedProduct["title"],
+                      Link: imgUrl,
+                    });
+                });
+                //if (this.callsubmit === false) {
+                  //this.callsubmit = !this.callsubmit;
+                  //console.log(sortedProduct["title"]);
+                  database
+                    .collection("products")
+                    .add(sortedProduct)
+                    .then(function (docRef) {
+                      database
+                        .collection("users")
+                        .doc(user.uid)
+                        .update({
+                          productsListed: fv.arrayUnion(docRef.id),
+                        }).then(() => location.reload());
+                    });
+                // } else {
+                //   this.callsubmit = !this.callsubmit;
+                // }
+              })
           );
-			
-            /*if (this.callsubmit === false) {
+
+        /*if (this.callsubmit === false) {
 				this.callsubmit = !this.callsubmit
 			} else {
 				this.callsubmit = !this.callsubmit
 			}*/
-      } else {
-        alert("Please login to your Fashup account to start selling");
+      // } else {
+      //   alert("Please login to your Fashup account to start selling");
+      // }
       }
     },
     loadUserData() {
@@ -243,15 +261,14 @@ export default {
           });
       }
     },
-	callingSubmit(){
-		this.sellAnother = true
-		this.submit().then(()=> this.reloadPage());
-		//this.reloadPage();
-		
-	},
-	reloadPage(){
-		window.location.reload()
-	}
+    callingSubmit() {
+      this.sellAnother = true;
+      this.submit().then(() => this.reloadPage());
+      //this.reloadPage();
+    },
+    reloadPage() {
+      window.location.reload();
+    },
   },
   created() {
     // EventPassing.$on("documentid", (data) => {
@@ -259,10 +276,10 @@ export default {
     //   console.log(data);
     //   console.log(this.user_id);
     // });
-	EventPassing.$on('pass-files', data => {
-		this.fileneeded = data
-	})
-	console.log(this.fileneeded)
+    EventPassing.$on("pass-files", (data) => {
+      this.fileneeded = data;
+    });
+    console.log(this.fileneeded);
     this.loadUserData();
   },
 };
