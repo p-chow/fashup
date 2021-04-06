@@ -11,7 +11,7 @@
       <br />
       <div id="buttonArea">
         <button id="send" v-on:click.prevent="submit()">Submit</button>
-        <!-- <button
+        <button
           id="confirm"
           v-show="this.callsubmit"
           v-on:click.prevent="callingSubmit()"
@@ -24,7 +24,7 @@
           v-on:click.prevent="reloadPage()"
         >
           Click to sell another item!
-        </button> -->
+        </button>
       </div>
     </div>
     <div id="info">
@@ -38,7 +38,6 @@
           required
         />
         <br /><br />
-
         <label for="shop"> Shop: </label>
         <select id="shop" name="shop" v-model.lazy="product.shop" required>
           <option value="men">Men</option>
@@ -46,7 +45,6 @@
           <option value="kids">Kids</option>
         </select>
         <br /><br />
-
         <label for="category"> Category: </label>
         <select
           id="category"
@@ -60,7 +58,6 @@
           <option value="accesories">Accesories</option>
         </select>
         <br /><br />
-
         <label for="dressocc"> Dressing Occasion: </label>
         <select
           id="dressocc"
@@ -72,7 +69,6 @@
           <option value="formal">Formal</option>
         </select>
         <br /><br />
-
         <label for="brand"> Brand: </label>
         <input
           id="brand"
@@ -82,7 +78,6 @@
           required
         />
         <br /><br />
-
         <label for="description"> Description: </label> <br />
         <textarea
           id="description"
@@ -94,7 +89,6 @@
           required
         ></textarea>
         <br /><br />
-
         <label for="size"> Size: </label>
         <select id="size" name="size" v-model.lazy="product.size" required>
           <option value="baby">Baby (Preemie, 0-24 months)</option>
@@ -110,7 +104,6 @@
           <option value="XL">XL / EU 42 / UK 14 / US 12</option>
         </select>
         <br /><br />
-
         <label for="price"> Price: </label>
         <input
           id="price"
@@ -122,7 +115,6 @@
           required
         />
         <br /><br />
-
         <label for="telehandle"> Telegram Handle: </label>
         <input
           id="telehandle"
@@ -136,7 +128,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import ImgInput from "./ImgInput.vue";
 import { database } from "../firebase.js";
@@ -149,7 +140,7 @@ export default {
   data() {
     return {
       //user_id: this.$route.params.id,
-      //callsubmit: false,
+      callsubmit: false,
       fileneeded: [],
       sellAnother: false,
       newupload: null,
@@ -200,7 +191,7 @@ export default {
                     .sort()
                     .reduce((res, key) => ((res[key] = obj[key]), res), {});
                 const sortedProduct = sortProduct(this.product);
-                //this.sortedProductCurr = sortedProduct;
+                this.sortedProductCurr = sortedProduct;
                 var uploadTask = firebase
                   .storage()
                   .ref("Images/" + this.product["title"] + ".jpeg")
@@ -209,16 +200,16 @@ export default {
                 uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                   var imgUrl = url;
                   firebase
-                    .databagitse()
+                    .database()
                     .ref("Pictures/" + sortedProduct["title"])
                     .set({
                       Name: sortedProduct["title"],
                       Link: imgUrl,
                     });
                 });
-                //if (this.callsubmit === false) {
-                  //this.callsubmit = !this.callsubmit;
-                  //console.log(sortedProduct["title"]);
+                if (this.callsubmit === false) {
+                  this.callsubmit = !this.callsubmit;
+                  console.log(sortedProduct["title"]);
                   database
                     .collection("products")
                     .add(sortedProduct)
@@ -228,22 +219,20 @@ export default {
                         .doc(user.uid)
                         .update({
                           productsListed: fv.arrayUnion(docRef.id),
-                        }).then(() => location.reload());
+                        }); //.then(() => location.reload());
                     });
-                // } else {
-                //   this.callsubmit = !this.callsubmit;
-                // }
+                } else {
+                  this.callsubmit = !this.callsubmit;
+                }
               })
           );
-
         /*if (this.callsubmit === false) {
-				this.callsubmit = !this.callsubmit
-			} else {
-				this.callsubmit = !this.callsubmit
+ 				this.callsubmit = !this.callsubmit
+ 			} else {
+ 				this.callsubmit = !this.callsubmit
 			}*/
-      // } else {
-      //   alert("Please login to your Fashup account to start selling");
-      // }
+      } else {
+        alert("Please login to your Fashup account to start selling");
       }
     },
     loadUserData() {
@@ -263,8 +252,6 @@ export default {
     },
     callingSubmit() {
       this.sellAnother = true;
-      this.submit().then(() => this.reloadPage());
-      //this.reloadPage();
     },
     reloadPage() {
       window.location.reload();
@@ -284,16 +271,13 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 #sell {
   height: 100vh;
 }
-
 h1 {
   font-size: 50px;
 }
-
 #imgArea {
   height: 350px;
   margin-left: 30%;
@@ -301,7 +285,6 @@ h1 {
 #buttonArea {
   margin-left: 13%;
 }
-
 #left {
   float: left;
   padding: 20px;
@@ -309,7 +292,6 @@ h1 {
   font-size: 22px;
   position: relative;
 }
-
 #send {
   font-size: 20px;
   background-color: rgb(127, 255, 148);
@@ -322,7 +304,6 @@ h1 {
   font-size: 20px;
   color: black;
 }
-
 input {
   border-block-color: rgb(0, 0, 0);
   size: 15px;
@@ -333,7 +314,6 @@ input {
   float: center;
   border-radius: 5px;
 }
-
 select {
   border-block-color: rgb(0, 0, 0);
   size: 15px;
