@@ -151,8 +151,10 @@ import firebase from "firebase";
               if (this.occ.length==0||this.occ.includes(temp[1].occ)) {
                 if (this.shop.length==0||this.shop.includes(temp[1].shop)) {
                   if (this.size.length==0||this.size.includes(temp[1].size)) {
-                    if (temp[1].price < this.priceRange) {
-                      updateList.push(temp);
+                    if (this.cat.length==0||this.cat.includes(temp[1].cat)) {
+                      if (temp[1].price < this.priceRange) {
+                        updateList.push(temp);
+                      }
                     }
                   }
                 }
