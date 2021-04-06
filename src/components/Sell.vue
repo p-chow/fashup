@@ -85,9 +85,17 @@
 
         <label for="size"> Size: </label>
         <select id="size" name="size" v-model.lazy="product.size" required>
-          <option value="S">S / EU 36 / UK 8 / US 4</option>
-          <option value="M">M / EU 38 / UK 10 / US 6</option>
-          <option value="L">L / EU 40 / UK 12 / US 8</option>
+          <option value="baby">Baby (Preemie, 0-24 months)</option>
+          <option value="toddler">Toddler (2T-6T)</option>
+          <option value="littleK" >Little Kid (4-6X)</option>
+          <option value="bigK">Big Kid or Tween (7-16)</option>
+          <option value="freeA">Free Size (adults)</option>
+          <option value="XXS">XXS / EU 32 / UK 4 / US 2</option>
+          <option value="XS">XS / EU 34 / UK 6 / US 4</option>
+          <option value="S">S / EU 36 / UK 8 / US 6</option>
+          <option value="M">M / EU 38 / UK 10 / US 8</option>
+          <option value="L">L / EU 40 / UK 12 / US 10</option>
+          <option value="XL">XL / EU 42 / UK 14 / US 12</option>
         </select>
         <br /><br />
 

@@ -23,10 +23,18 @@
             <input type="checkbox" id="casual" value="casual" v-model="occ">Casual<br> 
         </div>
         <div v-on:click="seen4 = !seen4" class="filterTitle"> Size </div>
-        <div v-if="seen4" id="hide" class="filter"> 
-            <input type="checkbox" id="S" value="S" v-model="size">S / EU 36 / UK 8 / US 4<br>
-            <input type="checkbox" id="M" value="M" v-model="size">M / EU 38 / UK 10 / US 6<br>
-            <input type="checkbox" id="L" value="L" v-model="size">L / EU 40 / UK 12 / US 8<br>
+        <div v-if="seen4" id="hide" class="filter">  
+            <input type="checkbox" id="baby" value="baby" v-model="size">Baby (Preemie, 0-24 months)<br>
+            <input type="checkbox" id="toddler" value="toddler" v-model="size">Toddler (2T-6T)<br>
+            <input type="checkbox" id="littleK" value="littleK" v-model="size">Little Kid (4-6X)<br>
+            <input type="checkbox" id="bigK" value="bigK" v-model="size">Big Kid or Tween (7-16)<br>
+            <input type="checkbox" id="freeA" value="freeA" v-model="size">Free Size (adults)<br>
+            <input type="checkbox" id="XXS" value="XXS" v-model="size">XXS / EU 32 / UK 4 / US 2<br>
+            <input type="checkbox" id="XS" value="XS" v-model="size">XS / EU 34 / UK 6 / US 4<br>
+            <input type="checkbox" id="S" value="S" v-model="size">S / EU 36 / UK 8 / US 6<br>
+            <input type="checkbox" id="M" value="M" v-model="size">M / EU 38 / UK 10 / US 8<br>
+            <input type="checkbox" id="L" value="L" v-model="size">L / EU 40 / UK 12 / US 10<br>
+            <input type="checkbox" id="XL" value="XL" v-model="size">XL / EU 42 / UK 14 / US 12<br>
         </div>
         <div v-on:click="seen5 = !seen5" class="filterTitle"> Price Range </div>
         <div v-if="seen5" id="hide" class="filter"> 
@@ -35,14 +43,15 @@
             </div>
             <p>range: $0 - {{priceRange}}</p>
         </div>
-            <button v-on:click="filtered">Search!</button>
+        <br>
+            <button v-on:click="filtered" id="filterButton">Search!</button>
         </div>
         <div class="content">
           <div>
         <ul>
           <li v-for='(item, id) in display' :key='id'>
             <div class="polaroid" >
-              <div class="fill"> <img v-bind:src="item[1].picURL"/></div>
+              <div class="crop"> <img v-bind:src="item[1].picURL"/></div>
               <div class="container" >
                   <p id="brand">{{item[1].brand}}</p>
                   <p id="click" v-bind:docid="item[0]" v-on:click="pressed($event)"> {{item[1].title}} </p>
@@ -145,7 +154,6 @@ import firebase from "firebase";
           },
           filtered: function() {
             var updateList = [];
-            // console.log('price' + this.priceRange);
             for (var i = 0; i < this.items.length; i++) {
               var temp = this.items[i];
               if (this.occ.length==0||this.occ.includes(temp[1].occ)) {
@@ -193,7 +201,7 @@ import firebase from "firebase";
 
 .sidenav {
   width: 300px;
-  height: 800px;
+  height: 1000px;
   background-color: #111;
   padding: 10px;
   float: left;
@@ -221,6 +229,27 @@ import firebase from "firebase";
     font-weight: 800;
 }
 
+.filterTitle:hover {
+  border: 2px solid aliceblue;
+  background-color:aliceblue;
+  color: #111;
+}
+
+#filterButton {
+  border: 2px solid aliceblue;
+  background-color:#111;
+  color: aliceblue;
+  padding: 3px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+#filterButton:hover {
+  border: 2px solid aliceblue;
+  background-color:aliceblue;
+  color: #111;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -235,11 +264,17 @@ li {
   margin: 10px;
 }
 
-img {
-  height: 400px;
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
+.crop {
+      width: 300px;
+    height: 300px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.crop img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }
 
 div.polaroid {
@@ -263,7 +298,7 @@ div.polaroid {
     color: aquamarine;
 }
 
-#click :hover {
+#click:hover {
   background-color: #ddd;
   color: black;
 }
