@@ -13,7 +13,7 @@
         <div v-on:click="seen2 = !seen2" class="filterTitle">Category</div>
         <div v-if="seen2" id="hide" class="filter"> 
             <input type="checkbox" id="top" value="top" v-model="cat">Top<br> 
-            <input type="checkbox" id="bottom" value="bottom" v-model="cat">Bottom<br>
+            <input type="checkbox" id="bottoms" value="bottoms" v-model="cat">Bottoms<br>
             <input type="checkbox" id="dress" value="dress" v-model="cat">Dresses<br>
             <input type="checkbox" id="acc" value="acc" v-model="cat">Accessories<br>
         </div>
