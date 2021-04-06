@@ -129,7 +129,7 @@ export default {
           .then(() => {
             alert("Updated password successfully");
           })
-          .catch(function(error) {
+          .catch(function (error) {
             alert(error);
           });
         //   //database
