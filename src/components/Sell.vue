@@ -140,6 +140,8 @@ export default {
       callsubmit: false,
       fileneeded: [], 
       sellAnother: false,
+      newupload: null,
+      sortedProductCurr: [],
       imgFile: "",
       product: {
         brand: "",
@@ -186,7 +188,9 @@ export default {
                     .sort()
                     .reduce((res, key) => ((res[key] = obj[key]), res), {});
                 const sortedProduct = sortProduct(this.product);
+				this.sortedProductCurr = sortedProduct
 				var uploadTask = firebase.storage().ref('Images/' + this.product["title"] + '.jpeg').put(this.fileneeded)
+				this.newupload = uploadTask
 				uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
 					var imgUrl = url;
 				firebase.database().ref('Pictures/' + sortedProduct['title']).set({
@@ -194,26 +198,32 @@ export default {
 					Link : imgUrl
 				});
 				})
-				console.log(sortedProduct['title'])
-                database
-                  .collection("products")
-                  .add(sortedProduct)
-                  .then(function (docRef) {
+				if (this.callsubmit === false) {
+					this.callsubmit = !this.callsubmit
+					console.log(sortedProduct['title'])
                     database
-                      .collection("users")
-                      .doc(user.uid)
-                      .update({
-                        productsListed: fv.arrayUnion(docRef.id),
-                      })//.then(() => location.reload());
-                  });
-              })
+                      .collection("products")
+                      .add(sortedProduct)
+                      .then(function (docRef) {
+                        database
+                          .collection("users")
+                          .doc(user.uid)
+                          .update({
+                            productsListed: fv.arrayUnion(docRef.id),
+                          })//.then(() => location.reload());
+                      });
+				} else {
+					this.callsubmit = !this.callsubmit
+				
+				}
+            })
           );
 			
-            if (this.callsubmit === false) {
+            /*if (this.callsubmit === false) {
 				this.callsubmit = !this.callsubmit
 			} else {
 				this.callsubmit = !this.callsubmit
-			}
+			}*/
       } else {
         alert("Please login to your Fashup account to start selling");
       }
@@ -235,7 +245,8 @@ export default {
     },
 	callingSubmit(){
 		this.sellAnother = true
-		this.submit().then(()=>this.reloadPage())
+		this.submit().then(()=> this.reloadPage());
+		//this.reloadPage();
 		
 	},
 	reloadPage(){
