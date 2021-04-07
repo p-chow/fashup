@@ -14,20 +14,17 @@
         </li>
       </ul>
     </div>
-    <div id="communityDashboard">
-      <CommunityDashboard></CommunityDashboard>
-    </div>
+    
   </section>
 </template>
 
 <script>
 import NavBar from "./NavBar.vue";
-import CommunityDashboard from "./CommunityDashboard.vue";
+//import CommunityDashboard from "./CommunityDashboard.vue";
 
 export default {
   components: {
-    NavBar,
-    CommunityDashboard,
+    NavBar
   },
   data() {
     return {

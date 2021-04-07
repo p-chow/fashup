@@ -11,6 +11,8 @@ import PersonalHome from './components/PersonalHome.vue'
 import Change from './components/Change.vue'
 import WishList from './components/WishList.vue'
 import Product from './components/Product.vue'
+import CommunityStats from './components/CommunityStats.vue'
+import Sales from './components/Sales.vue'
 
 
 export default [
@@ -25,5 +27,7 @@ export default [
 	{ path: '/wishlist', component: WishList, meta: {requiresAuth: true}},
     { path: '/sell', name:'sell', component: Sell , meta: {requiresAuth: true}},
     { path: '/product', name: 'product', props: true, component: Product , meta: {requiresAuth: true}},
+	{ path :'/communitystats', name: 'communitystats', component: CommunityStats},
+	{ path: '/sales', name: 'sales', component: Sales}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
