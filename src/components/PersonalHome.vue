@@ -3,8 +3,6 @@
     <NavBar></NavBar>
     <nav2 id="navbar2">
       <br />
-      <personalDB></personalDB>
-
       <h1>Welcome {{ this.userData.Name }} !</h1>
 
       <div id="products">
@@ -41,7 +39,6 @@ import { database } from "../firebase.js";
 import { fv } from "../firebase.js";
 import { fbase } from "../firebase.js";
 import NavBar from "./NavBar.vue";
-import PersonalDashboard from "./PersonalDashboard.vue";
 //import { EventPassing } from "../passingid.js";
 // import { EventLogout } from "../loggingout.js";
 // import { EventUpdateWl } from "../updatingWishlist.js";
@@ -60,7 +57,6 @@ export default {
   },
   components: {
     NavBar,
-    personalDB: PersonalDashboard,
   },
   methods: {
     // getUserName() {
