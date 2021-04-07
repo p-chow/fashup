@@ -4,12 +4,32 @@
       <ul>
         <li>
           <router-link to="/" exact v-show="!this.login"> Home </router-link>
-          <router-link to="/Personal" exact v-show="this.login">
+          <div class="dropdown">
+          <button class="dropbtn"> <router-link to="/Personal" exact v-show="this.login">
             {{ this.userData.DisplayName }}'s Home
+			
             <!-- //<span @click="pushtoPersonal()"
               >{{ this.userData.DisplayName }}'s Home</span
             > -->
-          </router-link>
+          </router-link></button>
+          <div class="dropdown-content">
+            <a href="#">
+				<router-link to="/Personal" id="profile">
+                Profile Page
+                </router-link>
+			</a>
+            <a href="#">
+				<router-link to="/wishlist" id="wishlist">
+                Wishlist
+                </router-link>
+			</a>
+            <a href="#">
+				<router-link to="/change" id="change">
+                Change Password
+                </router-link>
+			</a>
+          </div>
+          </div>
         </li>
         <li>
           <router-link to="/shop" exact>
@@ -22,10 +42,28 @@
           <!-- <span @click="pushtoSell()">Sell</span> -->
         </li>
         <li>
-          <router-link to="/news" exact>
+		<div class="dropdown">
+          <button class="dropbtn"> <router-link to="/news" exact>
             Gaia News
             <!-- <span @click="pushtoNews()"> Gaia News </span> -->
-          </router-link>
+          </router-link></button>
+          <div class="dropdown-content">
+            <a href="#">
+				<router-link to='/news' exact>
+				Articles
+				</router-link>
+			</a>
+            <a href="#">
+				<router-link to='/communitystats' exact>
+				Community Dashboard
+				</router-link>
+			</a>
+            <a href="#">
+				<router-link to ='/sales' exact>
+				Announcements</router-link>
+			</a>
+			</div>
+          </div>
         </li>
         <li v-show="this.login" @click="logout()">Logout</li>
       </ul>
@@ -143,5 +181,50 @@ li {
   border: 1px solid #222;
   background-color: rgb(221, 219, 219);
   margin: 1px;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 25px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 12px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  right:-4cm;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:rgb(209, 252, 255);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 </style>
