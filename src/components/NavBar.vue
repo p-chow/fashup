@@ -18,6 +18,11 @@
                 Profile Page
                 </router-link>
 			</a>
+			<a href ="#">
+				<router-link to="/userstats">
+				Your Dashboard
+				</router-link>
+			</a>
             <a href="#">
 				<router-link to="/wishlist" id="wishlist">
                 Wishlist
