@@ -5,6 +5,8 @@
       <br />
       <personalDB></personalDB>
 
+      <h1>Welcome {{ this.userData.Name }} !</h1>
+
       <div id="products">
         <h1>{{ this.userData.Name }}'s Products</h1>
         <ul id="products">
@@ -236,7 +238,7 @@ export default {
 }
 #navbar2 {
   font-size: 15px;
-  float: right;
+  /*float: right;*/
   padding: 38px;
   width: 65%;
   padding-top: 1px;
