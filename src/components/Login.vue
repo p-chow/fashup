@@ -103,7 +103,7 @@ export default {
         })
       );
       console.log(fbase.currentUser.email);
-
+ 
       //	}
     },
   },
