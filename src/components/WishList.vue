@@ -1,23 +1,6 @@
 <template>
   <div id="wish">
     <NavBar></NavBar>
-    <nav id="navbar1">
-      <br /><br /><br />
-      <router-link to="/Personal" id="profile">
-        Profile Page
-        <!-- <span @click="pushtoPersonal()">Profile Page</span> -->
-      </router-link>
-      <br />
-      <router-link to="/wishlist" id="wishlist">
-        Wishlist
-        <!-- <span @click="pushtoWish()">Wishlist</span> -->
-      </router-link>
-      <br />
-      <router-link to="/change" id="change">
-        Change Password
-        <!-- <span @click="pushtoChange()">Change Password</span> -->
-      </router-link>
-    </nav>
     <nav2 id="nav2">
       <h1>{{ this.userData.DisplayName }}'s Wishlist</h1>
       <ul id="mywishlist">

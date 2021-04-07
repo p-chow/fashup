@@ -1,25 +1,6 @@
 <template>
   <div id="personal">
     <NavBar></NavBar>
-    <nav id="navbar1">
-      <br /><br /><br />
-      <router-link to="/Personal" id="profile">
-        Profile Page
-        <!-- <span @click="pushtoPersonal()">Profile Page</span> -->
-      </router-link>
-      <br />
-      <router-link to="/wishlist" id="wishlist">
-        Wishlist
-        <!-- <span @click="pushtoWish()">Wishlist</span> -->
-      </router-link>
-      <br />
-      <router-link to="/change" id="change">
-        Change Password
-        <!-- <span @click="pushtoChange()">Change Password</span> -->
-      </router-link>
-      <!-- <br> <br> <br> <br> <br> <br> <br>   -->
-      <!-- <button type="button" id='logout' v-on:click= "logout()">Logout</button> -->
-    </nav>
     <nav2 id="navbar2">
       <br />
       <personalDB></personalDB>
