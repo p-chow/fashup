@@ -3,7 +3,7 @@
     <NavBar></NavBar>
     <nav2 id="navbar2">
       <br />
-      <h1>Welcome {{ this.userData.Name }} !</h1>
+      <h1 id="welcome">Welcome {{ this.userData.DisplayName }} !</h1>
 
       <div id="products">
         <h1>{{ this.userData.Name }}'s Products</h1>
@@ -203,8 +203,6 @@ export default {
 <style scoped>
 #personal {
   color: rgb(34, 150, 158);
-  float: left;
-  right: 100cm;
   margin-top: -32px;
   padding: 0 5px;
   box-sizing: border-box;
@@ -221,7 +219,7 @@ export default {
   text-decoration-line: none;
   color: rgb(34, 150, 158);
 }
-#navbar1 {
+/*#navbar1 {
   float: left;
   width: 20vw;
   max-width: 100%;
@@ -231,22 +229,21 @@ export default {
   padding-left: 20px;
   padding-top: 100px;
   display: table;
-}
+}*/
 #navbar2 {
   font-size: 15px;
   /*float: right;*/
   padding: 38px;
-  width: 65%;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;
   display: table-cell;
 }
-#wishlist {
+/*#wishlist {
   font-size: 25px;
   text-decoration-line: none;
   color: rgb(34, 150, 158);
-}
+}*/
 img {
   width: 300px;
   float: left;
