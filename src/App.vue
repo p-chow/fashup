@@ -25,4 +25,9 @@ export default {
     "Lucida Sans", Arial, sans-serif;
   font-style: italic;
 }
+
+h1 {
+  margin-top: 0;
+  padding-top: 25px;
+}
 </style>
