@@ -4,6 +4,9 @@
     <!-- <NavBar></NavBar> -->
     <router-view></router-view>
   </div>
+  <!-- <div>
+
+  </div> -->
 </template>
 
 <script>
@@ -19,15 +22,23 @@ export default {
 #app {
   text-align: center;
   font-size: 30px;
-  color: aquamarine;
-  background-color: rgb(232, 255, 255);
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  color: #111;
+  background-color:  #FEFAE0;
+  font-family: "Verdana", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-style: italic;
 }
+
 
 h1 {
   margin-top: 0;
   padding-top: 25px;
+  font-style: italic;
+  font-family: "Remark";
+}
+
+@font-face {
+  font-family: "Remark";
+  src: local("Remark"),
+   url(./assets/fonts/Remark-Regular.ttf) format("truetype");
 }
 </style>

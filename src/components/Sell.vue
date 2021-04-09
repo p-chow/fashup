@@ -15,7 +15,7 @@
           id="confirm"
           v-show="this.callsubmit"
           v-on:click.prevent="callingSubmit()"
-        >
+        > 
           Confirm submission
         </button>
         <button
@@ -273,7 +273,7 @@ export default {
 </script>
 <style scoped>
 #sell {
-  height: 100vh;
+  height: 150vh;
 }
 h1 {
   font-size: 50px;

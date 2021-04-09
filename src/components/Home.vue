@@ -3,10 +3,18 @@
 	<NavBar></NavBar>
 	<img src = "https://cdn.shopify.com/s/files/1/0140/4046/5508/articles/pasted_image_0_1090x.png?v=1601242462" height="400px"
     width="950px">
-	<p>Did you know that the fashion industry is responsible for emitting 10% of CO2 on Earth?</p> 
-	<p>Join Fashup to be part of the movement to save Gaia by giving these clothes a new breath of life or get involved by selling/donating your own!</p>
+	<h1>Did you know?</h1> 
+	<p>The fashion industry is responsible for emitting<p> 
+	<h1>10%</h1> 
+	<p>of CO2 on Earth.</p>
+	<br>
+	<div id = "foot">
+		<br>
+	<p>Join Fashup to be part of the movement to save Gaia</p>
+	<p> giving these clothes a new breath of life or get involved by selling/donating your own!</p>
 	<button v-on:click="signup()" type ="button">SignUp</button>
 	<button v-on:click="login()" type ="button">Login</button>
+	</div>
 
 </div>
 </template>
@@ -42,12 +50,11 @@ export default {
 #home {
 	font-size: 20px;
 	color: black;
-	background-color:azure;
-	height: 100vh;
+	height: 100%;
 }
 button {
-	background-color: rgb(140, 228, 255);
-	border-color: rgb(140, 228, 255);
+	background-color: #CCD5AE;
+	border-color: #CCD5AE;
 	width: 100px;
 	height: 40px;
 	float:none;
@@ -66,10 +73,14 @@ button {
 }
 p{
 	font-size:20px;
-	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-family:'Arial';
 }
 img{
 	width:1505px;
 	height:500px;
+}
+
+#foot {
+	background-color: #FAEDCD;
 }
 </style>

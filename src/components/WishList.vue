@@ -177,41 +177,19 @@ export default {
 </script>
 <style scoped>
 #wish {
-  color: rgb(34, 150, 158);
-  width: 99vw;
+  height: 150vh;
   max-width: 100%;
-  float: left;
-  margin-top: -32px;
-  padding: 0 5px;
-  box-sizing: border-box;
+  /* float: left; */
   font-size: 20px;
-  background-color: rgb(182, 243, 238);
+  background-color:  #FEFAE0;
 }
 
-#navbar1 {
-  float: left;
-  width: 20vw;
-  font-size: 35px;
-  background: rgb(222, 255, 255);
-  padding-left: 20px;
-  padding-top: 100px;
-  height: 100vh;
-}
 #nav2 {
   font-size: 15px;
-  float: right;
-  padding: 38px;
-  width: 70vw;
   padding-top: 1px;
-  background: rgb(182, 243, 238);
   margin-top: 1cm;
 }
 
-#change {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
-}
 #profile {
   font-size: 25px;
   text-decoration-line: none;
@@ -221,7 +199,6 @@ export default {
 #wishlist {
   font-size: 25px;
   text-decoration-line: none;
-  color: rgb(34, 150, 158);
 }
 ul {
   display: flex;
