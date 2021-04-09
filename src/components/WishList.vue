@@ -181,7 +181,7 @@ export default {
   /* max-width: 100%;
   /* float: left; */
   font-size: 20px;
-  background-color: #FEFAE0;
+  background-color: #FFFDF2;
 }
 
 .title{

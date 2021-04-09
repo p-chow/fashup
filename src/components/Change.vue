@@ -177,7 +177,7 @@ export default {
 <style scoped>
 #changepw {
   height: auto;
-  background-color: #FEFAE0;
+  background-color: #FFFDF2;
 }
 
 label {
@@ -212,7 +212,7 @@ input {
   padding: 38px;
   width: 65vw;
   padding-top: 1px;
-  background: #FEFAE0;
+  background: #FFFDF2;
   margin-top: 1cm;
 }
 

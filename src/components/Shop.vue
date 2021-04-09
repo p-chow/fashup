@@ -308,8 +308,8 @@ export default {
 }
 
 .filter {
-  background-color: #FEFAE0;
-  border: 1px solid #FEFAE0;
+  background-color: #FFFDF2;
+  border: 1px solid #FFFDF2;
   color: #111;
   padding: 8px;
   margin-left: 5px;

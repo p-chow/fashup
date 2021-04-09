@@ -225,7 +225,7 @@ export default {
 } */
 
 #personal{
-  background-color:  #FEFAE0;
+  background-color:  #FFFDF2;
   height: 100%;
 }
 
