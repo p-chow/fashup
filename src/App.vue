@@ -23,7 +23,7 @@ export default {
   text-align: center;
   font-size: 30px;
   color: #111;
-  background-color:  #FEFAE0;
+  background-color:  #FFFDF2;
   font-family: "Arial", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }

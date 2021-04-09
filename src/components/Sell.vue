@@ -277,7 +277,7 @@ export default {
 <style scoped>
 
 #sell {
-    background-color:#FEFAE0;
+    background-color:#FFFDF2;
     height:180vh;
 }
 
