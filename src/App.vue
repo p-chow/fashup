@@ -40,4 +40,25 @@ export default {
   src: local("Remark"),
    url(./assets/fonts/Remark-Regular.ttf) format("truetype");
 }
+
+button {
+  background-color: #E9EDC9;
+	border-color: #E9EDC9;
+	float:left;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 15px;
+	border-radius: 60px;
+	border-width: 1px;
+  font-weight: 400;
+}
+
+button:hover {
+  border: 2px solid #CCD5AE;
+  background-color: #CCD5AE;
+  color: white;
+  box-sizing: unset;
+  border-color: #CCD5AE;
+  font-weight: 500;
+}
 </style>
