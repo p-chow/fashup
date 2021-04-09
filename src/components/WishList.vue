@@ -2,7 +2,7 @@
   <div id="wish">
     <NavBar></NavBar>
     <nav2 id="nav2">
-      <h1>{{ this.userData.DisplayName }}'s Wishlist</h1>
+      <h2 class="title">{{ this.userData.DisplayName }}'s WISHLIST</h2>
       <ul id="mywishlist">
         <li v-for="item in productswish" v-bind:key="item.title">
           <button
@@ -177,11 +177,18 @@ export default {
 </script>
 <style scoped>
 #wish {
-  height: 150vh;
-  max-width: 100%;
+  height: auto;
+  /* max-width: 100%;
   /* float: left; */
   font-size: 20px;
-  background-color:  #FEFAE0;
+  background-color: #FEFAE0;
+}
+
+.title{
+  border-bottom: 1px solid black;
+  padding-top:25px;
+  padding-bottom: 50px;
+  font-size:25px;
 }
 
 #nav2 {
@@ -200,7 +207,22 @@ export default {
   font-size: 25px;
   text-decoration-line: none;
 }
+
 ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  flex-basis: 300px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
@@ -213,7 +235,7 @@ li {
   padding: 10px;
   border: 1px solid #222;
   margin: 10px;
-}
+} */
 img {
   width: 135px;
   height: 135px;

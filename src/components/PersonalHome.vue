@@ -232,7 +232,6 @@ export default {
 #navbar2 {
   width: 300px;
   height: 1000px;
-  background-color: #111;
   padding: 10px;
   float: left;
   font-size: 20px;
