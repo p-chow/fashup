@@ -1,13 +1,14 @@
 <template>
   <section id="news">
     <NavBar></NavBar>
-    <h1 id="head">News Page</h1>
+    <h2 class="title">A R T I C L E S</h2>
     <div>
       <ul>
         <li v-for="(item, id) in itemsList" :key="id">
           <div class="polaroid">
             <div class="fill"><img v-bind:src="item.imageURL" /></div>
             <div class="container">
+              <a id="src">{{item.source}}</a>
               <a v-bind:href="item.url" id="url">{{ item.name }}</a>
             </div>
           </div>
@@ -31,6 +32,7 @@ export default {
       itemsList: [
         {
           id: "#000",
+          source:"GreenBiz",
           name: "Why are fashion brands investing in garment recycling?",
           url:
             "https://www.greenbiz.com/article/fashions-latest-trend-why-hm-other-big-brands-are-investing-garment-recycling",
@@ -39,6 +41,7 @@ export default {
         },
         {
           id: "#001",
+          source:"FASHION UNITED",
           name: "15 recycling efforts that are reshaping the fashion industry",
           url:
             "https://fashionunited.uk/news/business/15-recycling-efforts-that-are-reshaping-the-fashion-industry/2019051443162",
@@ -47,6 +50,7 @@ export default {
         },
         {
           id: "#002",
+          source:"NTU Blog",
           name: "Textiles Wastage In Singapore...  What can we do?",
           url: "https://blogs.ntu.edu.sg/hp3203-2018-27/singapore/",
           imageURL:
@@ -54,6 +58,7 @@ export default {
         },
         {
           id: "#003",
+          source:"FASHION UNITED",
           name:
             "Singapore swapping initiatives offer alternative to fast fashion",
           url:
@@ -63,6 +68,7 @@ export default {
         },
         {
           id: "#004",
+          source:"Today",
           name:
             "Fast fashion, fast trash: Industry needs to arrest carbon impact, find sustainable solutions",
           url:
@@ -72,6 +78,7 @@ export default {
         },
         {
           id: "#005",
+          source:"Straits Times",
           name:
             "New forces are reinventing fashion and bringing change to the industry",
           url:
@@ -81,6 +88,7 @@ export default {
         },
         {
           id: "#006",
+          source:"Channel News Asia",
           name:
             "Commentary: Taking Singapore’s green ambitions to new heights with a circular economy",
           url:
@@ -100,19 +108,31 @@ export default {
 #news {
   height: auto;
 }
-.container a {
-  color: aliceblue;
-  font-weight: 800;
-  padding: 16px;
-  text-decoration: none;
-  display: block;
+
+.title{
+  border-bottom: 1px solid black;
+  padding-top:25px;
+  padding-bottom: 50px;
+  font-size:25px;
 }
 
-/* Change color on hover */
-.container a:hover {
-  background-color: #ddd;
+.container a {
   color: black;
+  font-weight: 200;
+  padding-bottom: 16px;
+  text-decoration: none;
+  display: block;
+  font-size:20px;
 }
+
+.container #src {
+  font-size:15px;
+  color: darkgray;
+}
+/* Change color on hover */
+/* .container a:hover {
+  color: black;
+} */
 
 ul {
   display: flex;
@@ -139,10 +159,18 @@ div.polaroid {
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   box-shadow: 10px 10px;
   text-align: center;
-  background-color: teal;
+  background-color: #E9EDC9;
+}
+
+div.polaroid:hover {
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: 10px 10px;
+  text-align: center;
+  background-color: #CCD5AE;
 }
 
 div.container {
-  padding: 10px;
+  padding: 30px;
+  text-align:left;
 }
 </style>

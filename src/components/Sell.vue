@@ -1,35 +1,19 @@
 <template>
-  <div id="sell">
+  <section id="sell">
     <NavBar></NavBar>
     <router-link to="/sell" exact></router-link>
-    <h1>Sell</h1>
+    <h2 class="title">S E L L</h2>
     <div id="left">
       <div id="imgArea">
         <imgInput v-model="imgFile"></imgInput>
       </div>
       <br />
       <br />
-      <div id="buttonArea">
-        <button id="send" v-on:click.prevent="submit()">Submit</button>
-        <button
-          id="confirm"
-          v-show="this.callsubmit"
-          v-on:click.prevent="callingSubmit()"
-        >
-          Confirm submission
-        </button>
-        <button
-          id="reload"
-          v-show="this.sellAnother"
-          v-on:click.prevent="reloadPage()"
-        >
-          Click to sell another item!
-        </button>
-      </div>
     </div>
     <div id="info">
       <form>
         <label for="title"> Title: </label>
+        <br>
         <input
           id="title"
           name="title"
@@ -39,13 +23,14 @@
         />
         <br /><br />
         <label for="shop"> Shop: </label>
+        <br>
         <select id="shop" name="shop" v-model.lazy="product.shop" required>
           <option value="men">Men</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
         </select>
         <br /><br />
-        <label for="category"> Category: </label>
+        <label for="category"> Category: </label><br>
         <select
           id="category"
           name="category"
@@ -58,7 +43,7 @@
           <option value="accesories">Accesories</option>
         </select>
         <br /><br />
-        <label for="dressocc"> Dressing Occasion: </label>
+        <label for="dressocc"> Dressing Occasion: </label><br>
         <select
           id="dressocc"
           name="dressocc"
@@ -69,7 +54,7 @@
           <option value="formal">Formal</option>
         </select>
         <br /><br />
-        <label for="brand"> Brand: </label>
+        <label for="brand"> Brand: </label><br>
         <input
           id="brand"
           name="brand"
@@ -89,7 +74,7 @@
           required
         ></textarea>
         <br /><br />
-        <label for="size"> Size: </label>
+        <label for="size"> Size: </label><br>
         <select id="size" name="size" v-model.lazy="product.size" required>
           <option value="baby">Baby (Preemie, 0-24 months)</option>
           <option value="toddler">Toddler (2T-6T)</option>
@@ -104,7 +89,7 @@
           <option value="XL">XL / EU 42 / UK 14 / US 12</option>
         </select>
         <br /><br />
-        <label for="price"> Price: </label>
+        <label for="price"> Price: </label><br>
         <input
           id="price"
           name="price"
@@ -115,7 +100,7 @@
           required
         />
         <br /><br />
-        <label for="telehandle"> Telegram Handle: </label>
+        <label for="telehandle"> Telegram Handle: </label><br>
         <input
           id="telehandle"
           name="telehandle"
@@ -125,8 +110,26 @@
           required
         />
       </form>
+      <br><br>
+      <div id="buttonArea">
+        <button v-on:click.prevent="submit()">Submit</button>
+        <button
+          id="confirm"
+          v-show="this.callsubmit"
+          v-on:click.prevent="callingSubmit()"
+        > 
+          Confirm submission
+        </button>
+        <button
+          id="reload"
+          v-show="this.sellAnother"
+          v-on:click.prevent="reloadPage()"
+        >
+          Click to sell another item!
+        </button>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import ImgInput from "./ImgInput.vue";
@@ -272,19 +275,24 @@ export default {
 };
 </script>
 <style scoped>
+
 #sell {
-  height: 100vh;
+    background-color:#FEFAE0;
+    height:180vh;
 }
-h1 {
-  font-size: 50px;
+
+.title{
+  border-bottom: 1px solid black;
+  padding-top:25px;
+  padding-bottom: 50px;
+  font-size:25px;
 }
+
 #imgArea {
   height: 350px;
   margin-left: 30%;
 }
-#buttonArea {
-  margin-left: 13%;
-}
+
 #left {
   float: left;
   padding: 20px;
@@ -292,10 +300,7 @@ h1 {
   font-size: 22px;
   position: relative;
 }
-#send {
-  font-size: 20px;
-  background-color: rgb(127, 255, 148);
-}
+
 #info {
   width: 42%;
   padding: 20px 35px 20px 35px;
@@ -304,24 +309,59 @@ h1 {
   font-size: 20px;
   color: black;
 }
+label{
+  padding-bottom:3px;
+  margin-bottom:5px;
+}
+
 input {
-  border-block-color: rgb(0, 0, 0);
+  border:black solid 1px;
   size: 15px;
-  width: 200px;
-  height: 23px;
+  width: 400px;
+  height: 28px;
   flex: 0 0 200px;
   margin-right: 200px;
   float: center;
-  border-radius: 5px;
+  border-radius: 0px;
+  background-color: #FAEDCD;
 }
 select {
-  border-block-color: rgb(0, 0, 0);
+  border:black solid 1px;
   size: 15px;
-  width: 200px;
-  height: 23px;
+  width: 400px;
+  height: 28px;
   flex: 0 0 200px;
   margin-right: 200px;
   float: center;
-  border-radius: 5px;
+  border-radius: 0px;
+  background-color: #FAEDCD;
+}
+
+textarea{
+  border:black solid 1px;   
+  border-radius: 0px;
+  width: 400px;
+  background-color: #FAEDCD;
+}
+
+button {
+  background-color: #E9EDC9;
+	border-color: #E9EDC9;
+	float:left;
+	padding: 10px;
+  width:100px;
+	box-sizing: border-box;
+	font-size: 15px;
+	border-radius: 60px;
+	border-width: 1px;
+  font-weight: 400;
+}
+
+button:hover {
+  border: 2px solid #CCD5AE;
+  background-color: #CCD5AE;
+  color: white;
+  border-color: #CCD5AE;
+  width:100px;
 }
 </style>

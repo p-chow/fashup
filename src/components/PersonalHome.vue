@@ -1,6 +1,7 @@
 <template>
+<section>
   <div id="personal">
-    <NavBar></NavBar>
+    <NavBar></NavBar> 
     <nav2 id="navbar2">
       <br />
       <h1 id="welcome">Welcome {{ this.userData.DisplayName }} !</h1>
@@ -32,6 +33,7 @@
       </div>
     </nav2>
   </div>
+</section>
 </template>
 
 <script>
@@ -201,24 +203,7 @@ export default {
 };
 </script>
 <style scoped>
-#personal {
-  color: rgb(34, 150, 158);
-  margin-top: -32px;
-  padding: 0 5px;
-  box-sizing: border-box;
-  font-size: 20px;
-  background-color: rgb(182, 243, 238);
-}
-#change {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
-}
-#profile {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
-}
+
 /*#navbar1 {
   float: left;
   width: 20vw;
@@ -230,14 +215,27 @@ export default {
   padding-top: 100px;
   display: table;
 }*/
-#navbar2 {
+/* #navbar2 {
   font-size: 15px;
-  /*float: right;*/
   padding: 38px;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;
   display: table-cell;
+} */
+
+#personal{
+  background-color:  #FEFAE0;
+  height: 100%;
+}
+
+#navbar2 {
+  width: 300px;
+  height: 1000px;
+  padding: 10px;
+  float: left;
+  font-size: 20px;
+  text-align: left;
 }
 /*#wishlist {
   font-size: 25px;
@@ -263,6 +261,7 @@ li {
   border: 1px solid #222;
   margin: 10px;
 }
+
 img {
   width: 135px;
   height: 135px;

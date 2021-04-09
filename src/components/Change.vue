@@ -1,24 +1,26 @@
 <template>
-  <div id="changepw">
+  <section id="changepw">
     <NavBar></NavBar>
     <nav2 id="nav2">
       <br /><br /><br />
-      <label for="email" id="emailaddress">Email Address: </label> <br />
-      <input type="text" id="email" name="email" /> <br />
-      <br />
-      <label for="pw" id="password">New Password: </label><br />
+      <label for="email" id="emailaddress">Email Address: </label>
+      <input type="text" id="email" name="email" /> 
+      <p></p>
+      <br /><br />
+      <label for="pw" id="password">New Password: </label>
       <input type="password" id="pw" name="pw" v-on:change="check()" />
-      <p id="passwordcheck"></p>
-      <label for="cpw" id="confirm">Confirm Password: </label> <br />
+      <br><p id="passwordcheck"></p>
+      <br />
+      <label for="cpw" id="confirm">Confirm Password: </label>
       <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
-      <p id="matching"></p>
+      <br><p id="matching"></p>
       <button v-on:click="reset()" type="button">Change Password</button>
       <p v-show="this.changed">
         Your password has been successfully updated! Please click
         <router-link to="/login">here</router-link> to login again
       </p>
     </nav2>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -174,105 +176,74 @@ export default {
 
 <style scoped>
 #changepw {
-  color: rgb(34, 150, 158);
-  width: 99vw;
-  float: left;
-  right: 100cm;
-  max-width: 100%;
-  margin-top: -32px;
-  padding: 0 5px;
-  box-sizing: border-box;
-  font-size: 20px;
-  background-color: rgb(182, 243, 238);
+  height: auto;
+  background-color: #FEFAE0;
 }
 
 label {
   display: flex;
-  flex-direction: row;
-  clear: left;
   width: 10em;
   max-width: 400%;
-  margin-left: 500px;
+  margin-left: 280px;
   font-size: 25px;
-  justify-content: flex-end;
+  text-align: left;
+  padding-bottom:3px;
+  margin-bottom:5px;
 }
 
 input {
-  border-block-color: rgb(0, 0, 0);
   tab-size: 5px;
-  size: 10px;
-  height: 25px;
   flex: 0 0 200px;
-  margin-left: 20px;
   width: 350px;
+  padding-bottom: 10px;
+  border:black solid 1px;
+  size: 15px;
+  width: 400px;
+  height: 28px;
   border-radius: 25px;
-  padding: 10px;
-}
-nav {
+  background-color: white;
+    margin-left: 350px;
   float: left;
-  width: 20vw;
-  font-size: 35px;
-  background: rgb(222, 255, 255);
-  padding-left: 20px;
-  padding-top: 100px;
-  height: 550px;
+  
 }
+
 #nav2 {
   font-size: 15px;
-  float: right;
   padding: 38px;
   width: 65vw;
   padding-top: 1px;
-  background: rgb(182, 243, 238);
+  background: #FEFAE0;
   margin-top: 1cm;
 }
-#emailaddress {
-  margin-left: 270px;
-}
-#password {
-  margin-left: 270px;
-}
 
-#confirm {
-  margin-left: 320px;
-}
 button {
-  background-color: rgb(140, 228, 255);
-  font-style: italic;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+	background-color: #CCD5AE;
   width: 100px;
   height: 50px;
   float: none;
   right: 10cm;
   max-width: 70%;
   margin: 50px;
-  margin-top: 10px;
   padding: 0 5px;
   box-sizing: border-box;
-  margin-right: 25px;
+  margin-right: 350px;
   border-radius: 10px;
   font-size: 15px;
-  border-color: rgb(140, 228, 255);
-}
-p {
-  font-size: 15px;
-  color: black;
 }
 
-#change {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
+button:hover {
+  border: 2px solid #CCD5AE;
+  background-color: #CCD5AE;
+  color: white;
+  border-color: #CCD5AE;
+  width:100px;
 }
-#profile {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
+
+p {
+  font-size: 15px;
+  color: darkred;
+  text-align: left;
+  margin-left: 350px;
 }
-#wishlist {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
-}
+
 </style>
