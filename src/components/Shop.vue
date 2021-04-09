@@ -1,7 +1,7 @@
 <template>
   <section>
     <NavBar></NavBar>
-    <h2>SHOP</h2>
+    <h2 class="title">S H O P</h2>
     <div class="sidenav">
       <h2 id="navi">Filter</h2>
       <div v-on:click="seen1 = !seen1" class="filterTitle">Shop for</div>
@@ -11,36 +11,36 @@
           id="women"
           value="women"
           v-model="shop"
-        />Women<br />
-        <input type="checkbox" id="men" value="men" v-model="shop" />Men<br />
+        />  Women<br />
+        <input type="checkbox" id="men" value="men" v-model="shop" />  Men<br />
         <input
           type="checkbox"
           id="kids"
           value="kids"
           v-model="shop"
-        />Kids<br />
+        />  Kids<br />
       </div>
-      <div v-on:click="seen2 = !seen2" class="filterTitle">Category</div>
+      <div v-on:click="seen2 = !seen2" class="filterTitle">  Category</div>
       <div v-if="seen2" id="hide" class="filter">
-        <input type="checkbox" id="top" value="top" v-model="cat" />Top<br />
+        <input type="checkbox" id="top" value="top" v-model="cat" />  Top<br />
         <input
           type="checkbox"
           id="bottoms"
           value="bottoms"
           v-model="cat"
-        />Bottoms<br />
+        />  Bottoms<br />
         <input
           type="checkbox"
           id="dress"
           value="dress"
           v-model="cat"
-        />Dresses<br />
+        />  Dresses<br />
         <input
           type="checkbox"
           id="acc"
           value="acc"
           v-model="cat"
-        />Accessories<br />
+        />  Accessories<br />
       </div>
       <div v-on:click="seen3 = !seen3" class="filterTitle">Occasion</div>
       <div v-if="seen3" id="hide" class="filter">
@@ -49,45 +49,45 @@
           id="formal"
           value="formal"
           v-model="occ"
-        />Formal<br />
+        />  Formal<br />
         <input
           type="checkbox"
           id="casual"
           value="casual"
           v-model="occ"
-        />Casual<br />
+        />  Casual<br />
       </div>
       <div v-on:click="seen4 = !seen4" class="filterTitle">Size</div>
       <div v-if="seen4" id="hide" class="filter">
-        <input type="checkbox" id="baby" value="baby" v-model="size" />Baby
+        <input type="checkbox" id="baby" value="baby" v-model="size" />  Baby
         (Preemie, 0-24 months)<br />
         <input
           type="checkbox"
           id="toddler"
           value="toddler"
           v-model="size"
-        />Toddler (2T-6T)<br />
+        />  Toddler (2T-6T)<br />
         <input
           type="checkbox"
           id="littleK"
           value="littleK"
           v-model="size"
-        />Little Kid (4-6X)<br />
-        <input type="checkbox" id="bigK" value="bigK" v-model="size" />Big Kid
+        />  Little Kid (4-6X)<br />
+        <input type="checkbox" id="bigK" value="bigK" v-model="size" />  Big Kid
         or Tween (7-16)<br />
-        <input type="checkbox" id="freeA" value="freeA" v-model="size" />Free
+        <input type="checkbox" id="freeA" value="freeA" v-model="size" />  Free
         Size (adults)<br />
-        <input type="checkbox" id="XXS" value="XXS" v-model="size" />XXS / EU 32
+        <input type="checkbox" id="XXS" value="XXS" v-model="size" />  XXS / EU 32
         / UK 4 / US 2<br />
-        <input type="checkbox" id="XS" value="XS" v-model="size" />XS / EU 34 /
+        <input type="checkbox" id="XS" value="XS" v-model="size" />  XS / EU 34 /
         UK 6 / US 4<br />
-        <input type="checkbox" id="S" value="S" v-model="size" />S / EU 36 / UK
+        <input type="checkbox" id="S" value="S" v-model="size" />  S / EU 36 / UK
         8 / US 6<br />
-        <input type="checkbox" id="M" value="M" v-model="size" />M / EU 38 / UK
+        <input type="checkbox" id="M" value="M" v-model="size" />  M / EU 38 / UK
         10 / US 8<br />
-        <input type="checkbox" id="L" value="L" v-model="size" />L / EU 40 / UK
+        <input type="checkbox" id="L" value="L" v-model="size" />  L / EU 40 / UK
         12 / US 10<br />
-        <input type="checkbox" id="XL" value="XL" v-model="size" />XL / EU 42 /
+        <input type="checkbox" id="XL" value="XL" v-model="size" />  XL / EU 42 /
         UK 14 / US 12<br />
       </div>
       <div v-on:click="seen5 = !seen5" class="filterTitle">Price Range</div>
@@ -105,7 +105,7 @@
         <p>range: $0 - {{ priceRange }}</p>
       </div>
       <br />
-      <button v-on:click="filtered" id="filterButton">Search!</button>
+      <button v-on:click="filtered" id="filterButton"> <a id="search">Search!</a></button>
     </div>
     <div class="content">
       <div>
@@ -117,15 +117,17 @@
             <div class="polaroid">
               <div class="crop"><img v-bind:src="item[1].picURL" /></div>
               <div class="container">
-                <p id="brand">{{ item[1].brand }}</p>
-                <p
+                <ul>
+                <li
                   id="click"
                   v-bind:docid="item[0]"
                   v-on:click="pressed($event)"
                 >
                   {{ item[1].title }}
-                </p>
-                <p id="price">${{ item[1].price }}</p>
+                </li>
+                <li id="brand">{{ item[1].brand }}</li>
+                <li id="price">S${{ item[1].price }}</li>
+                </ul>
               </div>
             </div>
           </li>
@@ -282,55 +284,81 @@ export default {
   padding-left: 20px;
 }
 
+.title{
+  border-bottom: 1px solid black;
+  padding-top:25px;
+  padding-bottom: 50px;
+  font-size:25px;
+}
+
 .sidenav {
   width: 300px;
   height: 1000px;
-  background-color: #111;
   padding: 10px;
   float: left;
   font-size: 20px;
   text-align: left;
+  /* border-right: 1px solid #111; */
 }
 
 .sidenav h2 {
-  color: aliceblue;
-  text-align: center;
+  color:black;
+  text-align: left;
+  padding-left: 5px;
 }
 
 .filter {
-  background-color: aliceblue;
-  border: 1px solid aliceblue;
+  background-color: #FEFAE0;
+  border: 1px solid #FEFAE0;
   color: #111;
-  padding: 3px;
+  padding: 8px;
+  margin-left: 5px;
+  font-size: 13px;
 }
 
 .filterTitle {
-  background-color: #111;
-  border: 1px solid aliceblue;
-  color: aliceblue;
-  padding: 3px;
+  border: 1px solid #FAEDCD;
+  background-color: #FAEDCD;
+  color: black;
+  padding: 5px;
+  margin: 1px;
   font-weight: 800;
+  font-size:18px;
 }
 
 .filterTitle:hover {
-  border: 2px solid aliceblue;
-  background-color: aliceblue;
+  border: 2px solid #D4A373;
+  background-color: #D4A373;
   color: #111;
 }
 
 #filterButton {
-  border: 2px solid aliceblue;
-  background-color: #111;
-  color: aliceblue;
-  padding: 3px;
+  /* border: 2px solid #FAEDCD;
+  background-color: #FAEDCD;
+  color: #111;
+  padding: 5px;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 20px; */
+  background-color: #E9EDC9;
+	border-color: #E9EDC9;
+	float:left;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 15px;
+	border-radius: 60px;
+	border-width: 1px;
+  font-weight: 400;
+	/* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-style: italic; */
 }
 
 #filterButton:hover {
-  border: 2px solid aliceblue;
-  background-color: aliceblue;
-  color: #111;
+  border: 2px solid #CCD5AE;
+  background-color: #CCD5AE;
+  color: white;
+  box-sizing: unset;
+  border-color: #CCD5AE;
+  font-weight: 500;
 }
 
 ul {
@@ -366,24 +394,33 @@ div.polaroid {
 
 #brand {
   color: grey;
+  text-transform: capitalize;
+  font-size:17px;
+  padding:1px;
+  margin:0px;
+  text-align: left;
 }
 
 #price {
-  background-color: gainsboro;
   display: inline-block;
-  padding: 5px;
-  font-weight: 700;
+  padding:1px;
+  margin:0px;
   color: #111;
-  font-size: 20px;
+  font-size: 17px;
+  text-align: left;
 }
 
 #click {
-  color: aquamarine;
+  color: black;
+  padding:1px;
+  margin:0px;
+  padding-top: 10px;
+  font-size:18px;
+  text-align: left;
 }
 
 #click:hover {
-  background-color: #ddd;
-  color: black;
+  color: #D4A373;
 }
 
 .slider {

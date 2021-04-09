@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Fashup</h1>
+    <h1 id="shopname">Fashup</h1>
     <!-- <NavBar></NavBar> -->
     <router-view></router-view>
   </div>
@@ -24,12 +24,11 @@ export default {
   font-size: 30px;
   color: #111;
   background-color:  #FEFAE0;
-  font-family: "Verdana", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  font-family: "Arial", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
 
-
-h1 {
+#shopname {
   margin-top: 0;
   padding-top: 25px;
   font-style: italic;

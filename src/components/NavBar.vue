@@ -170,8 +170,8 @@ a {
   background-color: #FAEDCD;
   border-top: 1px solid #111;
   padding: 0;
-  padding-top: -32px;
-
+  border-bottom: 1px solid black;
+  height:100%
 }
 ul {
   display: flex;
@@ -203,6 +203,10 @@ li {
   color:black;
 }
 
+.dropdown:hover #label {
+  color:black;
+}
+
 /* .dropdown {
   float: left;
   overflow: hidden;
@@ -210,9 +214,9 @@ li {
 } */
 
 .dropdown {
-  padding: 1px 12px;
   right:-4cm;
   text-align: center;
+  padding: 1px;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn:hover .droplabel:hover {
@@ -233,8 +237,6 @@ li {
 .label {
   font-size: 20px;
   color:darkgray;
-    padding-top: -32px;
-
 }
 
 .label:hover {
