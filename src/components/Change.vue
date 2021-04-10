@@ -14,8 +14,7 @@
       <p id="matching"></p>
       <button v-on:click="reset()" type="button">Change Password</button>
       <p v-show="this.changed">
-        Your password has been successfully updated! Please click
-        <router-link to="/login">here</router-link> to login again
+        Your password has been successfully updated! 
       </p>
     </nav2>
   </div>
@@ -110,7 +109,7 @@ export default {
         user
           .updatePassword(newPassword)
           .then(() => {
-            alert("Updated password successfully");
+            //alert("Updated password successfully");
           })
           .catch(function (error) {
             alert(error);
