@@ -8,7 +8,7 @@ export default {
         return {
             currUserId: [],
             userData: {},
-            allProducts: [],
+            existingProducts: [],
             productsSold: [],
             datacollection: {
                 labels: [],
@@ -50,16 +50,38 @@ export default {
 
                         for (let i = 0; i < this.productsSold.length; i++) {
                             var temp = this.productsSold[i];
-                            console.log(temp);
-                            if (temp[1].cat == 'top') {
-                                totalSum['Tops'] += 1;
-                            } else if (temp[1].cat == 'bottoms') {
-                                totalSum['Bottoms'] += 1;
-                            } else if (temp[1].cat == 'dress') {
-                                totalSum['Dresses'] += 1;
-                            } else {
-                                totalSum['Accessories'] += 1;
-                            }
+                            database.collection("products")
+                                .doc(temp)
+                                .get()
+                                .then((pdtInfo) => {
+                                    if (pdtInfo[1].cat == 'top') {
+                                        totalSum['Tops'] += 1;
+                                    } else if (pdtInfo[1].cat == 'bottoms') {
+                                        totalSum['Bottoms'] += 1;
+                                    } else if (pdtInfo[1].cat == 'dress') {
+                                        totalSum['Dresses'] += 1;
+                                    } else {
+                                        totalSum['Accessories'] += 1;
+                                    }
+                                })
+                        }
+                        for (let j = 0; j < this.existingProducts.length; j++) {
+                            var temp1 = this.existingProducts[j];
+                            database.collection("products")
+                                .doc(temp1)
+                                .get()
+                                .then((pdtInfo) => {
+                                    console.log(pdtInfo.cat)
+                                    if (pdtInfo.cat == 'top') {
+                                        totalSum['Tops'] += 1;
+                                    } else if (pdtInfo.cat == 'bottoms') {
+                                        totalSum['Bottoms'] += 1;
+                                    } else if (pdtInfo.cat == 'dress') {
+                                        totalSum['Dresses'] += 1;
+                                    } else {
+                                        totalSum['Accessories'] += 1;
+                                    }
+                                })
                         }
 
                         for (var info in totalSum) {
