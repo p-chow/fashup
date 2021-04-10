@@ -3,15 +3,16 @@
     <nav id="bar">
       <ul>
         <li>
-          <router-link to="/" exact v-show="!this.login"> Home </router-link>
+          <router-link to="/" exact v-show="!this.login" class="label"> 
+          <p class="label">Home </p></router-link>
           <div class="dropdown">
-          <button class="dropbtn"> <router-link to="/Personal" exact v-show="this.login">
-            {{ this.userData.DisplayName }}'s Home
+          <router-link to="/Personal" exact v-show="this.login" class="label">
+            <p class="label">{{ this.userData.DisplayName }}'s Home</p>
 			
             <!-- //<span @click="pushtoPersonal()"
               >{{ this.userData.DisplayName }}'s Home</span
             > -->
-          </router-link></button>
+          </router-link>
           <div class="dropdown-content">
             <a href="#">
 				<router-link to="/Personal" id="profile">
@@ -37,40 +38,42 @@
           </div>
         </li>
         <li>
-          <router-link to="/shop" exact>
-            Shop
+          <router-link to="/shop" exact class="label">
+            <p class="label">Shop</p>
             <!-- <span @click="pushtoShop()">Shop</span> -->
           </router-link>
         </li>
         <li>
-          <router-link to="/sell" exact> Sell </router-link>
+          <router-link to="/sell" exact class="label"> 
+          <p class="label">Sell </p></router-link>
           <!-- <span @click="pushtoSell()">Sell</span> -->
         </li>
         <li>
 		<div class="dropdown">
-          <button class="dropbtn"> <router-link to="/news" exact>
-            Gaia News
+          <router-link to="/news" exact class="label" id="dropbtn">
+            <p class="label">Gaia News</p>
             <!-- <span @click="pushtoNews()"> Gaia News </span> -->
-          </router-link></button>
+          </router-link>
           <div class="dropdown-content">
             <a href="#">
-				<router-link to='/news' exact>
+				<router-link to='/news' exact class="droplabel">
 				Articles
 				</router-link>
 			</a>
             <a href="#">
-				<router-link to='/communitystats' exact>
+				<router-link to='/communitystats' exact class="droplabel">
 				Community Dashboard
 				</router-link>
 			</a>
             <a href="#">
-				<router-link to ='/sales' exact>
+				<router-link to ='/sales' exact class="droplabel">
 				Announcements</router-link>
 			</a>
 			</div>
           </div>
         </li>
-        <li v-show="this.login" @click="logout()">Logout</li>
+        <li v-show="this.login" @click="logout()" class="label">
+          <p clsss="label">Logout</p></li>
       </ul>
     </nav>
   </div>
@@ -162,15 +165,13 @@ export default {
 a {
   text-decoration: none;
 }
+
 #bar {
-  width: 150%;
-  float: left;
-  right: 5cm;
-  max-width: 100%;
-  margin: 1px;
-  margin-top: 1px;
-  padding: 0 px;
-  box-sizing: border-box;
+  background-color: #FAEDCD;
+  border-top: 1px solid #111;
+  padding: 0;
+  border-bottom: 1px solid black;
+  height:100%
 }
 ul {
   display: flex;
@@ -178,50 +179,49 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   flex-grow: 1;
-  flex-basis: 200px;
   text-align: center;
-  padding: 10px;
-  border: 1px solid #222;
-  background-color: rgb(221, 219, 219);
-  margin: 1px;
+  background-color: #FAEDCD;
 }
+
 .dropdown-content a {
   float: none;
   color: black;
-  padding: 12px 16px;
+  padding: 8px 10px;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
+.dropdown:hover .dropdown-content {
+  display:grid;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown:hover #label {
+  color:black;
 }
-.dropdown {
+
+.dropdown:hover #label {
+  color:black;
+}
+
+/* .dropdown {
   float: left;
   overflow: hidden;
-}
+  text-align: center;
+} */
 
-.dropdown .dropbtn {
-  font-size: 25px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 10px 12px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
+.dropdown {
   right:-4cm;
+  text-align: center;
+  padding: 1px;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color:rgb(209, 252, 255);
+.navbar a:hover, .dropdown:hover .dropbtn:hover .droplabel:hover {
+  font-weight: 400;
+  background-color: #D4A373;
 }
 
 .dropdown-content {
@@ -231,5 +231,15 @@ li {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  font-size: 15px;
+}
+
+.label {
+  font-size: 20px;
+  color:darkgray;
+}
+
+.label:hover {
+  color:black;
 }
 </style>

@@ -18,26 +18,24 @@ const myRouter = new VueRouter({
     routes: Routes,
     mode: "history",
 });
+
 myRouter.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
     const isAuthenticated = fbase.currentUser;
     console.log("isauthenticated", isAuthenticated);
     if (requiresAuth && !isAuthenticated) {
-      next("/login");
+        next("/login");
     } else {
-      next();
+        next();
     }
-  });
+});
 
-  let app;
-  fbase.onAuthStateChanged(() => {
+let app;
+fbase.onAuthStateChanged(() => {
     if (!app) {
         app = new Vue({
             render: h => h(App),
             router: myRouter,
         }).$mount('#app')
     }
-  })
-
- 
-
+})

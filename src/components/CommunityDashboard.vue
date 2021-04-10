@@ -1,6 +1,6 @@
 <template>
   <div class="chart">
-    <h1>Community Dashboard</h1>
+    <h2 class="title">COMMUNITY DASHBOARD</h2>
     <p>Figures from Data.gov.sg</p>
     <LineChart></LineChart> <br /><br />
     <BarChart></BarChart>
@@ -20,4 +20,10 @@ export default {
 </script>
 
 <style scoped>
+.title{
+  border-bottom: 1px solid black;
+  padding-top:25px;
+  padding-bottom: 50px;
+  font-size:25px;
+}
 </style>
