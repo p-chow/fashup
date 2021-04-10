@@ -128,8 +128,8 @@ img {
 }
 
 button {
-  background-color: rgb(140, 228, 255);
-  border-color: rgb(140, 228, 255);
+  background-color: #f3cfab;
+  border-color: #f3cfab;
   width: 110px;
   height: 40px;
   font-size: 13px;
