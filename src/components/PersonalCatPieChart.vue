@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <PieChart></PieChart>
+  <div id="area">
+    <PieChart id="pc"></PieChart>
   </div>
 </template>
 
@@ -13,4 +13,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#pc {
+  width: 30vw;
+  padding-left: 30vw;
+}
+</style>
