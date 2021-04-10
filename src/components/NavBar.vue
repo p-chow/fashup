@@ -189,14 +189,16 @@ li {
 .dropdown-content a {
   float: none;
   color: black;
-  padding: 8px 10px;
+  padding: 8px 12px;
   text-decoration: none;
   display: block;
   text-align: left;
+  margin-right: 1cm;
 }
 
 .dropdown:hover .dropdown-content {
   display:grid;
+  text-align: center;
 }
 
 .dropdown:hover #label {
