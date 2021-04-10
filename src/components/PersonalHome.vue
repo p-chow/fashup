@@ -1,39 +1,72 @@
 <template>
-<section>
-  <div id="personal">
-    <NavBar></NavBar> 
-    <nav2 id="navbar2">
-      <br />
-      <h1 id="welcome">Welcome {{ this.userData.DisplayName }} !</h1>
+  <section>
+    <div id="personal">
+      <NavBar></NavBar>
+      <nav2 id="navbar2">
+        <br />
+        <h1 id="welcome">Welcome {{ this.userData.DisplayName }} !</h1>
 
-      <div id="products">
-        <h1>{{ this.userData.Name }}'s Products</h1>
-        <ul id="products">
-          <li v-for="product in products" v-bind:key="product.id">
-            <p id= "itemtitle" v-bind:docid="product[0]" v-on:click="redirectToProduct($event)">
-              {{ product[3] }}
-            </p>
-            <br />
-            <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
-            <p>Price: ${{ product[2] }}</p>
-            <br />
-            <button
-              type="button"
-              v-bind:docid="product[0]"
-              v-on:click="
-                deleteProduct($event);
-                updateProductsListed($event);
-              "
-            >
-              Remove product
-            </button>
-            <br />
-          </li>
-        </ul>
-      </div>
-    </nav2>
-  </div>
-</section>
+        <div id="products">
+          <h1>{{ this.userData.Name }}'s Products</h1>
+          <ul id="productsListed">
+            <li v-for="product in productsListed" v-bind:key="product.id">
+              <p 
+                id= "itemtitle"
+                v-bind:docid="product[0]"
+                v-on:click="redirectToProduct($event)"
+              >
+                {{ product[3] }}
+              </p>
+              <br />
+              <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
+              <p>Price: ${{ product[2] }}</p>
+              <br />
+              <button
+                type="button"
+                v-bind:docid="product[0]"
+                v-on:click="
+                  deleteProduct($event);
+                  updateProductsListed($event);
+                "
+              >
+                Remove product
+              </button>
+              <br />
+              <button
+                type="button"
+                v-bind:docid="product[0]"
+                v-show="product[4] == false"
+                v-on:click="
+                  toSold($event);
+                  removeProductsListed($event);
+                  updateProductsSold($event);
+                "
+              >
+                Mark as Sold
+              </button>
+            </li>
+          </ul>
+
+          <h1>{{ this.userData.Name }}'s Sold Products</h1>
+          <ul id="productsSold">
+            <li v-for="product in productsSold" v-bind:key="product.id">
+              <p
+                id= "itemtitle"
+                v-bind:docid="product[0]"
+                v-on:click="redirectToProduct($event)"
+              >
+                {{ product[3] }}
+              </p>
+              <br />
+              <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
+              <p>Price: ${{ product[2] }}</p>
+              <br />
+            </li>
+          </ul>
+        </div>
+      </nav2>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -51,9 +84,11 @@ export default {
       // user_id: this.$route.params.id,
       pic: "",
       //   name: "",
-      productsId: [],
-      products: [],
-      currUserId: [],
+      productsListedId: [],
+      productsListed: [],
+      productsSoldId: [],
+      productsSold: [],
+      //currUserId: [],
       userData: {},
     };
   },
@@ -69,18 +104,46 @@ export default {
           .doc(user.uid)
           .get()
           .then((snapshot) => {
-            this.productsId = snapshot.data().productsListed;
+            this.productsListedId = snapshot.data().productsListed;
             database
               .collection("products")
               .get()
               .then((snapshot) => {
                 snapshot.docs.forEach((doc) => {
-                  if (this.productsId.includes(doc.id)) {
-                    this.products.push([
+                  if (this.productsListedId.includes(doc.id)) {
+                    this.productsListed.push([
                       doc.id,
                       doc.get("imgFile"),
                       doc.get("price"),
                       doc.get("title"),
+                      doc.get("sold")
+                    ]);
+                  }
+                });
+              });
+          });
+      }
+    },
+    getProductsSold: function() {
+      const user = fbase.currentUser;
+      if (user) {
+        database
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            this.productsSoldId = snapshot.data().productsSold;
+            database
+              .collection("products")
+              .get()
+              .then((snapshot) => {
+                snapshot.docs.forEach((doc) => {
+                  if (this.productsSoldId.includes(doc.id)) {
+                    this.productsSold.push([
+                      doc.id,
+                      doc.get("imgFile"),
+                      doc.get("price"),
+                      doc.get("title")
                     ]);
                   }
                 });
@@ -98,7 +161,7 @@ export default {
     deleteProduct(event) {
       let doc_id = event.target.getAttribute("docid");
       database
-        .collection("products_sharlene")
+        .collection("products")
         .doc(doc_id)
         .delete()
         .then(() => {
@@ -115,6 +178,42 @@ export default {
           .update({
             productsListed: fv.arrayRemove(doc_id),
           });
+      }
+    },
+    toSold(event) {
+      const user = fbase.currentUser;
+      if (user) {
+        let doc_id = event.target.getAttribute("docid");
+        database
+          .collection("products")
+          .doc(doc_id)
+          .update({
+             sold: true 
+            });
+      }
+    },
+    updateProductsSold(event) {
+      const user = fbase.currentUser;
+      if (user) {
+        let doc_id = event.target.getAttribute("docid");
+        database
+          .collection("users")
+          .doc(user.uid)
+          .update({
+            productsSold: fv.arrayUnion(doc_id),
+          });
+      }
+    },
+    removeProductsListed(event) {
+      const user = fbase.currentUser;
+      if (user) {
+        let doc_id = event.target.getAttribute("docid");
+        database
+          .collection("users")
+          .doc(user.uid)
+          .update({
+            productsListed: fv.arrayRemove(doc_id),
+          }).then(() => location.reload());
       }
     },
     // logout(){
@@ -177,6 +276,7 @@ export default {
     // this.profilepic();
     // this.getUserName();
     this.getProductsListed();
+    this.getProductsSold();
     this.loadUserData();
     // EventUpdateWl.$on("new-wishlist", (data) => {
     //   if (data[1]) {
@@ -191,7 +291,6 @@ export default {
 };
 </script>
 <style scoped>
-
 /*#navbar1 {
   float: left;
   width: 20vw;
@@ -212,8 +311,8 @@ export default {
   display: table-cell;
 } */
 
-#personal{
-  background-color:  #FFFDF2;
+#personal {
+  background-color: #fffdf2;
   height: 100%;
 }
 
