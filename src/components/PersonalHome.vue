@@ -1,28 +1,10 @@
 <template>
+<section>
   <div id="personal">
-    <NavBar></NavBar>
-    <nav id="navbar1">
-      <br /><br /><br />
-      <router-link to="/Personal" id="profile">
-        Profile Page
-        <!-- <span @click="pushtoPersonal()">Profile Page</span> -->
-      </router-link>
-      <br />
-      <router-link to="/wishlist" id="wishlist">
-        Wishlist
-        <!-- <span @click="pushtoWish()">Wishlist</span> -->
-      </router-link>
-      <br />
-      <router-link to="/change" id="change">
-        Change Password
-        <!-- <span @click="pushtoChange()">Change Password</span> -->
-      </router-link>
-      <!-- <br> <br> <br> <br> <br> <br> <br>   -->
-      <!-- <button type="button" id='logout' v-on:click= "logout()">Logout</button> -->
-    </nav>
+    <NavBar></NavBar> 
     <nav2 id="navbar2">
       <br />
-      <personalDB></personalDB>
+      <h1 id="welcome">Welcome {{ this.userData.DisplayName }} !</h1>
 
       <div id="products">
         <h1>{{ this.userData.Name }}'s Products</h1>
@@ -51,6 +33,7 @@
       </div>
     </nav2>
   </div>
+</section>
 </template>
 
 <script>
@@ -58,7 +41,6 @@ import { database } from "../firebase.js";
 import { fv } from "../firebase.js";
 import { fbase } from "../firebase.js";
 import NavBar from "./NavBar.vue";
-import PersonalDashboard from "./PersonalDashboard.vue";
 //import { EventPassing } from "../passingid.js";
 // import { EventLogout } from "../loggingout.js";
 // import { EventUpdateWl } from "../updatingWishlist.js";
@@ -77,7 +59,6 @@ export default {
   },
   components: {
     NavBar,
-    personalDB: PersonalDashboard,
   },
   methods: {
     // getUserName() {
@@ -222,27 +203,8 @@ export default {
 };
 </script>
 <style scoped>
-#personal {
-  color: rgb(34, 150, 158);
-  float: left;
-  right: 100cm;
-  margin-top: -32px;
-  padding: 0 5px;
-  box-sizing: border-box;
-  font-size: 20px;
-  background-color: rgb(182, 243, 238);
-}
-#change {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
-}
-#profile {
-  font-size: 25px;
-  text-decoration-line: none;
-  color: rgb(34, 150, 158);
-}
-#navbar1 {
+
+/*#navbar1 {
   float: left;
   width: 20vw;
   max-width: 100%;
@@ -252,22 +214,34 @@ export default {
   padding-left: 20px;
   padding-top: 100px;
   display: table;
-}
-#navbar2 {
+}*/
+/* #navbar2 {
   font-size: 15px;
-  float: right;
   padding: 38px;
-  width: 65%;
   padding-top: 1px;
   background: rgb(182, 243, 238);
   margin-top: 1cm;
   display: table-cell;
+} */
+
+#personal{
+  background-color:  #FFFDF2;
+  height: 100%;
 }
-#wishlist {
+
+#navbar2 {
+  width: 300px;
+  height: 1000px;
+  padding: 10px;
+  float: left;
+  font-size: 20px;
+  text-align: left;
+}
+/*#wishlist {
   font-size: 25px;
   text-decoration-line: none;
   color: rgb(34, 150, 158);
-}
+}*/
 img {
   width: 300px;
   float: left;
@@ -287,6 +261,7 @@ li {
   border: 1px solid #222;
   margin: 10px;
 }
+
 img {
   width: 135px;
   height: 135px;

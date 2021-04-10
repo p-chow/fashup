@@ -177,9 +177,10 @@ export default {
                 productsListed: [],
               })
               .then(() => {
-                this.$router.replace({
-                  path: "/login",
-                });
+                this.$router.push({
+              name: "personal",
+              params: { id: data.user.uid },
+              })
               });
           })
           .catch(function (err) {
