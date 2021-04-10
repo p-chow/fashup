@@ -197,7 +197,7 @@ export default {
                 this.sortedProductCurr = sortedProduct;
                 var uploadTask = firebase
                   .storage()
-                  .ref("Images/" + this.product["title"] + ".jpeg")
+                  .ref("Images/" +  ".jpeg")
                   .put(this.fileneeded);
                 this.newupload = uploadTask;
                 uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
