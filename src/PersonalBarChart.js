@@ -8,13 +8,13 @@ export default {
     return {
       currUserId: [],
       userData: {},
-      allProducts: [],
+      existingProducts: [],
       productsSold: [],
       datacollection: {
         labels: [],
         datasets: [{
           label: "Quantity",
-          backgroundColor: ['blue', 'green'],
+          backgroundColor: ['darkkhaki', 'green'],
           data: []
         }]
       },
@@ -50,13 +50,13 @@ export default {
           .doc(user.uid)
           .get()
           .then((snapshot) => {
-            this.allProducts = snapshot.data().productsListed;
-            totalSum["Listings posted"] = this.allProducts.length;
-            console.log(totalSum["Listings posted"]);
-
             this.productsSold = snapshot.data().productsSold;
             totalSum["Products sold"] = this.productsSold.length;
             console.log(totalSum["Products sold"]);
+
+            this.existingProducts = snapshot.data().productsListed;
+            totalSum["Listings posted"] = this.existingProducts.length + this.productsSold.length;
+            console.log(totalSum["Listings posted"]);
 
             for (var info in totalSum) {
               this.datacollection.datasets[0].data.push(totalSum[info])

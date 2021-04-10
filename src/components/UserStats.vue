@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 #dbpage {
-  height: 100vh;
+  height: auto;
 }
 
 #graphs {
