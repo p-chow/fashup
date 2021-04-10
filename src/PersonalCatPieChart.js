@@ -54,35 +54,40 @@ export default {
                                 .doc(temp)
                                 .get()
                                 .then((pdtInfo) => {
-                                    if (pdtInfo[1].cat == 'top') {
+                                    //console.log(pdtInfo.get("category"));
+                                    if (pdtInfo.get("category") == 'top') {
                                         totalSum['Tops'] += 1;
-                                    } else if (pdtInfo[1].cat == 'bottoms') {
+                                    } else if (pdtInfo.get("category") == 'bottoms') {
                                         totalSum['Bottoms'] += 1;
-                                    } else if (pdtInfo[1].cat == 'dress') {
+                                    } else if (pdtInfo.get("category") == 'dress') {
                                         totalSum['Dresses'] += 1;
                                     } else {
                                         totalSum['Accessories'] += 1;
                                     }
                                 })
                         }
-                        for (let j = 0; j < this.existingProducts.length; j++) {
+                        /*for (let j = 0; j < this.existingProducts.length; j++) {
                             var temp1 = this.existingProducts[j];
                             database.collection("products")
                                 .doc(temp1)
                                 .get()
                                 .then((pdtInfo) => {
-                                    console.log(pdtInfo.cat)
-                                    if (pdtInfo.cat == 'top') {
+                                    console.log(typeof pdtInfo.get("category"));
+                                    var cat = pdtInfo.get("category");
+                                    if (cat == 'top') {
                                         totalSum['Tops'] += 1;
-                                    } else if (pdtInfo.cat == 'bottoms') {
+                                    } else if (cat == 'bottoms') {
                                         totalSum['Bottoms'] += 1;
-                                    } else if (pdtInfo.cat == 'dress') {
+                                    } else if (cat == 'dress') {
                                         totalSum['Dresses'] += 1;
                                     } else {
                                         totalSum['Accessories'] += 1;
                                     }
                                 })
-                        }
+                        }*/
+                        //database.collection('products').where("category", "==", "top").get().then((snapshot) => { console.log(snapshot.size); })
+
+                        console.log(totalSum);
 
                         for (var info in totalSum) {
                             this.datacollection.datasets[0].data.push(totalSum[info])
