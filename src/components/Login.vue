@@ -96,16 +96,23 @@ export default {
         this.display[this.getIndex(this.emailList, email)],
         docid,
       ]);
-      fbase.signInWithEmailAndPassword(email, password).then(() =>
+      fbase.signInWithEmailAndPassword(email, password).then((userCredential) => {
+		var user = userCredential.user;
+		console.log(user)
+      }).catch((error) => {
+		var errorMessage = error.message;
+		if (errorMessage) 
+		console.log(errorMessage)
+		alert(errorMessage)
+		window.location.reload()
+        }).then(() =>
         this.$router.push({
           name: "personal",
           params: { id: docid },
         })
       );
       console.log(fbase.currentUser.email);
- 
-      //	}
-    },
+	}
   },
   created() {
     this.emailExists();
