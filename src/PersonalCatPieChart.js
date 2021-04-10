@@ -66,35 +66,37 @@ export default {
                                     }
                                 })
                         }
-                        /*for (let j = 0; j < this.existingProducts.length; j++) {
-                            var temp1 = this.existingProducts[j];
-                            database.collection("products")
-                                .doc(temp1)
-                                .get()
-                                .then((pdtInfo) => {
-                                    console.log(typeof pdtInfo.get("category"));
-                                    var cat = pdtInfo.get("category");
-                                    if (cat == 'top') {
-                                        totalSum['Tops'] += 1;
-                                    } else if (cat == 'bottoms') {
-                                        totalSum['Bottoms'] += 1;
-                                    } else if (cat == 'dress') {
-                                        totalSum['Dresses'] += 1;
-                                    } else {
-                                        totalSum['Accessories'] += 1;
+
+                        database
+                            .collection("products")
+                            .get()
+                            .then((snap) => {
+                                snap.docs.forEach((doc) => {
+                                    if (this.existingProducts.includes(doc.id)) {
+                                        console.log(doc.get("category"));
+                                        var cat = doc.get("category");
+                                        if (cat == 'top') {
+                                            totalSum['Tops'] += 1;
+                                        } else if (cat == 'bottoms') {
+                                            totalSum['Bottoms'] += 1;
+                                        } else if (cat == 'dress') {
+                                            totalSum['Dresses'] += 1;
+                                            //console.log(totalSum['Dresses']);
+                                        } else {
+                                            totalSum['Accessories'] += 1;
+                                        }
                                     }
                                 })
-                        }*/
-                        //database.collection('products').where("category", "==", "top").get().then((snapshot) => { console.log(snapshot.size); })
-
-                        console.log(totalSum);
+                            })
 
                         for (var info in totalSum) {
+                            console.log(totalSum);
                             this.datacollection.datasets[0].data.push(totalSum[info])
                             this.datacollection.labels.push(info)
                         }
 
                         this.renderChart(this.datacollection, this.options)
+                        //console.log(totalSum);
                     })
             }
         },
