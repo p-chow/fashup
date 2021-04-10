@@ -10,7 +10,7 @@
         <h1>{{ this.userData.Name }}'s Products</h1>
         <ul id="products">
           <li v-for="product in products" v-bind:key="product.id">
-            <p v-bind:docid="product[0]" v-on:click="redirectToProduct($event)">
+            <p id= "itemtitle" v-bind:docid="product[0]" v-on:click="redirectToProduct($event)">
               {{ product[3] }}
             </p>
             <br />
@@ -61,18 +61,6 @@ export default {
     NavBar,
   },
   methods: {
-    // getUserName() {
-    //   database
-    //     .collection("users")
-    //     .get()
-    //     .then((snapshot) => {
-    //       snapshot.docs.forEach((doc) => {
-    //         if (doc.id === this.user_id) {
-    //           this.name = doc.get("Name");
-    //         }
-    //       });
-    //     });
-    // },
     getProductsListed: function() {
       const user = fbase.currentUser;
       if (user) {
@@ -265,6 +253,9 @@ li {
 img {
   width: 135px;
   height: 135px;
+}
+#itemtitle:hover {
+  color: #D4A373;
 }
 
 button {
