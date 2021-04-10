@@ -87,15 +87,18 @@ export default {
                                         }
                                     }
                                 })
+
+                                console.log(totalSum);
+                                for (var info in totalSum) {
+
+                                    this.datacollection.datasets[0].data.push(totalSum[info])
+                                    this.datacollection.labels.push(info)
+                                }
+
+                                this.renderChart(this.datacollection, this.options)
                             })
 
-                        for (var info in totalSum) {
-                            console.log(totalSum);
-                            this.datacollection.datasets[0].data.push(totalSum[info])
-                            this.datacollection.labels.push(info)
-                        }
 
-                        this.renderChart(this.datacollection, this.options)
                         //console.log(totalSum);
                     })
             }
