@@ -51,6 +51,7 @@
           <ul id="productsSold">
             <li v-for="product in productsSold" v-bind:key="product.id">
               <p
+                id= "itemtitle"
                 v-bind:docid="product[0]"
                 v-on:click="redirectToProduct($event)"
               >
