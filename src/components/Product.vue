@@ -25,8 +25,8 @@
       </p>
 
       <br />
-      <button v-on:click="updateWishList(product[1])">Add to Wishlist</button>
-      <button v-on:click="telehandlePopUp(product[0])">Buy it!</button><br />
+      <button v-show="this.product[0].sold == false" v-on:click="updateWishList(product[1])">Add to Wishlist</button>
+      <button v-show="this.product[0].sold == false" v-on:click="telehandlePopUp(product[0])">Buy it!</button><br />
     </div>
   </div>
 </template>
