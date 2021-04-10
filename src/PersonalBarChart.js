@@ -8,7 +8,7 @@ export default {
     return {
       currUserId: [],
       userData: {},
-      allProducts: [],
+      existingProducts: [],
       productsSold: [],
       datacollection: {
         labels: [],
