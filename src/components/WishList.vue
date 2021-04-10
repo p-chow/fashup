@@ -124,19 +124,21 @@ export default {
       const user = fbase.currentUser;
       if (user) {
         let itemId = event.target.getAttribute("id");
+		console.log(itemId)
         for (var i = 0; i < this.wishList.length; i++) {
-          if (this.wishList[i] != itemId) {
+          if (this.wishList[i] !== itemId) {
             this.newWL.push(this.wishList[i]);
           }
         }
+		this.wishList = this.newWL
         console.log(this.newWL);
         database
           .collection("users")
           .doc(user.uid)
           .update({
-            wishList: this.newWL,
-          });
-        this.delete = true;
+            wishlist: this.newWL,
+          }).then(()=> location.reload())
+        //this.delete = true;
       }
       //   EventUpdateWl.$emit("new-wishlist", [this.doc_id, this.delete]).then(
       //     this.pushtoPersonal()
