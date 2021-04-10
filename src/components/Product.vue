@@ -93,7 +93,7 @@ export default {
       //}
     },
     telehandlePopUp: function (product) {
-      alert("Message me " + product.telehandle + "! :)");
+      alert("Contact me on Telegram @" + product.telehandle + " ! :)");
     },
     // pushtoShop() {
     //   this.$router.push({
