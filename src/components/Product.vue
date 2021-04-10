@@ -52,7 +52,7 @@ export default {
     docId: String,
   },
   methods: {
-    fetchProduct: function() {
+    fetchProduct: function () {
       const user = fbase.currentUser;
       if (user) {
         //console.log(this.doc_id);
@@ -65,22 +65,34 @@ export default {
           });
       }
     },
-    updateWishList: function(productId) {
+    updateWishList: function (productId) {
       var user = fbase.currentUser;
       //console.log(this.userId);
       if (user) {
         database
           .collection("users")
           .doc(user.uid)
-          .update({
-            wishlist: fv.arrayUnion(productId),
+          .get()
+          .then((doc) => {
+            if (doc.data().wishlist.includes(productId) == false) {
+              console.log(doc.data().wishlist.includes(productId));
+              database
+                .collection("users")
+                .doc(user.uid)
+                .update({
+                  wishlist: fv.arrayUnion(productId),
+                });
+              alert("Added to your wishlist!");
+            } else {
+              alert("Already in your wishlist.");
+            }
           });
-        alert("Added to your wishlist!");
-      } else {
-        alert("Please log into your account to add items to your wishlist");
       }
+      //} else {
+      //alert("Please log into your account to add items to your wishlist");
+      //}
     },
-    telehandlePopUp: function(product) {
+    telehandlePopUp: function (product) {
       alert("Message me " + product.telehandle + "! :)");
     },
     // pushtoShop() {
