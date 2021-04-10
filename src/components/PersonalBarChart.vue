@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BarChart></BarChart>
+    <BarChart id="bc"></BarChart>
   </div>
 </template>
 
@@ -13,4 +13,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#bc {
+  width: 75vw;
+  padding-left: 10vw;
+}
+</style>

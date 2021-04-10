@@ -14,7 +14,7 @@ export default {
         labels: [],
         datasets: [{
           label: "Quantity",
-          backgroundColor: ['blue', 'green'],
+          backgroundColor: ['darkkhaki', 'green'],
           data: []
         }]
       },
