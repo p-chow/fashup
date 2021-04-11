@@ -153,6 +153,7 @@ export default {
     },
     redirectToProduct(event) {
       let doc_id = event.target.getAttribute("docid");
+      console.log(doc_id)
       this.$router.push({
         name: "product",
         params: { docId: doc_id },
@@ -291,38 +292,13 @@ export default {
 };
 </script>
 <style scoped>
-/*#navbar1 {
-  float: left;
-  width: 20vw;
-  max-width: 100%;
-  height: 100vh;
-  font-size: 35px;
-  background: rgb(222, 255, 255);
-  padding-left: 20px;
-  padding-top: 100px;
-  display: table;
-}*/
-/* #navbar2 {
-  font-size: 15px;
-  padding: 38px;
-  padding-top: 1px;
-  background: rgb(182, 243, 238);
-  margin-top: 1cm;
-  display: table-cell;
-} */
-
 #personal {
   background-color: #fffdf2;
   height: 100%;
 }
 
 #navbar2 {
-  width: 300px;
-  height: 1000px;
-  padding: 10px;
-  float: left;
-  font-size: 20px;
-  text-align: left;
+  float: center;
 }
 /*#wishlist {
   font-size: 25px;
@@ -334,18 +310,19 @@ img {
   float: left;
 }
 
+
 ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
 }
+
 li {
-  flex-grow: 1;
   flex-basis: 300px;
   text-align: center;
-  padding: 10px;
   border: 1px solid #222;
+  padding: 10px;
   margin: 10px;
 }
 
