@@ -4,10 +4,12 @@
       <NavBar></NavBar>
       <nav2 id="navbar2">
         <br />
-        <h1 id="welcome">Welcome {{ this.userData.DisplayName }} !</h1>
-
-        <div id="products">
-          <h1>{{ this.userData.Name }}'s Products</h1>
+		<img id="profilepic" ALIGN="left" v-bind:src = "this.userData.ProfilePic"> 
+		<img id="profilepic2" ALIGN="right" v-bind:src = "this.userData.ProfilePic">
+        <h1 id="welcome">
+				Welcome {{ this.userData.DisplayName }}! </h1>  
+        <br> <div id="products">
+          <h1 id = "username">{{ this.userData.Name }}'s Products</h1>
           <ul id="productsListed">
             <li v-for="product in productsListed" v-bind:key="product.id">
               <p 
@@ -296,21 +298,38 @@ export default {
   background-color: #fffdf2;
   height: 100%;
 }
-
+#products {
+	float: center;
+}
 #navbar2 {
   float: center;
+}
+#username{
+	margin-left: 11.5cm;
 }
 /*#wishlist {
   font-size: 25px;
   text-decoration-line: none;
   color: rgb(34, 150, 158);
 }*/
+#profilepic{
+	margin-left: 8cm;
+	border-radius: 5px 300px 3px 300px;
+	float: left
+}
+#profilepic2{
+	float: right;
+	border-radius: 5px 300px 3px 300px;
+	transform: scaleX(-1);
+	margin-right: 8cm;
+}
 img {
   width: 300px;
   float: left;
 }
-
-
+h1{
+	margin-right: 10cm;
+}
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -333,7 +352,9 @@ img {
 #itemtitle:hover {
   color: #D4A373;
 }
-
+#welcome{
+	vertical-align: middle;
+}
 button {
   background-color: #f3cfab;
   border-color:  #f3cfab;
