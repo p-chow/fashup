@@ -51,15 +51,14 @@ export default {
   data() {
     return {
       urls: [
-        "https://www.publicdomainpictures.net/pictures/40000/nahled/purple-polka-dot-background.jpg",
-        "https://www.publicdomainpictures.net/pictures/40000/velka/aqua-polka-dot-background.jpg",
-        "https://www.publicdomainpictures.net/pictures/40000/nahled/hot-pink-polka-dot-background.jpg",
-        "https://i.pinimg.com/originals/96/3d/da/963dda7bc7cbdd94c798fa120dc42444.jpg",
-        "https://www.publicdomainpictures.net/pictures/40000/velka/blue-polka-dot-background.jpg",
-        "https://i.pinimg.com/originals/80/1d/6e/801d6e859437958416507dc9e3c09f22.jpg",
+        "https://previews.123rf.com/images/knstart/knstart1905/knstart190500045/122551365-modern-art-seamless-pattern-with-abstract-shapes-vector-clip-art.jpg",
+        "https://previews.123rf.com/images/lenanikolaeva/lenanikolaeva1812/lenanikolaeva181200171/114154362-simple-seamless-pattern-with-colorful-abstract-shapes-navy-grenn-and-pink-creative-geometric-backgro.jpg",
+        "https://thumbs.dreamstime.com/b/little-flower-seamless-pattern-vintage-scandinavian-minimalism-aesthetic-retro-background-nature-fantasy-plant-floral-retro-180080548.jpg",
+        "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
+        "https://wallpaperaccess.com/full/4827438.jpg"
       ],
       imageSource:
-        "https://www.publicdomainpictures.net/pictures/40000/nahled/purple-polka-dot-background.jpg",
+        "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
     };
   },
   components: {
@@ -193,14 +192,14 @@ export default {
 </script>
 <style scoped>
 #signup {
-  color: blue;
+  color: #b88b5e;
   width: 100%;
   float: center;
   max-width: 100%;
   margin-top: -30px;
   box-sizing: border-box;
   font-size: 20px;
-  background-color: rgb(209, 233, 255);
+  background-color: #fffdf2;
 }
 
 label {
@@ -227,7 +226,7 @@ input {
 }
 
 button {
-  background-color: rgb(140, 228, 255);
+  background-color: #f3cfab;
   font-style: italic;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   width: 100px;
@@ -239,7 +238,7 @@ button {
   margin-top: 5px;
   box-sizing: border-box;
   border-radius: 10px;
-  border-color: rgb(140, 228, 255);
+  border-color: #f3cfab;
 }
 
 #imagedp {
@@ -255,8 +254,8 @@ button {
 #bgchange {
   margin-right: 13cm;
   border-radius: 40px;
-  background-color: rgb(177, 234, 236);
-  border-color: rgb(177, 234, 236);
+  background-color:#f3cfab;
+  border-color:#f3cfab;
 }
 
 p {
