@@ -13,7 +13,7 @@
     <br /><br /><br /><br />
     <h3>
       <router-link to="/signup">Sign up</router-link> if you don't have an
-      accout.
+      account.
     </h3>
   </div>
 </template>

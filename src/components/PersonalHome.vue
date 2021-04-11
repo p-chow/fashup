@@ -9,7 +9,7 @@
         <h1 id="welcome">
 				Welcome {{ this.userData.DisplayName }}! </h1>  
         <br> <div id="products">
-          <h1 id = "username">{{ this.userData.Name }}'s Products</h1>
+          <h1 id = "username">{{ this.userData.DisplayName }}'s Products</h1>
           <ul id="productsListed">
             <li v-for="product in productsListed" v-bind:key="product.id">
               <p 
@@ -49,7 +49,7 @@
             </li>
           </ul>
 
-          <h1>{{ this.userData.Name }}'s Sold Products</h1>
+          <h1 id="username">{{ this.userData.DisplayName }}'s Sold Products</h1>
           <ul id="productsSold">
             <li v-for="product in productsSold" v-bind:key="product.id">
               <p
@@ -305,7 +305,11 @@ export default {
   float: center;
 }
 #username{
-	margin-left: 11.5cm;
+align-self: center;
+  /* border-top: #222 solid 1px;
+  border-bottom: #222 solid 1px; */
+  font-size: 30px;
+   background-color: #FAEDCD;
 }
 /*#wishlist {
   font-size: 25px;
@@ -326,10 +330,12 @@ export default {
 img {
   width: 300px;
   float: left;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  object-fit: cover;
 }
-h1{
-	margin-right: 10cm;
-}
+
 ul {
   display: flex;
   flex-wrap: wrap;

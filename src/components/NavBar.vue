@@ -193,7 +193,6 @@ li {
   text-decoration: none;
   display: block;
   text-align: left;
-  margin-right: 1cm;
 }
 
 .dropdown:hover .dropdown-content {
@@ -216,7 +215,6 @@ li {
 } */
 
 .dropdown {
-  right:-4cm;
   text-align: center;
   padding: 1px;
 }
@@ -230,7 +228,7 @@ li {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 140px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   font-size: 15px;
