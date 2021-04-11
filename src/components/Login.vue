@@ -125,19 +125,19 @@ export default {
 
 <style scoped>
 #login {
-  color: rgb(34, 150, 158);
+  color: black;
   width: auto;
   height: 100vh;
   float: center;
   box-sizing: border-box;
   font-size: 20px;
   margin-left: 2px;
-  background-color: rgb(182, 243, 238);
+  background-color: #FFFDF2;
 }
 
 button {
-  background-color: rgb(140, 228, 255);
-  border-color: rgb(140, 228, 255);
+  background-color: #f0deb0;
+  border-color: #f0deb0;
   width: 110px;
   height: 40px;
   font-size: 13px;
@@ -150,8 +150,6 @@ button {
   box-sizing: border-box;
   border-radius: 10px;
   border-width: 1px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   font-style: italic;
 }
 

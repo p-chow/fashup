@@ -175,6 +175,7 @@ export default {
         .get()
         .then((snapshot) => {
           snapshot.docs.forEach((doc) => {
+            if (!doc.get("sold")) {
             let data = doc.data();
             let category = data["category"];
             let dressocc = data["dressocc"];
@@ -220,6 +221,7 @@ export default {
             //this.getImages();
             //this.getImages();
             console.log(newitem);
+			}
           });
           console.log(this.picUrlsAndTitle);
         });
