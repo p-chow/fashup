@@ -1,24 +1,26 @@
 <template>
   <section id="changepw">
     <NavBar></NavBar>
-    <nav2 id="nav2">
+    <div id="content">
       <br /><br /><br />
       <label for="email" id="emailaddress">Email Address: </label>
-      <input type="text" id="email" name="email" /> 
-      <p></p>
+      <input type="text" id="email" name="email" />
+      <br /><br />
       <br /><br />
       <label for="pw" id="password">New Password: </label>
       <input type="password" id="pw" name="pw" v-on:change="check()" />
-      <br><p id="passwordcheck"></p>
+      <br />
+      <p id="passwordcheck"></p>
       <br />
       <label for="cpw" id="confirm">Confirm Password: </label>
       <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
-      <br><p id="matching"></p>
+      <br />
+      <p id="matching"></p>
       <button v-on:click="reset()" type="button">Change Password</button>
       <p v-show="this.changed">
-        Your password has been successfully updated! 
+        Your password has been successfully updated!
       </p>
-    </nav2>
+    </div>
   </section>
 </template>
 
@@ -113,7 +115,7 @@ export default {
           .then(() => {
             //alert("Updated password successfully");
           })
-          .catch(function (error) {
+          .catch(function(error) {
             alert(error);
           });
         //   //database
@@ -176,7 +178,8 @@ export default {
 <style scoped>
 #changepw {
   height: auto;
-  background-color: #FFFDF2;
+  min-height: 100vh;
+  background-color: #fffdf2;
 }
 
 label {
@@ -186,8 +189,8 @@ label {
   margin-left: 280px;
   font-size: 25px;
   text-align: left;
-  padding-bottom:3px;
-  margin-bottom:5px;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 input {
@@ -195,28 +198,26 @@ input {
   flex: 0 0 200px;
   width: 350px;
   padding-bottom: 10px;
-  border:black solid 1px;
+  border: black solid 1px;
   size: 15px;
   width: 400px;
   height: 28px;
   border-radius: 25px;
   background-color: white;
-    margin-left: 350px;
+  margin-left: 350px;
   float: left;
-  
 }
 
-#nav2 {
+#content {
   font-size: 15px;
-  padding: 38px;
-  width: 65vw;
+  padding-left: 20vw;
   padding-top: 1px;
-  background: #FFFDF2;
+  background: #fffdf2;
   margin-top: 1cm;
 }
 
 button {
-	background-color: #CCD5AE;
+  background-color: #ccd5ae;
   width: 100px;
   height: 50px;
   float: none;
@@ -231,11 +232,11 @@ button {
 }
 
 button:hover {
-  border: 2px solid #CCD5AE;
-  background-color: #CCD5AE;
+  border: 2px solid #ccd5ae;
+  background-color: #ccd5ae;
   color: white;
-  border-color: #CCD5AE;
-  width:100px;
+  border-color: #ccd5ae;
+  width: 100px;
 }
 
 p {
@@ -244,5 +245,4 @@ p {
   text-align: left;
   margin-left: 350px;
 }
-
 </style>
