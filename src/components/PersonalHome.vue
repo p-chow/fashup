@@ -33,7 +33,7 @@
               >
                 Remove product
               </button>
-              <br />
+              
               <button
                 type="button"
                 v-bind:docid="product[0]"
