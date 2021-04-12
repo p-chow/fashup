@@ -1,6 +1,6 @@
 <template>
   <div class="chart">
-    <h2 class="title">COMMUNITY DASHBOARD</h2>
+    <h2 class="title">LEARN</h2>
     <div id="info">
       <h3>
         Singapore is working towards becoming a Zero Waste Nation which we can

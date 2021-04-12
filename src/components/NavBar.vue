@@ -62,7 +62,7 @@
 			</a>
             <a href="#">
 				<router-link to='/communitystats' exact class="droplabel">
-				Community Dashboard
+				Learn
 				</router-link>
 			</a>
             <a href="#">
