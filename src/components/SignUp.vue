@@ -91,18 +91,22 @@ export default {
       if (password.length < 8) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must be more than 8 characters";
+		return false;
       }
       if (this.hasNumber(password) === false) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must contain at least 1 numeric digit";
+		return false;
       }
       if (this.containsUppercase(password) === false) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must contain at least 1 uppercase character";
+		return false;
       }
       if (this.containsLowerCase(password) === false) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must contain at least 1 lowercase character";
+		return false;
       }
       if (
         password.length >= 8 &&
@@ -111,6 +115,7 @@ export default {
         this.containsLowerCase(password)
       ) {
         document.getElementById("passwordcheck").innerHTML = "";
+		return true
       }
     },
     matched() {
@@ -119,8 +124,10 @@ export default {
       if (password !== confirmedpw) {
         document.getElementById("matching").innerHTML =
           "Password does not match";
+		return false
       } else {
         document.getElementById("matching").innerHTML = " ";
+		return true;
       }
     },
     colourchange() {
@@ -152,6 +159,10 @@ export default {
     createacc() {
       if (this.fieldsFilled() === false) {
         alert("All fields must be filled.");
+      } else if (!this.check()) {
+		alert("Password requirements not fulfilled. Password needs to have at least 8 characters, with at least 1 lowercase, 1 uppercase and 1 numeric character.")
+      } else if (!this.matched()){
+		alert("Password do not match")
       } else {
         var firstname = document.getElementById("fname").value;
         var lastname = document.getElementById("lname").value;
