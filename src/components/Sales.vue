@@ -42,6 +42,7 @@ export default {
 #ann {
   height: 100vh;
 }
+
 .title {
   border-bottom: 1px solid black;
   padding-top: 25px;
