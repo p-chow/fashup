@@ -13,11 +13,11 @@
             X
           </button>
           <br />
-          {{ item[1] }} <br />
+          <div class="itemtitle" v-bind:id="item[0]"
+            v-on:click="redirectToProduct($event)"> 
+          {{ item[1] }} </div>
           <br />
           <img
-            v-bind:id="item[0]"
-            v-on:click="redirectToProduct($event)"
             v-bind:src="item[2]"
           />
           <br />
@@ -238,7 +238,9 @@ img {
   width: 135px;
   height: 135px;
 }
-
+.itemtitle:hover{
+	color:#D4A373 ;
+}
 button {
   float: right;
 }
