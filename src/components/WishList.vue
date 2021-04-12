@@ -178,12 +178,11 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 #wish {
   height: auto;
   min-height: 100vh;
-  /* max-width: 100%;
-  /* float: left; */
   font-size: 20px;
   background-color: #fffdf2;
 }
@@ -226,13 +225,7 @@ li {
   margin: 10px;
 }
 
-/* ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  padding: 0;
-}
-li {
+/*li {
   flex-grow: 1;
   flex-basis: 300px;
   text-align: center;
@@ -240,10 +233,12 @@ li {
   border: 1px solid #222;
   margin: 10px;
 } */
+
 img {
   width: 135px;
   height: 135px;
 }
+
 button {
   float: right;
 }
