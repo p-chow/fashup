@@ -34,7 +34,7 @@
       <br />
       <ul>
         <li>
-          <a href="https://www.greensquare.com.sg"> Greensquare </a>
+          <a href="https://www.greensquare.com.sg" target="_blank"> Greensquare </a>
           <br />
           <img
             id="greensquare"
@@ -42,7 +42,7 @@
           />
         </li>
         <li>
-          <a href="https://www.salvationarmy.org/singapore/dik_fts">
+          <a href="https://www.salvationarmy.org/singapore/dik_fts" target="_blank">
             Salvation Army
           </a>
           <br />
@@ -53,7 +53,7 @@
           />
         </li>
         <li>
-          <a href="https://www.se.minds.org.sg/minds-shop"> MINDS </a>
+          <a href="https://www.se.minds.org.sg/minds-shop" target="_blank"> MINDS </a>
           <br />
           <br />
           <img
@@ -62,7 +62,7 @@
           />
         </li>
         <li>
-          <a href="https://www.facebook.com/SSVPSHOPSINGAPORE"> SSVP Shop </a>
+          <a href="https://www.facebook.com/SSVPSHOPSINGAPORE" target="_blank"> SSVP Shop </a>
           <br />
           <br />
           <img
@@ -71,7 +71,7 @@
           />
         </li>
         <li>
-          <a href="https://www.metta.org.sg/"> Metta Welfare Association </a>
+          <a href="https://www.metta.org.sg/" target="_blank"> Metta Welfare Association </a>
           <br />
           <br />
           <img
@@ -80,7 +80,7 @@
           />
         </li>
         <li>
-          <a href="www.passiton.org.sg"> Pass It On </a>
+          <a href="https://www.passiton.org.sg" target="_blank"> Pass It On </a>
           <br />
           <br />
           <img
