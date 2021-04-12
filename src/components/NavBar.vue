@@ -5,14 +5,13 @@
         <li>
           <router-link to="/" exact v-show="!this.login" class="label"> 
           <p class="label">Home </p></router-link>
-          <div class="dropdown">
+          <div class="dropdown" v-show="this.login">
           <router-link to="/Personal" exact v-show="this.login" class="label">
             <p class="label">{{ this.userData.DisplayName }}'s Home</p>
-			
+			</router-link>
             <!-- //<span @click="pushtoPersonal()"
               >{{ this.userData.DisplayName }}'s Home</span
             > -->
-          </router-link>
           <div class="dropdown-content">
             <a href="#">
 				<router-link to="/Personal" id="profile">
