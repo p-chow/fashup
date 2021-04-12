@@ -124,20 +124,21 @@ export default {
       const user = fbase.currentUser;
       if (user) {
         let itemId = event.target.getAttribute("id");
-		console.log(itemId)
+        console.log(itemId);
         for (var i = 0; i < this.wishList.length; i++) {
           if (this.wishList[i] !== itemId) {
             this.newWL.push(this.wishList[i]);
           }
         }
-		this.wishList = this.newWL
+        this.wishList = this.newWL;
         console.log(this.newWL);
         database
           .collection("users")
           .doc(user.uid)
           .update({
             wishlist: this.newWL,
-          }).then(()=> location.reload())
+          })
+          .then(() => location.reload());
         //this.delete = true;
       }
       //   EventUpdateWl.$emit("new-wishlist", [this.doc_id, this.delete]).then(
@@ -177,20 +178,20 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 #wish {
   height: auto;
-  /* max-width: 100%;
-  /* float: left; */
+  min-height: 100vh;
   font-size: 20px;
-  background-color: #FFFDF2;
+  background-color: #fffdf2;
 }
 
-.title{
+.title {
   border-bottom: 1px solid black;
-  padding-top:25px;
+  padding-top: 25px;
   padding-bottom: 50px;
-  font-size:25px;
+  font-size: 25px;
 }
 
 #nav2 {
@@ -224,13 +225,7 @@ li {
   margin: 10px;
 }
 
-/* ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  padding: 0;
-}
-li {
+/*li {
   flex-grow: 1;
   flex-basis: 300px;
   text-align: center;
@@ -238,10 +233,12 @@ li {
   border: 1px solid #222;
   margin: 10px;
 } */
+
 img {
   width: 135px;
   height: 135px;
 }
+
 button {
   float: right;
 }
