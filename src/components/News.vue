@@ -9,7 +9,7 @@
             <div class="fill"><img v-bind:src="item.imageURL" /></div>
             <div class="container">
               <a id="src">{{item.source}}</a>
-              <a v-bind:href="item.url" id="url">{{ item.name }}</a>
+              <a v-bind:href="item.url" id="url" target="_blank">{{ item.name }}</a>
             </div>
           </div>
         </li>
