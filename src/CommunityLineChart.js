@@ -8,7 +8,7 @@ export default {
       datacollection: {
         labels: [],
         datasets: [{
-          backgroundColor: "006d77",
+          backgroundColor: "#006d77",
           data: [],
           fill: false
         }]
