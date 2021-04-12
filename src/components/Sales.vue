@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="ann">
     <NavBar></NavBar>
     <h2 class="title">A N N O U N C E M E N T</h2>
 
@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style scoped>
+#ann {
+  height: 100vh;
+}
 .title {
   border-bottom: 1px solid black;
   padding-top: 25px;
