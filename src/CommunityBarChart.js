@@ -9,8 +9,8 @@ export default {
         labels: [],
         datasets: [{
           label: "Population (millions)",
-          backgroundColor: ["006d77", "83c5be", "edf6f9", "ffddd2", "e29578", "f6bd60", "f7ede2", "f5cac3",
-            "84a59d", "f28482", "006d77", "83c5be", "edf6f9"],
+          backgroundColor: ["#006d77", "#83c5be", "#edf6f9", "#ffddd2", "#e29578", "#f6bd60", "#f7ede2", "#f5cac3",
+            "#84a59d", "#f28482", "#006d77", "#83c5be", "#edf6f9"],
           data: []
         }]
       },
