@@ -56,11 +56,11 @@ export default {
                                     if (this.existingProducts.includes(doc.id)) {
                                         console.log(doc.get("category"));
                                         var cat = doc.get("category");
-                                        if (cat == 'top') {
+                                        if (cat == 'Tops') {
                                             totalSum['Tops'] += 1;
-                                        } else if (cat == 'bottoms') {
+                                        } else if (cat == 'Bottoms') {
                                             totalSum['Bottoms'] += 1;
-                                        } else if (cat == 'dress') {
+                                        } else if (cat == 'Dress') {
                                             totalSum['Dresses'] += 1;
                                             //console.log(totalSum['Dresses']);
                                         } else {
@@ -70,11 +70,11 @@ export default {
                                     if (this.productsSold.includes(doc.id)) {
                                         console.log(doc.get("category"));
                                         var cat1 = doc.get("category");
-                                        if (cat1 == 'top') {
+                                        if (cat1 == 'Tops') {
                                             totalSum['Tops'] += 1;
-                                        } else if (cat1 == 'bottoms') {
+                                        } else if (cat1 == 'Bottoms') {
                                             totalSum['Bottoms'] += 1;
-                                        } else if (cat1 == 'dress') {
+                                        } else if (cat1 == 'Dress') {
                                             totalSum['Dresses'] += 1;
                                         } else {
                                             totalSum['Accessories'] += 1;
