@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <NavBar></NavBar>
-    <br><br><br><br>
+    <br><br><br>
     <h3>Ready to start shopping/selling?</h3>
     <br>
     <label for="email">Email </label><br />
