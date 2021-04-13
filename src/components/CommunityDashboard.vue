@@ -1,13 +1,15 @@
 <template>
   <div class="chart">
-    <h2 class="title">LEARN</h2>
+    <h2 class="title">L E A R N</h2>
     <div id="info">
+      <br />
       <h3>
         Singapore is working towards becoming a Zero Waste Nation which we can
         help by reducing our consumption.
         <br />
         <br />Reduce, Reuse, Recycle and Donate.
       </h3>
+      <br />
     </div>
     <div id="video">
       <h3>Learn what you can and cannot recycle in 3 mins!</h3>
@@ -34,7 +36,9 @@
       <br />
       <ul>
         <li>
-          <a href="https://www.greensquare.com.sg" target="_blank"> Greensquare </a>
+          <a href="https://www.greensquare.com.sg" target="_blank">
+            Greensquare
+          </a>
           <br />
           <img
             id="greensquare"
@@ -42,7 +46,10 @@
           />
         </li>
         <li>
-          <a href="https://www.salvationarmy.org/singapore/dik_fts" target="_blank">
+          <a
+            href="https://www.salvationarmy.org/singapore/dik_fts"
+            target="_blank"
+          >
             Salvation Army
           </a>
           <br />
@@ -53,7 +60,9 @@
           />
         </li>
         <li>
-          <a href="https://www.se.minds.org.sg/minds-shop" target="_blank"> MINDS </a>
+          <a href="https://www.se.minds.org.sg/minds-shop" target="_blank">
+            MINDS
+          </a>
           <br />
           <br />
           <img
@@ -62,7 +71,9 @@
           />
         </li>
         <li>
-          <a href="https://www.facebook.com/SSVPSHOPSINGAPORE" target="_blank"> SSVP Shop </a>
+          <a href="https://www.facebook.com/SSVPSHOPSINGAPORE" target="_blank">
+            SSVP Shop
+          </a>
           <br />
           <br />
           <img
@@ -71,7 +82,9 @@
           />
         </li>
         <li>
-          <a href="https://www.metta.org.sg/" target="_blank"> Metta Welfare Association </a>
+          <a href="https://www.metta.org.sg/" target="_blank">
+            Metta Welfare Association
+          </a>
           <br />
           <br />
           <img
@@ -128,7 +141,7 @@ export default {
 }
 
 #contacts {
-  background-color: #faedcd;
+  background-color: white;
   padding-top: 25px;
   padding-bottom: 50px;
   color: #d4a373;
