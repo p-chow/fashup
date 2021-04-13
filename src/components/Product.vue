@@ -25,6 +25,7 @@
         }}
       </p>
       <br />
+      <button v-show="this.belongs" v-bind:docid="product[1]" v-on:click="updateProduct(pressed($event))">Edit</button>
       <button v-show="this.product[0].sold == false" v-on:click="updateWishList(product[1])">Add to Wishlist</button>
       <button v-show="this.product[0].sold == false" v-on:click="telehandlePopUp(product[0])">Buy it!</button><br />
       <p id="sold" v-show="this.product[0].sold == true">SOLD!</p><br />
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       product: [],
+      belongs: false
       //userId: this.$route.params.user,
     };
   },
@@ -50,7 +52,7 @@ export default {
     NavBar,
   },
   props: {
-    docId: String,
+    docId: String
   },
   methods: {
     fetchProduct: function () {
@@ -114,9 +116,23 @@ export default {
           .then((doc) => {
             this.userData = doc.data();
             this.userData.id = doc.id;
+            if (this.userData.productsListed.includes(this.docId)) {
+              this.belongs = true;
+            }
           });
       }
     },
+    pressed(event) {
+      let doc_id = event.target.getAttribute("docid");
+      console.log(doc_id);
+      this.$router.push({
+        name: "editproduct",
+        params: {
+          docId: doc_id,
+          // user: this.$route.params.id
+        },
+      });
+    }
   },
   created() {
     this.fetchProduct();
