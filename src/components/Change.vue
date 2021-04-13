@@ -3,16 +3,16 @@
     <NavBar></NavBar>
     <div id="content">
       <br /><br /><br />
-      <label for="email" id="emailaddress">Email Address: </label>
+      <label for="email" id="emailaddress">Email </label>
       <input type="text" id="email" name="email" />
       <br /><br />
       <br /><br />
-      <label for="pw" id="password">New Password: </label>
+      <label for="pw" id="password">New Password </label>
       <input type="password" id="pw" name="pw" v-on:change="check()" />
       <br />
       <p id="passwordcheck"></p>
       <br />
-      <label for="cpw" id="confirm">Confirm Password: </label>
+      <label for="cpw" id="confirm">Confirm Password </label>
       <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
       <br />
       <p id="matching"></p>
@@ -217,7 +217,7 @@ input {
 }
 
 button {
-  background-color: #ccd5ae;
+  background-color: #f3cfab;
   width: 100px;
   height: 50px;
   float: none;
@@ -232,11 +232,11 @@ button {
 }
 
 button:hover {
-  border: 2px solid #ccd5ae;
-  background-color: #ccd5ae;
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
   color: white;
-  border-color: #ccd5ae;
-  width: 100px;
+  border-color: #f3cfab;
+  width:100px;
 }
 
 p {

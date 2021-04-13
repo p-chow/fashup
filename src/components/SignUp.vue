@@ -6,31 +6,30 @@
       <br />
       <img :src="imageSource" ALIGN="left" id="imagedp" /> <br clear="center" />
       <br />
-      <label for="fname">First Name : </label>
+      <label for="fname">First Name </label>
       <input type="text" id="fname" name="fname" /> <br />
       <br />
-      <label for="lname">Last Name : </label>
+      <label for="lname">Last Name </label>
       <input type="text" id="lname" name="lname" /> <br />
       <br />
-      <label for="dname">Display Name: </label>
+      <label for="dname">Display Name </label>
       <input type="text" id="dname" name="name" /> <br /><br />
-      <label for="email">Email: </label>
+      <label for="email">Email </label>
       <input type="text" id="email" name="email" /> <br /><br />
-      <label for="num">Contact No: </label>
+      <label for="num">Contact No </label>
       <input type="text" id="num" name="num" /> <br /><br />
-      <label for="pw">Password: </label>
+      <label for="pw">Password </label>
       <input type="password" id="pw" name="pw" v-on:change="check()" />
-      <p id="passwordcheck"></p>
-      <label for="cpw">Confirm Password: </label>
+      <p id="passwordcheck"></p><br>
+      <label for="cpw">Confirm Password </label>
       <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
       <p id="matching"></p>
-      <br /><br />
+      <br /><br>
       <button v-on:click="colourchange()" type="button" id="bgchange">
-        Switch Background
+        Switch
       </button>
-      <br />
       <button v-on:click="createacc()" type="button" id="account">
-        Create My FashUp!
+        Create
       </button>
       <br />
       <br />
@@ -202,12 +201,13 @@ export default {
 };
 </script>
 <style scoped>
+
 #signup {
   color: #b88b5e;
   width: 100%;
   float: center;
   max-width: 100%;
-  margin-top: -30px;
+  margin-top: 70px;
   box-sizing: border-box;
   font-size: 20px;
   background-color: #fffdf2;
@@ -226,7 +226,7 @@ label {
 }
 
 input {
-  border-block-color: rgb(0, 0, 0);
+  border-block-color: black;
   size: 15px;
   width: 200px;
   height: 23px;
@@ -238,8 +238,9 @@ input {
 
 button {
   background-color: #f3cfab;
-  font-style: italic;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
+  font-size: 20px;
   width: 100px;
   height: 40px;
   float: none;
@@ -252,6 +253,15 @@ button {
   border-color: #f3cfab;
 }
 
+button:hover {
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
+  color: white;
+  border-color: #f3cfab;
+  width:100px;
+}
+
+
 #imagedp {
   height: 410px;
   border-radius: 50%;
@@ -263,14 +273,30 @@ button {
 } */
 
 #bgchange {
-  margin-right: 13cm;
-  border-radius: 40px;
+  margin-right: 17%;
+  /* border-radius: 40px; */
   background-color:#f3cfab;
   border-color:#f3cfab;
+}
+
+#account {
+  margin-left: 15%;
 }
 
 p {
   font-size: 10px;
   color: black;
+}
+
+h3 {
+  color: #b88b5e;
+}
+
+a {
+  color: #b88b5e;
+}
+
+a:hover {
+  color: #f3cfab;
 }
 </style>

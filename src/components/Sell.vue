@@ -346,8 +346,8 @@ textarea{
 }
 
 button {
-  background-color: #E9EDC9;
-	border-color: #E9EDC9;
+  background-color: #faedcd;
+	border-color: #faedcd;
 	float:left;
 	padding: 10px;
   width:100px;
@@ -359,10 +359,10 @@ button {
 }
 
 button:hover {
-  border: 2px solid #CCD5AE;
-  background-color: #CCD5AE;
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
   color: white;
-  border-color: #CCD5AE;
+  border-color: #f3cfab;
   width:100px;
 }
 </style>
