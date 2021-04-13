@@ -22,23 +22,23 @@
       </div>
       <div v-on:click="seen2 = !seen2" class="filterTitle">  Category</div>
       <div v-if="seen2" id="hide" class="filter">
-        <input type="checkbox" id="top" value="top" v-model="cat" />  Top<br />
+        <input type="checkbox" id="top" value="Tops" v-model="cat" />  Tops<br />
         <input
           type="checkbox"
           id="bottoms"
-          value="bottoms"
+          value="Bottoms"
           v-model="cat"
         />  Bottoms<br />
         <input
           type="checkbox"
           id="dress"
-          value="dress"
+          value="Dress"
           v-model="cat"
         />  Dresses<br />
         <input
           type="checkbox"
           id="acc"
-          value="acc"
+          value="Accessories"
           v-model="cat"
         />  Accessories<br />
       </div>
@@ -47,48 +47,29 @@
         <input
           type="checkbox"
           id="formal"
-          value="formal"
+          value="Formal"
           v-model="occ"
         />  Formal<br />
         <input
           type="checkbox"
           id="casual"
-          value="casual"
+          value="Casual"
           v-model="occ"
         />  Casual<br />
       </div>
       <div v-on:click="seen4 = !seen4" class="filterTitle">Size</div>
       <div v-if="seen4" id="hide" class="filter">
-        <input type="checkbox" id="baby" value="baby" v-model="size" />  Baby
-        (Preemie, 0-24 months)<br />
-        <input
-          type="checkbox"
-          id="toddler"
-          value="toddler"
-          v-model="size"
-        />  Toddler (2T-6T)<br />
-        <input
-          type="checkbox"
-          id="littleK"
-          value="littleK"
-          v-model="size"
-        />  Little Kid (4-6X)<br />
-        <input type="checkbox" id="bigK" value="bigK" v-model="size" />  Big Kid
-        or Tween (7-16)<br />
-        <input type="checkbox" id="freeA" value="freeA" v-model="size" />  Free
-        Size (adults)<br />
-        <input type="checkbox" id="XXS" value="XXS" v-model="size" />  XXS / EU 32
-        / UK 4 / US 2<br />
-        <input type="checkbox" id="XS" value="XS" v-model="size" />  XS / EU 34 /
-        UK 6 / US 4<br />
-        <input type="checkbox" id="S" value="S" v-model="size" />  S / EU 36 / UK
-        8 / US 6<br />
-        <input type="checkbox" id="M" value="M" v-model="size" />  M / EU 38 / UK
-        10 / US 8<br />
-        <input type="checkbox" id="L" value="L" v-model="size" />  L / EU 40 / UK
-        12 / US 10<br />
-        <input type="checkbox" id="XL" value="XL" v-model="size" />  XL / EU 42 /
-        UK 14 / US 12<br />
+        <input type="checkbox" id="baby" value="Baby (Preemie, 0-24 months)" v-model="size" />  Baby (Preemie, 0-24 months)<br />
+        <input type="checkbox" id="toddler" value="Toddler (2T-6T)" v-model="size"/>  Toddler (2T-6T)<br />
+        <input type="checkbox" id="littleK" value="Little Kid (4-6X)" v-model="size"/>  Little Kid (4-6X)<br />
+        <input type="checkbox" id="bigK" value="Big Kid or Tween (7-16)" v-model="size" />  Big Kid or Tween (7-16)<br />
+        <input type="checkbox" id="freeA" value="Free Size (adults)" v-model="size" />  Free Size (adults)<br />
+        <input type="checkbox" id="XXS" value="XXS / EU 32 / UK 4 / US 2" v-model="size" />  XXS / EU 32 / UK 4 / US 2<br />
+        <input type="checkbox" id="XS" value="XS / EU 34 / UK 6 / US 4" v-model="size" />  XS / EU 34 / UK 6 / US 4<br />
+        <input type="checkbox" id="S" value="S / EU 36 / UK 8 / US 6" v-model="size" />  S / EU 36 / UK 8 / US 6<br />
+        <input type="checkbox" id="M" value="M / EU 38 / UK 10 / US 8" v-model="size" />  M / EU 38 / UK 10 / US 8<br />
+        <input type="checkbox" id="L" value="L / EU 40 / UK 12 / US 10" v-model="size" />  L / EU 40 / UK 12 / US 10<br />
+        <input type="checkbox" id="XL" value="XL / EU 42 / UK 14 / US 12" v-model="size" />  XL / EU 42 / UK 14 / US 12<br />
       </div>
       <div v-on:click="seen5 = !seen5" class="filterTitle">Price Range</div>
       <div v-if="seen5" id="hide" class="filter">

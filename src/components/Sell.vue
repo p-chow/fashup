@@ -37,10 +37,10 @@
           v-model.lazy="product.category"
           required
         >
-          <option value="top">Tops</option>
-          <option value="bottoms">Bottoms</option>
-          <option value="dress">Dress</option>
-          <option value="accesories">Accesories</option>
+          <option value="Tops">Tops</option>
+          <option value="Bottoms">Bottoms</option>
+          <option value="Dress">Dress</option>
+          <option value="Accesories">Accesories</option>
         </select>
         <br /><br />
         <label for="dressocc"> Dressing Occasion: </label><br />
@@ -50,8 +50,8 @@
           v-model.lazy="product.dressocc"
           required
         >
-          <option value="casual">Casual</option>
-          <option value="formal">Formal</option>
+          <option value="Casual">Casual</option>
+          <option value="Formal">Formal</option>
         </select>
         <br /><br />
         <label for="brand"> Brand: </label><br />
@@ -76,17 +76,17 @@
         <br /><br />
         <label for="size"> Size: </label><br />
         <select id="size" name="size" v-model.lazy="product.size" required>
-          <option value="baby">Baby (Preemie, 0-24 months)</option>
-          <option value="toddler">Toddler (2T-6T)</option>
-          <option value="littleK">Little Kid (4-6X)</option>
-          <option value="bigK">Big Kid or Tween (7-16)</option>
-          <option value="freeA">Free Size (adults)</option>
-          <option value="XXS">XXS / EU 32 / UK 4 / US 2</option>
-          <option value="XS">XS / EU 34 / UK 6 / US 4</option>
-          <option value="S">S / EU 36 / UK 8 / US 6</option>
-          <option value="M">M / EU 38 / UK 10 / US 8</option>
-          <option value="L">L / EU 40 / UK 12 / US 10</option>
-          <option value="XL">XL / EU 42 / UK 14 / US 12</option>
+          <option value="Baby (Preemie, 0-24 months)">Baby (Preemie, 0-24 months)</option>
+          <option value="Toddler (2T-6T)">Toddler (2T-6T)</option>
+          <option value="Little Kid (4-6X)">Little Kid (4-6X)</option>
+          <option value="Big Kid or Tween (7-16)">Big Kid or Tween (7-16)</option>
+          <option value="Free Size (adults)">Free Size (adults)</option>
+          <option value="XXS / EU 32 / UK 4 / US 2">XXS / EU 32 / UK 4 / US 2</option>
+          <option value="XS / EU 34 / UK 6 / US 4">XS / EU 34 / UK 6 / US 4</option>
+          <option value="S / EU 36 / UK 8 / US 6">S / EU 36 / UK 8 / US 6</option>
+          <option value="M / EU 38 / UK 10 / US 8">M / EU 38 / UK 10 / US 8</option>
+          <option value="L / EU 40 / UK 12 / US 10">L / EU 40 / UK 12 / US 10</option>
+          <option value="XL / EU 42 / UK 14 / US 12">XL / EU 42 / UK 14 / US 12</option>
         </select>
         <br /><br />
         <label for="price"> Price: </label><br />
