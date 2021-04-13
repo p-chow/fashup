@@ -8,6 +8,7 @@
       </router-link>
       <br />
       <br />
+      <br />
       <img v-bind:src="this.product[0].imgFile" /><br />
     </div>
 
@@ -23,10 +24,10 @@
           this.product[0].dressocc
         }}
       </p>
-
       <br />
       <button v-show="this.product[0].sold == false" v-on:click="updateWishList(product[1])">Add to Wishlist</button>
       <button v-show="this.product[0].sold == false" v-on:click="telehandlePopUp(product[0])">Buy it!</button><br />
+      <p id="sold" v-show="this.product[0].sold == true">SOLD!</p><br />
     </div>
   </div>
 </template>
@@ -128,6 +129,7 @@ export default {
 router-link {
   font-size: 16px;
   color: rgb(127, 255, 148);
+  margin-left: 0px;
 }
 
 #pdtPage {
@@ -135,7 +137,7 @@ router-link {
 }
 img {
   height: 400px;
-  margin-left: 10%;
+  padding-left: 100px;
   float: left;
 }
 
@@ -160,17 +162,25 @@ button {
 }
 
 #back {
+  margin-top: 50px;
   float: left;
-  margin-left: 10%;
+  padding-left: 20%;
   font-size: 20px;
+  text-align: left;
+  width: 30%;
 }
 
 #description {
-  width: 42%;
-  padding: 20px 35px 20px 35px;
+  width: 50%;
+  padding-top: 100px;
   text-align: left;
   float: right;
   font-size: 25px;
   color: black;
+}
+
+#sold {
+  font-weight: 800;
+  color: red;
 }
 </style>
