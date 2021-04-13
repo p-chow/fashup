@@ -4,21 +4,30 @@
       <NavBar></NavBar>
       <nav2 id="navbar2">
         <br />
-		<img id="profilepic" ALIGN="left" v-bind:src = "this.userData.ProfilePic"> 
-		<img id="profilepic2" ALIGN="right" v-bind:src = "this.userData.ProfilePic">
-        <h1 id="welcome">
-				Welcome {{ this.userData.DisplayName }}! </h1>  
-        <br> <div id="products">
-          <h1 id = "username">{{ this.userData.DisplayName }}'s Products</h1>
+        <img
+          id="profilepic"
+          ALIGN="left"
+          v-bind:src="this.userData.ProfilePic"
+        />
+        <img
+          id="profilepic2"
+          ALIGN="right"
+          v-bind:src="this.userData.ProfilePic"
+        />
+        <h1 id="welcome">Welcome {{ this.userData.DisplayName }}!</h1>
+        <br />
+        <div id="products">
+          <h1 id="username">{{ this.userData.DisplayName }}'s Products</h1>
           <ul id="productsListed">
             <li v-for="product in productsListed" v-bind:key="product.id">
               <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
-              <p 
-                id= "itemtitle"
+              <p
+                id="itemtitle"
                 v-bind:docid="product[0]"
                 v-on:click="redirectToProduct($event)"
               >
-                {{ product[3] }}</p>
+                {{ product[3] }}
+              </p>
               <p>S${{ product[2] }}</p>
               <button
                 type="button"
@@ -30,7 +39,7 @@
               >
                 Remove product
               </button>
-              
+
               <button
                 type="button"
                 v-bind:docid="product[0]"
@@ -51,7 +60,7 @@
             <li v-for="product in productsSold" v-bind:key="product.id">
               <img v-bind:id="product[0]" v-bind:src="product[1]" />
               <p
-                id= "itemtitle"
+                id="itemtitle"
                 v-bind:docid="product[0]"
                 v-on:click="redirectToProduct($event)"
               >
@@ -113,7 +122,7 @@ export default {
                       doc.get("imgFile"),
                       doc.get("price"),
                       doc.get("title"),
-                      doc.get("sold")
+                      doc.get("sold"),
                     ]);
                   }
                 });
@@ -140,7 +149,7 @@ export default {
                       doc.id,
                       doc.get("imgFile"),
                       doc.get("price"),
-                      doc.get("title")
+                      doc.get("title"),
                     ]);
                   }
                 });
@@ -150,7 +159,7 @@ export default {
     },
     redirectToProduct(event) {
       let doc_id = event.target.getAttribute("docid");
-      console.log(doc_id)
+      console.log(doc_id);
       this.$router.push({
         name: "product",
         params: { docId: doc_id },
@@ -186,8 +195,8 @@ export default {
           .collection("products")
           .doc(doc_id)
           .update({
-             sold: true 
-            });
+            sold: true,
+          });
       }
     },
     updateProductsSold(event) {
@@ -211,7 +220,8 @@ export default {
           .doc(user.uid)
           .update({
             productsListed: fv.arrayRemove(doc_id),
-          }).then(() => location.reload());
+          })
+          .then(() => location.reload());
       }
     },
     // logout(){
@@ -292,39 +302,40 @@ export default {
 #personal {
   background-color: #fffdf2;
   height: 100%;
+  min-height: 100vh;
 }
 #products {
-	float: center;
+  float: center;
 }
 #navbar2 {
   float: center;
 }
-#username{
-align-self: center;
+#username {
+  align-self: center;
   /* border-top: #222 solid 1px;
   border-bottom: #222 solid 1px; */
   font-size: 30px;
-  background-color: #FAEDCD;
+  background-color: #faedcd;
 }
 /*#wishlist {
   font-size: 25px;
   text-decoration-line: none;
   color: rgb(34, 150, 158);
 }*/
-#profilepic{
-	margin-left: 8cm;
-	border-radius: 5px 300px 3px 300px;
-	float: left;
+#profilepic {
+  margin-left: 8cm;
+  border-radius: 5px 300px 3px 300px;
+  float: left;
   width: 135px;
   height: 135px;
 }
 
-#profilepic2{
-	float: right;
-	border-radius: 5px 300px 3px 300px;
-	transform: scaleX(-1);
-	margin-right: 8cm;
-    width: 135px;
+#profilepic2 {
+  float: right;
+  border-radius: 5px 300px 3px 300px;
+  transform: scaleX(-1);
+  margin-right: 8cm;
+  width: 135px;
   height: 135px;
 }
 
@@ -357,14 +368,14 @@ p {
 }
 
 #itemtitle:hover {
-  color: #D4A373;
+  color: #d4a373;
 }
-#welcome{
-	vertical-align: middle;
+#welcome {
+  vertical-align: middle;
 }
 button {
   background-color: #f3cfab;
-  border-color:  #f3cfab;
+  border-color: #f3cfab;
   width: 110px;
   height: 40px;
   font-size: 13px;
@@ -387,7 +398,6 @@ button:hover {
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:110px;
+  width: 110px;
 }
-
 </style>
