@@ -100,13 +100,13 @@
           required
         />
         <br /><br />
-        <label for="telehandle"> Telegram Handle: </label><br />
+        <label for="telehandle"> Telegram Link: </label><br />
         <input
           id="telehandle"
           name="telehandle"
           v-model.lazy="product.telehandle"
           type="text"
-          placeholder="@"
+          placeholder="https://t.me/[yourusername] "
           required
         />
       </form>

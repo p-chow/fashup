@@ -94,7 +94,8 @@ export default {
       //}
     },
     telehandlePopUp: function (product) {
-      alert("Contact me on Telegram @" + product.telehandle + " ! :)");
+      alert("You will be redirected to telegram to start a chat with the seller!")
+      location.href = product.telehandle
     },
     // pushtoShop() {
     //   this.$router.push({
