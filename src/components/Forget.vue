@@ -1,126 +1,45 @@
 <template>
   <div id="forget">
     <NavBar></NavBar>
-    <label for="email">Email Address: </label> <br /><br />
+	<br><br>
+	<p id="notice">We will send you a reset password email to the registered email address</p> <br> <br>
+    <label for="email">Email Address: </label> 
     <input type="text" id="email" name="email" /> <br />
     <br />
-    <label for="pw" id="password">New Password: </label><br /><br />
-    <input type="password" id="pw" name="pw" v-on:change="check()" />
-    <p id="passwordcheck"></p>
-    <label for="cpw" id="confirm">Confirm Password: </label> <br /><br />
-    <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
-    <p id="matching"></p>
-    <button v-on:click="reset()" type="button">Reset Password</button>
+    <button v-on:click="reset()" type="button">Reset Password </button>
+	<p id="notice" v-show = "this.sent" >Email has been sent. Click <router-link to="/login" exact> here</router-link> to login again! </p>
   </div>
 </template>
 
 <script>
-import { database } from "../firebase.js";
+//import { database } from "../firebase.js";
 import NavBar from "./NavBar.vue";
+import { fbase } from "../firebase.js";
 
 export default {
   data() {
     return {
       datapacket: "",
       checked: false,
+      sent: false
     };
   },
   components: {
     NavBar,
   },
-  methods: {
-    hasNumber(fieldstring) {
-      return /\d/.test(fieldstring);
-    },
-    containsUppercase(fieldstring) {
-      var count = 0;
-      for (let i = 0; i < fieldstring.length; i++) {
-        if (fieldstring[i] === fieldstring[i].toUpperCase()) {
-          count = count + 1;
-        }
-      }
-      return count > 0;
-    },
-    containsLowerCase(fieldstring) {
-      var count = 0;
-      for (let i = 0; i < fieldstring.length; i++) {
-        if (fieldstring[i] === fieldstring[i].toLowerCase()) {
-          count = count + 1;
-        }
-      }
-      return count > 0;
-    },
-    check() {
-      var password = document.getElementById("pw").value;
-      if (password.length < 8) {
-        document.getElementById("passwordcheck").innerHTML =
-          "Password must be more than 8 characters";
-      }
-      if (this.hasNumber(password) === false) {
-        document.getElementById("passwordcheck").innerHTML =
-          "Password must contain at least 1 numeric digit";
-      }
-      if (this.containsUppercase(password) === false) {
-        document.getElementById("passwordcheck").innerHTML =
-          "Password must contain at least 1 uppercase character";
-      }
-      if (this.containsLowerCase(password) === false) {
-        document.getElementById("passwordcheck").innerHTML =
-          "Password must contain at least 1 lowercase character";
-      }
-      if (
-        password.length >= 8 &&
-        this.hasNumber(password) &&
-        this.containsUppercase(password) &&
-        this.containsLowerCase(password)
-      ) {
-        document.getElementById("passwordcheck").innerHTML = "";
-      }
-      this.checked = true;
-    },
-    matched() {
-      var password = document.getElementById("pw").value;
-      var confirmedpw = document.getElementById("cpw").value;
-      if (password !== confirmedpw) {
-        document.getElementById("matching").innerHTML =
-          "Password does not match";
-      } else {
-        document.getElementById("matching").innerHTML = " ";
-      }
-    },
+  methods:{
     reset() {
-      var newPassword = document.getElementById("pw").value;
       var emailAddress = document.getElementById("email").value;
       console.log(emailAddress);
-      database
-        .collection("users")
-        .get()
-        .then((snapshot) => {
-          snapshot.docs.forEach((doc) => {
-            if (doc.get("Email") == emailAddress) {
-              this.datapacket = this.datapacket + doc.id;
-              console.log(doc.get("Password"));
-              console.log(this.datapacket);
-              database
-                .collection("users")
-                .doc(this.datapacket)
-                .update({
-                  Password: newPassword,
-                })
-                .then(location.reload());
-            }
-          });
-        });
-      this.$router.push({
-        path: "login",
-      });
+      fbase.sendPasswordResetEmail(emailAddress)
+      this.sent = true
     },
   },
 };
 </script>
 <style scoped>
 #forget {
-  color: rgb(34, 150, 158);
+  color: #b88b5e;
   width: 100%;
   height: 100vh;
   float: left;
@@ -128,7 +47,7 @@ export default {
   padding: 0 5px;
   box-sizing: border-box;
   font-size: 20px;
-  background-color: rgb(182, 243, 238);
+  background-color: #FFFDF2;
 }
 
 label {
@@ -138,24 +57,31 @@ label {
   clear: left;
   width: 10em;
   max-width: 400%;
-  margin-left: 500px;
+  margin-left: 360px;
   justify-content: flex-end;
 }
 
+#notice {
+  font-size: 20px;
+  color: #b88b5e;
+}
 input {
   float: center;
   border-block-color: rgb(0, 0, 0);
   tab-size: 5px;
   size: 10px;
-  height: 25px;
+  height: 20px;
   flex: 0 0 200px;
-  margin-left: 20px;
+  margin-right: 400px;
   width: 350px;
   font-size: 20px;
   border-radius: 25px;
   padding: 10px;
 }
 
+p {
+	color: #b88b5e
+}
 #password {
   width: 200px;
 }
@@ -164,7 +90,7 @@ input {
   width: 230px;
 }
 button {
-  background-color: rgb(140, 228, 255);
+  background-color: #f3cfab;
   font-style: italic;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -180,7 +106,7 @@ button {
   margin-right: 25px;
   border-radius: 10px;
   font-size: 15px;
-  border-color: rgb(140, 228, 255);
+  border-color: #f3cfab;
 }
 p {
   font-size: 15px;
