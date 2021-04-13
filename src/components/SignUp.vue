@@ -20,11 +20,12 @@
       <input type="text" id="num" name="num" /> <br /><br />
       <label for="pw">Password </label>
       <input type="password" id="pw" name="pw" v-on:change="check()" />
-      <p id="passwordcheck"></p><br>
+      <p id="passwordcheck"></p>
+      <br />
       <label for="cpw">Confirm Password </label>
       <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
       <p id="matching"></p>
-      <br /><br>
+      <br /><br />
       <button v-on:click="colourchange()" type="button" id="bgchange">
         Switch
       </button>
@@ -33,10 +34,6 @@
       </button>
       <br />
       <br />
-      <h3>
-        <router-link to="/login">Log in</router-link> if you already have an
-        account.
-      </h3>
     </div>
   </div>
 </template>
@@ -54,7 +51,7 @@ export default {
         "https://previews.123rf.com/images/lenanikolaeva/lenanikolaeva1812/lenanikolaeva181200171/114154362-simple-seamless-pattern-with-colorful-abstract-shapes-navy-grenn-and-pink-creative-geometric-backgro.jpg",
         "https://thumbs.dreamstime.com/b/little-flower-seamless-pattern-vintage-scandinavian-minimalism-aesthetic-retro-background-nature-fantasy-plant-floral-retro-180080548.jpg",
         "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
-        "https://wallpaperaccess.com/full/4827438.jpg"
+        "https://wallpaperaccess.com/full/4827438.jpg",
       ],
       imageSource:
         "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
@@ -90,22 +87,22 @@ export default {
       if (password.length < 8) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must be more than 8 characters";
-		return false;
+        return false;
       }
       if (this.hasNumber(password) === false) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must contain at least 1 numeric digit";
-		return false;
+        return false;
       }
       if (this.containsUppercase(password) === false) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must contain at least 1 uppercase character";
-		return false;
+        return false;
       }
       if (this.containsLowerCase(password) === false) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must contain at least 1 lowercase character";
-		return false;
+        return false;
       }
       if (
         password.length >= 8 &&
@@ -114,7 +111,7 @@ export default {
         this.containsLowerCase(password)
       ) {
         document.getElementById("passwordcheck").innerHTML = "";
-		return true
+        return true;
       }
     },
     matched() {
@@ -123,10 +120,10 @@ export default {
       if (password !== confirmedpw) {
         document.getElementById("matching").innerHTML =
           "Password does not match";
-		return false
+        return false;
       } else {
         document.getElementById("matching").innerHTML = " ";
-		return true;
+        return true;
       }
     },
     colourchange() {
@@ -159,9 +156,11 @@ export default {
       if (this.fieldsFilled() === false) {
         alert("All fields must be filled.");
       } else if (!this.check()) {
-		alert("Password requirements not fulfilled. Password needs to have at least 8 characters, with at least 1 lowercase, 1 uppercase and 1 numeric character.")
-      } else if (!this.matched()){
-		alert("Password do not match")
+        alert(
+          "Password requirements not fulfilled. Password needs to have at least 8 characters, with at least 1 lowercase, 1 uppercase and 1 numeric character."
+        );
+      } else if (!this.matched()) {
+        alert("Password do not match");
       } else {
         var firstname = document.getElementById("fname").value;
         var lastname = document.getElementById("lname").value;
@@ -187,12 +186,12 @@ export default {
               })
               .then(() => {
                 this.$router.push({
-              name: "personal",
-              params: { id: data.user.uid },
-              })
+                  name: "personal",
+                  params: { id: data.user.uid },
+                });
               });
           })
-          .catch(function (err) {
+          .catch(function(err) {
             console.log("signin error", err);
           });
       }
@@ -201,10 +200,10 @@ export default {
 };
 </script>
 <style scoped>
-
 #signup {
   color: #b88b5e;
   width: 100%;
+  height: 100vh;
   float: center;
   max-width: 100%;
   margin-top: 70px;
@@ -244,7 +243,6 @@ button {
   width: 100px;
   height: 40px;
   float: none;
-  right: 10cm;
   max-width: 70%;
   margin: 10px;
   margin-top: 5px;
@@ -258,9 +256,8 @@ button:hover {
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:100px;
+  width: 100px;
 }
-
 
 #imagedp {
   height: 410px;
@@ -273,14 +270,14 @@ button:hover {
 } */
 
 #bgchange {
-  margin-right: 17%;
+  margin-right: 30%;
   /* border-radius: 40px; */
-  background-color:#f3cfab;
-  border-color:#f3cfab;
+  background-color: #f3cfab;
+  border-color: #f3cfab;
 }
 
 #account {
-  margin-left: 15%;
+  margin-right: -5%;
 }
 
 p {
