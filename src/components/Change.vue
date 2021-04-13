@@ -3,18 +3,17 @@
     <NavBar></NavBar>
     <div id="content">
       <br /><br /><br />
-      <label for="email" id="emailaddress">Email </label>
-      <input type="text" id="email" name="email" />
-      <br /><br />
-      <br /><br />
-      <label for="pw" id="password">New Password </label>
+      <label for="email" id="emailaddress">Email Address: </label> 
+      <input type="text" id="email" name="email" /> <br>
+      <br /><br> <br>
+      <label for="pw" id="password">New Password: </label>
       <input type="password" id="pw" name="pw" v-on:change="check()" />
-      <br />
+      <br /><br>
       <p id="passwordcheck"></p>
       <br />
-      <label for="cpw" id="confirm">Confirm Password </label>
+      <label for="cpw" id="confirm">Confirm Password: </label>
       <input type="password" id="cpw" name="cpw" v-on:change="matched()" />
-      <br />
+      <br /> <br>
       <p id="matching"></p>
       <button v-on:click="reset()" type="button">Change Password</button>
       <p v-show="this.changed">
@@ -179,6 +178,7 @@ export default {
 #changepw {
   height: auto;
   min-height: 100vh;
+  color: #b88b5e;
   background-color: #fffdf2;
 }
 
@@ -204,7 +204,7 @@ input {
   height: 28px;
   border-radius: 25px;
   background-color: white;
-  margin-left: 350px;
+  margin-left: 280px;
   float: left;
 }
 
@@ -218,6 +218,7 @@ input {
 
 button {
   background-color: #f3cfab;
+  border-block-color: #f3cfab;
   width: 100px;
   height: 50px;
   float: none;
@@ -226,7 +227,7 @@ button {
   margin: 50px;
   padding: 0 5px;
   box-sizing: border-box;
-  margin-right: 350px;
+  margin-left: -200px;
   border-radius: 10px;
   font-size: 15px;
 }
