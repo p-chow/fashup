@@ -14,6 +14,7 @@ import Product from './components/Product.vue'
 import CommunityStats from './components/CommunityStats.vue'
 import Sales from './components/Sales.vue'
 import UserStats from './components/UserStats.vue'
+import EditProduct from './components/EditProduct.vue'
 
 export default [
     { path: '/', name: 'home', component: Home },
@@ -29,6 +30,7 @@ export default [
     { path: '/product', name: 'product', props: true, component: Product , meta: {requiresAuth: true}},
 	{ path :'/communitystats', name: 'communitystats', component: CommunityStats},
 	{ path: '/sales', name: 'sales', component: Sales},
-	{ path: '/userstats', name:'userstats', component: UserStats}
+	{ path: '/userstats', name:'userstats', component: UserStats},
+    { path: '/editproduct', name: 'editproduct', props: true, component: EditProduct, meta: {requiresAuth: true}}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
