@@ -13,7 +13,7 @@
     <div id="info">
       <form>
         <label for="title"> Title: </label>
-        <br>
+        <br />
         <input
           id="title"
           name="title"
@@ -23,14 +23,14 @@
         />
         <br /><br />
         <label for="shop"> Shop: </label>
-        <br>
+        <br />
         <select id="shop" name="shop" v-model.lazy="product.shop" required>
           <option value="men">Men</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
         </select>
         <br /><br />
-        <label for="category"> Category: </label><br>
+        <label for="category"> Category: </label><br />
         <select
           id="category"
           name="category"
@@ -43,7 +43,7 @@
           <option value="accesories">Accesories</option>
         </select>
         <br /><br />
-        <label for="dressocc"> Dressing Occasion: </label><br>
+        <label for="dressocc"> Dressing Occasion: </label><br />
         <select
           id="dressocc"
           name="dressocc"
@@ -54,7 +54,7 @@
           <option value="formal">Formal</option>
         </select>
         <br /><br />
-        <label for="brand"> Brand: </label><br>
+        <label for="brand"> Brand: </label><br />
         <input
           id="brand"
           name="brand"
@@ -74,7 +74,7 @@
           required
         ></textarea>
         <br /><br />
-        <label for="size"> Size: </label><br>
+        <label for="size"> Size: </label><br />
         <select id="size" name="size" v-model.lazy="product.size" required>
           <option value="baby">Baby (Preemie, 0-24 months)</option>
           <option value="toddler">Toddler (2T-6T)</option>
@@ -89,7 +89,7 @@
           <option value="XL">XL / EU 42 / UK 14 / US 12</option>
         </select>
         <br /><br />
-        <label for="price"> Price: </label><br>
+        <label for="price"> Price: </label><br />
         <input
           id="price"
           name="price"
@@ -100,7 +100,7 @@
           required
         />
         <br /><br />
-        <label for="telehandle"> Telegram Handle: </label><br>
+        <label for="telehandle"> Telegram Handle: </label><br />
         <input
           id="telehandle"
           name="telehandle"
@@ -110,14 +110,19 @@
           required
         />
       </form>
-      <br><br>
+      <br /><br />
       <div id="buttonArea">
-        <button v-show="!this.callsubmit&&!this.sellAnother" v-on:click.prevent="submit()">Submit</button>
+        <button
+          v-show="!this.callsubmit && !this.sellAnother"
+          v-on:click.prevent="checkInput()"
+        >
+          Submit
+        </button>
         <button
           id="confirm"
-          v-show="this.callsubmit&&!this.sellAnother"
+          v-show="this.callsubmit && !this.sellAnother"
           v-on:click.prevent="callingSubmit()"
-        > 
+        >
           Confirm submission
         </button>
         <button
@@ -155,7 +160,7 @@ export default {
         dressocc: "",
         description: "",
         imgFile: null,
-        price: 0,
+        price: null,
         shop: "",
         size: "",
         sold: false,
@@ -169,7 +174,26 @@ export default {
     NavBar,
   },
   methods: {
-    submit: function () {
+    checkInput: function() {
+      //console.log(this.imgFile);
+      if (
+        this.product.title.length == 0 ||
+        this.product.shop.length == 0 ||
+        this.product.category.length == 0 ||
+        this.product.dressocc.length == 0 ||
+        this.product.brand.length == 0 ||
+        this.product.description.length == 0 ||
+        this.product.size.length == 0 ||
+        this.product.telehandle.length == 0 ||
+        this.imgFile.length == 0 ||
+        this.product.price == null
+      ) {
+        alert("Please fill in all fields before submitting.");
+      } else {
+        this.submit();
+      }
+    },
+    submit: function() {
       const user = fbase.currentUser;
       if (user) {
         //var user = fbase.currentUser
@@ -200,7 +224,7 @@ export default {
                   .ref("Images/" + this.product["title"] + ".jpeg")
                   .put(this.fileneeded);
                 this.newupload = uploadTask;
-                uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
                   var imgUrl = url;
                   firebase
                     .database()
@@ -216,7 +240,7 @@ export default {
                   database
                     .collection("products")
                     .add(sortedProduct)
-                    .then(function (docRef) {
+                    .then(function(docRef) {
                       database
                         .collection("users")
                         .doc(user.uid)
@@ -275,18 +299,18 @@ export default {
   },
 };
 </script>
-<style scoped>
 
+<style scoped>
 #sell {
-    background-color:#FFFDF2;
-    height:180vh;
+  background-color: #fffdf2;
+  height: 180vh;
 }
 
-.title{
+.title {
   border-bottom: 1px solid black;
-  padding-top:25px;
+  padding-top: 25px;
   padding-bottom: 50px;
-  font-size:25px;
+  font-size: 25px;
 }
 
 #imgArea {
@@ -297,26 +321,27 @@ export default {
 #left {
   float: left;
   padding: 20px;
-  width: 48%;
+  width: 48vw;
   font-size: 22px;
   position: relative;
 }
 
 #info {
-  width: 42%;
+  width: 42vw;
   padding: 20px 35px 20px 35px;
   text-align: left;
   float: right;
   font-size: 20px;
   color: black;
 }
-label{
-  padding-bottom:3px;
-  margin-bottom:5px;
+
+label {
+  padding-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 input {
-  border:black solid 1px;
+  border: black solid 1px;
   size: 15px;
   width: 400px;
   height: 28px;
@@ -324,37 +349,38 @@ input {
   margin-right: 200px;
   float: center;
   border-radius: 0px;
-  background-color: #FAEDCD;
-}
-select {
-  border:black solid 1px;
-  size: 15px;
-  width: 400px;
-  height: 28px;
-  flex: 0 0 200px;
-  margin-right: 200px;
-  float: center;
-  border-radius: 0px;
-  background-color: #FAEDCD;
+  background-color: #faedcd;
 }
 
-textarea{
-  border:black solid 1px;   
+select {
+  border: black solid 1px;
+  size: 15px;
+  width: 400px;
+  height: 28px;
+  flex: 0 0 200px;
+  margin-right: 200px;
+  float: center;
+  border-radius: 0px;
+  background-color: #faedcd;
+}
+
+textarea {
+  border: black solid 1px;
   border-radius: 0px;
   width: 400px;
-  background-color: #FAEDCD;
+  background-color: #faedcd;
 }
 
 button {
   background-color: #faedcd;
-	border-color: #faedcd;
-	float:left;
-	padding: 10px;
-  width:100px;
-	box-sizing: border-box;
-	font-size: 15px;
-	border-radius: 60px;
-	border-width: 1px;
+  border-color: #faedcd;
+  float: left;
+  padding: 10px;
+  width: 100px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 60px;
+  border-width: 1px;
   font-weight: 400;
 }
 
@@ -363,6 +389,6 @@ button:hover {
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:100px;
+  width: 100px;
 }
 </style>
