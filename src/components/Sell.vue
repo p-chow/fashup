@@ -316,19 +316,20 @@ export default {
 #left {
   float: left;
   padding: 20px;
-  width: 48%;
+  width: 48vw;
   font-size: 22px;
   position: relative;
 }
 
 #info {
-  width: 42%;
+  width: 42vw;
   padding: 20px 35px 20px 35px;
   text-align: left;
   float: right;
   font-size: 20px;
   color: black;
 }
+
 label {
   padding-bottom: 3px;
   margin-bottom: 5px;
@@ -345,6 +346,7 @@ input {
   border-radius: 0px;
   background-color: #faedcd;
 }
+
 select {
   border: black solid 1px;
   size: 15px;
