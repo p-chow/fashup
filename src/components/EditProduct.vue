@@ -141,6 +141,13 @@ export default {
           brand: document.getElementById("brand").value,
           size: document.getElementById("size").value,
           price: parseInt(document.getElementById("price").value),
+        }).then(() => {
+          this.$router.push({
+            name: "product",
+            params: {
+              docId: doc_id
+            }
+          });
         })
     },
     loadUserData() {
