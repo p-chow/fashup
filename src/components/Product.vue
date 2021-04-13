@@ -137,7 +137,8 @@ router-link {
 }
 img {
   height: 400px;
-  padding-left: 100px;
+  padding-left: -20px;
+  margin-right:18cm;
   float: left;
 }
 

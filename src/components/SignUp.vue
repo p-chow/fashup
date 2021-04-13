@@ -247,7 +247,6 @@ button {
   width: 100px;
   height: 40px;
   float: none;
-  right: 10cm;
   max-width: 70%;
   margin: 10px;
   margin-top: 5px;
@@ -275,14 +274,14 @@ button:hover {
 } */
 
 #bgchange {
-  margin-right: 17%;
+  margin-right: 30%;
   /* border-radius: 40px; */
   background-color: #f3cfab;
   border-color: #f3cfab;
 }
 
 #account {
-  margin-left: 15%;
+  margin-right: -5%;
 }
 
 p {

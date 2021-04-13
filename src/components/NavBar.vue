@@ -3,9 +3,10 @@
     <nav id="bar">
       <ul>
         <li>
-          <router-link to="/" exact class="label">
+          <router-link v-show="!this.login" to="/" exact class="label">
             <p id="shopname">FASHUP</p>
           </router-link>
+          <p id="shopname" v-show="this.login">FASHUP</p>
         </li>
         <li>
           <router-link to="/shop" exact class="label">
@@ -108,7 +109,7 @@ export default {
     },
     logout() {
       fbase.signOut().then(() => {
-        this.$router.replace({
+        this.$router.push({
           name: "home",
         });
       });

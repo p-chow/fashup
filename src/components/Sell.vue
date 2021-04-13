@@ -112,10 +112,15 @@
       </form>
       <br /><br />
       <div id="buttonArea">
-        <button v-on:click="checkInput()">Submit</button>
+        <button
+          v-show="!this.callsubmit && !this.sellAnother"
+          v-on:click.prevent="checkInput()"
+        >
+          Submit
+        </button>
         <button
           id="confirm"
-          v-show="this.callsubmit"
+          v-show="this.callsubmit && !this.sellAnother"
           v-on:click.prevent="callingSubmit()"
         >
           Confirm submission

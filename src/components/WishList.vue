@@ -2,7 +2,7 @@
   <div id="wish">
     <NavBar></NavBar>
     <nav2 id="nav2">
-      <h2 class="title">{{ this.userData.DisplayName }}'s WISHLIST</h2>
+      <h2 class="title" style="text-transform: uppercase">{{ this.userData.DisplayName }}'s WISHLIST</h2>
       <ul id="mywishlist">
         <li v-for="item in productswish" v-bind:key="item.title">
           <button
