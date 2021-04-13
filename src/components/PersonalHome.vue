@@ -9,7 +9,7 @@
         <h1 id="welcome">
 				Welcome {{ this.userData.DisplayName }}! </h1>  
         <br> <div id="products">
-          <h1 id = "username">{{ this.userData.DisplayName }}'s Products</h1>
+          <h1 id = "username" style="text-transform: capitalize">{{ this.userData.DisplayName }}'s Products</h1>
           <ul id="productsListed">
             <li v-for="product in productsListed" v-bind:key="product.id">
               <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
@@ -46,7 +46,7 @@
             </li>
           </ul>
 
-          <h1 id="username">{{ this.userData.DisplayName }}'s Sold Products</h1>
+          <h1 id="username" style="text-transform: capitalize">{{ this.userData.DisplayName }}'s Sold Products</h1>
           <ul id="productsSold">
             <li v-for="product in productsSold" v-bind:key="product.id">
               <img v-bind:id="product[0]" v-bind:src="product[1]" />
