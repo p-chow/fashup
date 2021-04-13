@@ -392,5 +392,10 @@ button:hover {
   color: white;
   border-color: #f3cfab;
   width: 100px;
+  cursor: pointer;
+}
+
+#reload {
+  width: 18em;
 }
 </style>
