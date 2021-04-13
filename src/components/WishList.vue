@@ -1,7 +1,6 @@
 <template>
   <div id="wish">
     <NavBar></NavBar>
-    <nav2 id="nav2">
       <h2 class="title">{{ this.userData.DisplayName }}'s WISHLIST</h2>
       <ul id="mywishlist">
         <li v-for="item in productswish" v-bind:key="item.title">
@@ -13,19 +12,18 @@
             X
           </button>
           <br />
-          <div class="itemtitle" v-bind:id="item[0]"
-            v-on:click="redirectToProduct($event)"> 
-          {{ item[1] }} </div>
-          <br />
+          <p id="avail" v-if="item[4] == false">AVAILABLE!</p>
+          <p id="sold" v-else>SOLD!</p><br />
           <img
             v-bind:src="item[2]"
-          />
+          /> 
           <br />
-          Price: ${{ item[3] }} Available: {{ available(item[4]) }} <br /><br />
-          {{ soldAlready(item[4]) }}
+          <p class="itemtitle" v-bind:id="item[0]"
+            v-on:click="redirectToProduct($event)"> 
+          {{ item[1] }} </p>          
+          <p>S${{ item[3] }}</p>
         </li>
       </ul>
-    </nav2>
   </div>
 </template>
 
@@ -87,6 +85,7 @@ export default {
                     doc.get("title"),
                     doc.get("imgFile"),
                     doc.get("price"),
+                    doc.get("sold"),
                   ]);
                 }
               });
@@ -183,7 +182,7 @@ export default {
 #wish {
   height: auto;
   min-height: 100vh;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #fffdf2;
 }
 
@@ -192,12 +191,6 @@ export default {
   padding-top: 25px;
   padding-bottom: 50px;
   font-size: 25px;
-}
-
-#nav2 {
-  font-size: 15px;
-  padding-top: 1px;
-  margin-top: 1cm;
 }
 
 #profile {
@@ -225,22 +218,17 @@ li {
   margin: 10px;
 }
 
-/*li {
-  flex-grow: 1;
-  flex-basis: 300px;
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #222;
-  margin: 10px;
-} */
-
 img {
-  width: 135px;
-  height: 135px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  object-fit: cover;
 }
+
 .itemtitle:hover{
 	color:#D4A373 ;
 }
+
 button {
   float: right;
   border: 2px solid #f3cfab;
@@ -250,13 +238,33 @@ button {
   width:25px;
 }
 
-
 button:hover {
   border: 2px solid #f3cfab;
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
   width:25px;
+}
+
+p{
+  padding: 0px;
+  margin: 4px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+#sold {
+  font-weight: 800;
+  color: red;
+  text-align: center;
+  margin: 0px;
+}
+
+#avail {
+  margin: 0px;
+  font-weight: 800;
+  color: green;
+  text-align: center;
 }
 
 </style>
