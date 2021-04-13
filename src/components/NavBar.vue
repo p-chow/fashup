@@ -3,76 +3,88 @@
     <nav id="bar">
       <ul>
         <li>
-          <router-link to="/" exact v-show="!this.login" class="label"> 
-          <p class="label">Home </p></router-link>
-          <div class="dropdown" v-show="this.login">
-          <router-link to="/Personal" exact v-show="this.login" class="label">
-            <p class="label">{{ this.userData.DisplayName }}'s Home</p>
-			</router-link>
-            <!-- //<span @click="pushtoPersonal()"
-              >{{ this.userData.DisplayName }}'s Home</span
-            > -->
-          <div class="dropdown-content">
-            <a href="#">
-				<router-link to="/Personal" id="profile">
-                Profile Page
-                </router-link>
-			</a>
-			<a href ="#">
-				<router-link to="/userstats">
-				Your Dashboard
-				</router-link>
-			</a>
-            <a href="#">
-				<router-link to="/wishlist" id="wishlist">
-                Wishlist
-                </router-link>
-			</a>
-            <a href="#">
-				<router-link to="/change" id="change">
-                Change Password
-                </router-link>
-			</a>
-          </div>
-          </div>
+          <router-link to="/" exact class="label">
+            <p id="shopname">FASHUP</p>
+          </router-link>
         </li>
         <li>
           <router-link to="/shop" exact class="label">
-            <p class="label">Shop</p>
+            <p class="label">SHOP</p>
             <!-- <span @click="pushtoShop()">Shop</span> -->
           </router-link>
         </li>
         <li>
-          <router-link to="/sell" exact class="label"> 
-          <p class="label">Sell </p></router-link>
+          <router-link to="/sell" exact class="label">
+            <p class="label">SELL</p></router-link
+          >
           <!-- <span @click="pushtoSell()">Sell</span> -->
         </li>
         <li>
-		<div class="dropdown">
-          <router-link to="/news" exact class="label" id="dropbtn">
-            <p class="label">Gaia News</p>
-            <!-- <span @click="pushtoNews()"> Gaia News </span> -->
-          </router-link>
-          <div class="dropdown-content">
-            <a href="#">
-				<router-link to='/news' exact class="droplabel">
-				Articles
-				</router-link>
-			</a>
-            <a href="#">
-				<router-link to='/communitystats' exact class="droplabel">
-				Learn
-				</router-link>
-			</a>
-            <a href="#">
-				<router-link to ='/sales' exact class="droplabel">
-				Announcements</router-link>
-			</a>
-			</div>
+          <div class="dropdown">
+            <router-link to="/news" exact class="label" id="dropbtn">
+              <p class="label">GAIA NEWS</p>
+              <!-- <span @click="pushtoNews()"> Gaia News </span> -->
+            </router-link>
+            <div class="dropdown-content">
+              <a href="#">
+                <router-link to="/news" exact class="droplabel">
+                  ARTICLES
+                </router-link>
+              </a>
+              <a href="#">
+                <router-link to="/communitystats" exact class="droplabel">
+                  LEARN
+                </router-link>
+              </a>
+              <a href="#">
+                <router-link to="/sales" exact class="droplabel">
+                  ANNOUNCEMENTS</router-link
+                >
+              </a>
+            </div>
+          </div>
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li>
+          <div class="dropdown" v-show="this.login">
+            <router-link to="/Personal" exact v-show="this.login" class="label">
+              <p class="label" style="text-transform: uppercase">
+                {{ this.userData.DisplayName }}'S HOME
+              </p>
+            </router-link>
+            <!-- //<span @click="pushtoPersonal()"
+              >{{ this.userData.DisplayName }}'s Home</span
+            > -->
+            <div class="dropdown-content">
+              <a href="#">
+                <router-link to="/Personal" id="profile">
+                  PROFILE PAGE
+                </router-link>
+              </a>
+              <a href="#">
+                <router-link to="/userstats"> YOUR DASHBOARD </router-link>
+              </a>
+              <a href="#">
+                <router-link to="/wishlist" id="wishlist">
+                  WISHLIST
+                </router-link>
+              </a>
+              <a href="#">
+                <router-link to="/change" id="change">
+                  CHANGE PASSWORD
+                </router-link>
+              </a>
+            </div>
           </div>
         </li>
         <li v-show="this.login" @click="logout()" class="label">
-          <p clsss="label">Logout</p></li>
+          <p clsss="label">LOGOUT</p>
+        </li>
       </ul>
     </nav>
   </div>
@@ -166,23 +178,32 @@ a {
 }
 
 #bar {
-  background-color: #FAEDCD;
-  border-top: 1px solid #111;
-  padding: 0;
-  border-bottom: 1px solid black;
-  height:100%
+  background-color: #faedcd;
+  /* border-top: 1px solid #111; */
+  padding: 0px;
+  /* border-bottom: 1px solid black; */
+  height: 100%;
 }
+
+#shopname {
+  font-size: 28px;
+  font-style: italic;
+  font-family: "Remark";
+  color: black;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
-  padding: 0;
+  padding: 0px;
+  margin: 0;
 }
 
 li {
   flex-grow: 1;
   text-align: center;
-  background-color: #FAEDCD;
+  background-color: #faedcd;
 }
 
 .dropdown-content a {
@@ -195,16 +216,16 @@ li {
 }
 
 .dropdown:hover .dropdown-content {
-  display:grid;
+  display: grid;
   text-align: center;
 }
 
 .dropdown:hover #label {
-  color:black;
+  color: black;
 }
 
 .dropdown:hover #label {
-  color:black;
+  color: black;
 }
 
 /* .dropdown {
@@ -218,9 +239,10 @@ li {
   padding: 1px;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn:hover .droplabel:hover {
+.navbar a:hover,
+.dropdown:hover .dropbtn:hover .droplabel:hover {
   font-weight: 400;
-  background-color: #D4A373;
+  background-color: #d4a373;
 }
 
 .dropdown-content {
@@ -228,17 +250,18 @@ li {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   font-size: 15px;
 }
 
 .label {
-  font-size: 20px;
-  color:darkgray;
+  font-size: 18px;
+  color: rgb(113, 113, 113);
+  padding-top: 18px;
 }
 
 .label:hover {
-  color:black;
+  color: black;
 }
 </style>
