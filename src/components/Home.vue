@@ -4,7 +4,6 @@
     <h1 id="shopname">Fashup</h1>
     <img
       src="http://www.lovetaupo.com/media/2958595/charlie-who-shop-retail-fashion-clothing-rail.png?anchor=center&mode=crop&width=1200&height=630&rnd=132300517360000000"
-      
     />
     <h1>Did you know?</h1>
     <p>The fashion industry is responsible for emitting</p>
@@ -89,7 +88,8 @@ button:hover {
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:100px;
+  width: 100px;
+  cursor: pointer;
 }
 
 p {
