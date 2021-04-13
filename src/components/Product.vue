@@ -25,9 +25,9 @@
         }}
       </p>
       <br />
-      <button v-show="this.belongs" v-bind:docid="product[1]" v-on:click="updateProduct(pressed($event))">Edit</button>
-      <button v-show="this.product[0].sold == false" v-on:click="updateWishList(product[1])">Add to Wishlist</button>
-      <button v-show="this.product[0].sold == false" v-on:click="telehandlePopUp(product[0])">Buy it!</button><br />
+      <button v-show="this.product[0].sold == false && this.belongs == false" v-on:click="updateWishList(product[1])">Add to Wishlist</button>
+      <button v-show="this.product[0].sold == false && this.belongs == false" v-on:click="telehandlePopUp(product[0])">Buy it!</button>
+      <button id="edit" v-show="this.belongs" v-bind:docid="product[1]" v-on:click="updateProduct(pressed($event))">Edit</button> <br>
       <p id="sold" v-show="this.product[0].sold == true">SOLD!</p><br />
     </div>
   </div>
