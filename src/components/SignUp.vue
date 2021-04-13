@@ -257,6 +257,7 @@ button:hover {
   color: white;
   border-color: #f3cfab;
   width: 100px;
+  cursor: pointer;
 }
 
 #imagedp {

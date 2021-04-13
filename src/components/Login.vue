@@ -1,13 +1,15 @@
 <template>
   <div id="login">
     <NavBar></NavBar>
-    <br><br><br>
+    <br /><br /><br />
     <h2>Ready to start shopping/selling?</h2>
-    <br>
-    <label for="email">Email Address: </label><br /> <br>
+    <br />
+    <label for="email">Email Address: </label><br />
+    <br />
     <input type="text" id="email" name="email" required /> <br />
     <br />
-    <label for="pw">Password:</label><br /> <br>
+    <label for="pw">Password:</label><br />
+    <br />
     <input type="password" id="pw" name="pw" />
     <p v-on:click="forget()">Forget password?</p>
     <button v-on:click="logintoacc()" type="button">Login</button>
@@ -89,23 +91,26 @@ export default {
         this.display[this.getIndex(this.emailList, email)],
         docid,
       ]);
-      fbase.signInWithEmailAndPassword(email, password).then((userCredential) => {
-		var user = userCredential.user;
-		console.log(user)
-      }).catch((error) => {
-		var errorMessage = error.message;
-		if (errorMessage) 
-		console.log(errorMessage)
-		alert(errorMessage)
-		window.location.reload()
-        }).then(() =>
-        this.$router.push({
-          name: "personal",
-          params: { id: docid },
+      fbase
+        .signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          var user = userCredential.user;
+          console.log(user);
         })
-      );
+        .catch((error) => {
+          var errorMessage = error.message;
+          if (errorMessage) console.log(errorMessage);
+          alert(errorMessage);
+          window.location.reload();
+        })
+        .then(() =>
+          this.$router.push({
+            name: "personal",
+            params: { id: docid },
+          })
+        );
       console.log(fbase.currentUser.email);
-	}
+    },
   },
   created() {
     this.emailExists();
@@ -125,7 +130,7 @@ export default {
   box-sizing: border-box;
   font-size: 18px;
   margin-left: 2px;
-  background-color: #FFFDF2;
+  background-color: #fffdf2;
 }
 
 button {
@@ -151,11 +156,12 @@ button:hover {
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:100px;
+  width: 100px;
+  cursor: pointer;
 }
 
-label{
-  color:#b88b5e
+label {
+  color: #b88b5e;
 }
 input {
   float: center;
@@ -190,7 +196,7 @@ p {
 
 p:hover {
   font-size: 14px;
-  color:black;
+  color: black;
+  cursor: pointer;
 }
-
 </style>

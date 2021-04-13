@@ -1,13 +1,20 @@
 <template>
   <div id="forget">
     <NavBar></NavBar>
-	<br><br>
-	<p id="notice">We will send you a reset password email to the registered email address</p> <br> <br>
-    <label for="email">Email Address: </label> 
+    <br /><br />
+    <p id="notice">
+      We will send you a reset password email to the registered email address
+    </p>
+    <br />
+    <br />
+    <label for="email">Email Address: </label>
     <input type="text" id="email" name="email" /> <br />
     <br />
-    <button v-on:click="reset()" type="button">Reset Password </button>
-	<p id="notice" v-show = "this.sent" >Email has been sent. Click <router-link to="/login" exact> here</router-link> to login again! </p>
+    <button v-on:click="reset()" type="button">Reset Password</button>
+    <p id="notice" v-show="this.sent">
+      Email has been sent. Click
+      <router-link to="/login" exact> here</router-link> to login again!
+    </p>
   </div>
 </template>
 
@@ -21,18 +28,18 @@ export default {
     return {
       datapacket: "",
       checked: false,
-      sent: false
+      sent: false,
     };
   },
   components: {
     NavBar,
   },
-  methods:{
+  methods: {
     reset() {
       var emailAddress = document.getElementById("email").value;
       console.log(emailAddress);
-      fbase.sendPasswordResetEmail(emailAddress)
-      this.sent = true
+      fbase.sendPasswordResetEmail(emailAddress);
+      this.sent = true;
     },
   },
 };
@@ -47,7 +54,7 @@ export default {
   padding: 0 5px;
   box-sizing: border-box;
   font-size: 20px;
-  background-color: #FFFDF2;
+  background-color: #fffdf2;
 }
 
 label {
@@ -65,6 +72,7 @@ label {
   font-size: 20px;
   color: #b88b5e;
 }
+
 input {
   float: center;
   border-block-color: rgb(0, 0, 0);
@@ -80,8 +88,9 @@ input {
 }
 
 p {
-	color: #b88b5e
+  color: #b88b5e;
 }
+
 #password {
   width: 200px;
 }
@@ -89,6 +98,7 @@ p {
 #confirm {
   width: 230px;
 }
+
 button {
   background-color: #f3cfab;
   font-style: italic;
@@ -108,6 +118,11 @@ button {
   font-size: 15px;
   border-color: #f3cfab;
 }
+
+button:hover {
+  cursor: pointer;
+}
+
 p {
   font-size: 15px;
   color: black;
