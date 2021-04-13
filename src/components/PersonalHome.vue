@@ -12,17 +12,14 @@
           <h1 id = "username">{{ this.userData.DisplayName }}'s Products</h1>
           <ul id="productsListed">
             <li v-for="product in productsListed" v-bind:key="product.id">
+              <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
               <p 
                 id= "itemtitle"
                 v-bind:docid="product[0]"
                 v-on:click="redirectToProduct($event)"
               >
-                {{ product[3] }}
-              </p>
-              <br />
-              <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
-              <p>Price: ${{ product[2] }}</p>
-              <br />
+                {{ product[3] }}</p>
+              <p>S${{ product[2] }}</p>
               <button
                 type="button"
                 v-bind:docid="product[0]"
@@ -52,6 +49,7 @@
           <h1 id="username">{{ this.userData.DisplayName }}'s Sold Products</h1>
           <ul id="productsSold">
             <li v-for="product in productsSold" v-bind:key="product.id">
+              <img v-bind:id="product[0]" v-bind:src="product[1]" />
               <p
                 id= "itemtitle"
                 v-bind:docid="product[0]"
@@ -59,10 +57,7 @@
               >
                 {{ product[3] }}
               </p>
-              <br />
-              <img v-bind:id="product[0]" v-bind:src="product[1]" /><br />
-              <p>Price: ${{ product[2] }}</p>
-              <br />
+              <p>S${{ product[2] }}</p>
             </li>
           </ul>
         </div>
@@ -319,19 +314,23 @@ align-self: center;
 #profilepic{
 	margin-left: 8cm;
 	border-radius: 5px 300px 3px 300px;
-	float: left
+	float: left;
+  width: 135px;
+  height: 135px;
 }
+
 #profilepic2{
 	float: right;
 	border-radius: 5px 300px 3px 300px;
 	transform: scaleX(-1);
 	margin-right: 8cm;
+    width: 135px;
+  height: 135px;
 }
+
 img {
-  width: 300px;
-  float: left;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   object-fit: cover;
 }
@@ -351,10 +350,12 @@ li {
   margin: 10px;
 }
 
-img {
-  width: 135px;
-  height: 135px;
+p {
+  font-size: 18px;
+  padding: 0px;
+  margin: 0px;
 }
+
 #itemtitle:hover {
   color: #D4A373;
 }
