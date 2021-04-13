@@ -125,6 +125,8 @@
         >
           Confirm submission
         </button>
+        <p v-show="this.sellAnother">Item successfully posted!</p>
+        <br />
         <button
           id="reload"
           v-show="this.sellAnother"
