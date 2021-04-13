@@ -1,7 +1,7 @@
 <template>
   <div id="edit">
     <NavBar></NavBar>
-    <h2 class="pdttitle">E D I T</h2>
+    <h2 class="title">E D I T</h2>
     <div id="info">
       <label> Description: </label><br />
       <textarea
@@ -192,6 +192,7 @@ export default {
 
 #info {
   float: center;
+  margin-top: 60px;
   font-size: 20px;
   color: black;
 }
