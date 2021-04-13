@@ -243,5 +243,20 @@ img {
 }
 button {
   float: right;
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
+  color: black;
+  border-color: #f3cfab;
+  width:25px;
 }
+
+
+button:hover {
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
+  color: white;
+  border-color: #f3cfab;
+  width:25px;
+}
+
 </style>

@@ -105,6 +105,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 #news {
   height: auto;
 }
@@ -127,7 +128,7 @@ export default {
 
 .container #src {
   font-size:15px;
-  color: darkgray;
+  color: rgb(113, 113, 113);
 }
 /* Change color on hover */
 /* .container a:hover {

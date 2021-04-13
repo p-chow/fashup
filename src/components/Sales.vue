@@ -1,7 +1,7 @@
 <template>
   <div id="ann">
     <NavBar></NavBar>
-    <h2 class="title">A N N O U N C E M E N T</h2>
+    <h2 class="title">A N N O U N C E M E N T S</h2>
 
     <h3>FASHUP X SUNLOFT</h3>
     <section>
@@ -11,10 +11,10 @@
         />
       </div>
       <div id="rightside">
-        <a>Check out the latest seasonal donation drive that is happening on</a
-        ><br />
+        <a>Check out the latest seasonal donation drive that is happening on </a
+        >
         <b>11th April 2021!</b>
-        <br />
+        <!-- <br> -->
         <p>A spring collaboration with Sunloft</p>
         <p>Location: 1 Tampines Walk, Singapore 528523</p>
         <p>Tampines Hub Level 1 Foyer</p>

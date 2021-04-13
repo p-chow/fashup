@@ -309,7 +309,7 @@ align-self: center;
   /* border-top: #222 solid 1px;
   border-bottom: #222 solid 1px; */
   font-size: 30px;
-   background-color: #FAEDCD;
+  background-color: #FAEDCD;
 }
 /*#wishlist {
   font-size: 25px;
@@ -380,4 +380,13 @@ button {
     "Lucida Sans", Arial, sans-serif;
   font-style: italic;
 }
+
+button:hover {
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
+  color: white;
+  border-color: #f3cfab;
+  width:110px;
+}
+
 </style>

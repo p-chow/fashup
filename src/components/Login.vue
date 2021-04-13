@@ -1,15 +1,16 @@
 <template>
   <div id="login">
     <NavBar></NavBar>
+    <br><br><br><br>
     <h3>Ready to start shopping/selling?</h3>
-    <label for="email">Email: </label><br />
+    <br>
+    <label for="email">Email </label><br />
     <input type="text" id="email" name="email" required /> <br />
     <br />
-    <label for="pw">Password: </label><br />
-    <input type="password" id="pw" name="pw" /> <br />
-    <br />
+    <label for="pw">Password</label><br />
+    <input type="password" id="pw" name="pw" />
+    <p v-on:click="forget()">Forget password?</p>
     <button v-on:click="logintoacc()" type="button">Login</button>
-    <button v-on:click="forget()" type="button">Forget password</button>
     <br /><br /><br /><br />
     <h3>
       <router-link to="/signup">Sign up</router-link> if you don't have an
@@ -130,17 +131,18 @@ export default {
   height: 100vh;
   float: center;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 2px;
   background-color: #FFFDF2;
 }
 
 button {
-  background-color: #f0deb0;
-  border-color: #f0deb0;
-  width: 110px;
+  background-color: #f3cfab;
+  border-color: #f3cfab;
+  font-style: italic;
+  width: 100px;
   height: 40px;
-  font-size: 13px;
+  font-size: 20px;
   float: none;
   right: 10cm;
   max-width: 70%;
@@ -150,7 +152,14 @@ button {
   box-sizing: border-box;
   border-radius: 10px;
   border-width: 1px;
-  font-style: italic;
+}
+
+button:hover {
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
+  color: white;
+  border-color: #f3cfab;
+  width:100px;
 }
 
 input {
@@ -165,4 +174,28 @@ input {
   border-radius: 25px;
   padding: 8px;
 }
+
+h3 {
+  color: #b88b5e;
+}
+
+a {
+  color: #b88b5e;
+}
+
+a:hover {
+  color: #f3cfab;
+}
+
+p {
+  font-size: 14px;
+  color: rgb(113, 113, 113);
+  margin-left: 13%;
+}
+
+p:hover {
+  font-size: 14px;
+  color:black;
+}
+
 </style>

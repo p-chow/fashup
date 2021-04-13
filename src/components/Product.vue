@@ -2,10 +2,10 @@
   <div id="pdtPage">
     <NavBar></NavBar>
     <div id="back">
-      <router-link to="/shop" exact>
-        Back to Shop
+      <!-- <router-link to="/shop" exact> 
+        Back to Shop-->
         <!-- <span @click="pushtoShop()">Back to Shop</span> -->
-      </router-link>
+      <!-- </router-link> -->
       <br />
       <br />
       <img v-bind:src="this.product[0].imgFile" /><br />
@@ -157,6 +157,15 @@ button {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-style: italic;
+}
+
+
+button:hover {
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
+  color: white;
+  border-color: #f3cfab;
+  width:110px;
 }
 
 #back {

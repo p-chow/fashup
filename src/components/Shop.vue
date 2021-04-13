@@ -102,7 +102,7 @@
             v-model="priceRange"
           />
         </div>
-        <p>range: $0 - {{ priceRange }}</p>
+        <p>Range: $0 - {{ priceRange }}</p>
       </div>
       <br />
       <button v-on:click="filtered" id="filterButton"> <a id="search">Search!</a></button>
@@ -281,6 +281,7 @@ export default {
 </script>
 
 <style scoped>
+
 .content {
   margin-left: 300px;
   padding-left: 20px;
@@ -341,8 +342,8 @@ export default {
   padding: 5px;
   font-weight: 800;
   font-size: 20px; */
-  background-color: #E9EDC9;
-	border-color: #E9EDC9;
+  background-color: #faedcd;
+	border-color: #faedcd;
 	float:left;
 	padding: 10px;
 	box-sizing: border-box;
@@ -355,11 +356,11 @@ export default {
 }
 
 #filterButton:hover {
-  border: 2px solid #CCD5AE;
-  background-color: #CCD5AE;
+  border: 2px solid #f3cfab;
+  background-color: #f3cfab;
   color: white;
   box-sizing: unset;
-  border-color: #CCD5AE;
+  border-color: #f3cfab;
   font-weight: 500;
 }
 
