@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 id="shopname">Fashup</h1>
+    <!-- <h1 id="shopname">Fashup</h1> -->
     <!-- <NavBar></NavBar> -->
     <router-view></router-view>
   </div>
@@ -28,12 +28,12 @@ export default {
     "Lucida Sans", Arial, sans-serif;
 }
 
-#shopname {
+/* #shopname {
   margin-top: 0;
   padding-top: 25px;
   font-style: italic;
   font-family: "Remark";
-}
+} */
 
 @font-face {
   font-family: "Remark";
