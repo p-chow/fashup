@@ -34,10 +34,6 @@
       </button>
       <br />
       <br />
-      <h3>
-        <router-link to="/login">Log in</router-link> if you already have an
-        account.
-      </h3>
     </div>
   </div>
 </template>
