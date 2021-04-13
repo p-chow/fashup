@@ -2,12 +2,12 @@
   <div id="login">
     <NavBar></NavBar>
     <br><br><br>
-    <h3>Ready to start shopping/selling?</h3>
+    <h2>Ready to start shopping/selling?</h2>
     <br>
-    <label for="email">Email </label><br />
+    <label for="email">Email Address: </label><br /> <br>
     <input type="text" id="email" name="email" required /> <br />
     <br />
-    <label for="pw">Password</label><br />
+    <label for="pw">Password:</label><br /> <br>
     <input type="password" id="pw" name="pw" />
     <p v-on:click="forget()">Forget password?</p>
     <button v-on:click="logintoacc()" type="button">Login</button>
@@ -82,14 +82,6 @@ export default {
       return array.indexOf(field);
     },
     logintoacc() {
-      /*var email = document.getElementById("email").value
-			var password = document.getElementById("pw").value
-			if (this.emailList.includes(email) === false) {
-				alert("The email address does not exist in our system. Please register as new user.")
-			} else if (this.passwordList.includes(password)===false) {
-				alert("Incorrect password. Please try again.")
-			} 
-			else {*/
       var email = document.getElementById("email").value;
       var password = document.getElementById("pw").value;
       var docid = this.listOfIds[this.getIndex(this.emailList, email)];
@@ -162,6 +154,9 @@ button:hover {
   width:100px;
 }
 
+label{
+  color:#b88b5e
+}
 input {
   float: center;
   border-block-color: rgb(0, 0, 0);
@@ -175,7 +170,7 @@ input {
   padding: 8px;
 }
 
-h3 {
+h2 {
   color: #b88b5e;
 }
 
