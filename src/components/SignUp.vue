@@ -225,14 +225,15 @@ label {
 }
 
 input {
-  border-block-color: black;
+  border-color: #f3cfab;
   size: 15px;
   width: 200px;
   height: 23px;
   flex: 0 0 200px;
   margin-right: 200px;
   float: center;
-  border-radius: 25px;
+  border-radius: 8px;
+  opacity: 0.4;
 }
 
 button {
