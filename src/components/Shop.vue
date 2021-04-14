@@ -6,70 +6,108 @@
       <h2 id="navi">Filter</h2>
       <div v-on:click="seen1 = !seen1" class="filterTitle">Shop for</div>
       <div v-if="seen1" id="hide" class="filter">
-        <input
-          type="checkbox"
-          id="women"
-          value="women"
-          v-model="shop"
-        />  Women<br />
-        <input type="checkbox" id="men" value="men" v-model="shop" />  Men<br />
-        <input
-          type="checkbox"
-          id="kids"
-          value="kids"
-          v-model="shop"
-        />  Kids<br />
+        <input type="checkbox" id="women" value="women" v-model="shop" />
+        Women<br />
+        <input type="checkbox" id="men" value="men" v-model="shop" /> Men<br />
+        <input type="checkbox" id="kids" value="kids" v-model="shop" />
+        Kids<br />
       </div>
-      <div v-on:click="seen2 = !seen2" class="filterTitle">  Category</div>
+      <div v-on:click="seen2 = !seen2" class="filterTitle">Category</div>
       <div v-if="seen2" id="hide" class="filter">
-        <input type="checkbox" id="top" value="Tops" v-model="cat" />  Tops<br />
-        <input
-          type="checkbox"
-          id="bottoms"
-          value="Bottoms"
-          v-model="cat"
-        />  Bottoms<br />
-        <input
-          type="checkbox"
-          id="dress"
-          value="Dress"
-          v-model="cat"
-        />  Dresses<br />
-        <input
-          type="checkbox"
-          id="acc"
-          value="Accessories"
-          v-model="cat"
-        />  Accessories<br />
+        <input type="checkbox" id="top" value="Tops" v-model="cat" /> Tops<br />
+        <input type="checkbox" id="bottoms" value="Bottoms" v-model="cat" />
+        Bottoms<br />
+        <input type="checkbox" id="dress" value="Dress" v-model="cat" />
+        Dresses<br />
+        <input type="checkbox" id="acc" value="Accessories" v-model="cat" />
+        Accessories<br />
       </div>
       <div v-on:click="seen3 = !seen3" class="filterTitle">Occasion</div>
       <div v-if="seen3" id="hide" class="filter">
-        <input
-          type="checkbox"
-          id="formal"
-          value="Formal"
-          v-model="occ"
-        />  Formal<br />
-        <input
-          type="checkbox"
-          id="casual"
-          value="Casual"
-          v-model="occ"
-        />  Casual<br />
+        <input type="checkbox" id="formal" value="Formal" v-model="occ" />
+        Formal<br />
+        <input type="checkbox" id="casual" value="Casual" v-model="occ" />
+        Casual<br />
       </div>
       <div v-on:click="seen4 = !seen4" class="filterTitle">Size</div>
       <div v-if="seen4" id="hide" class="filter">
-        <input type="checkbox" id="baby" value="Baby (Preemie, 0-24 months)" v-model="size" />  Baby (Preemie, 0-24 months)<br />
-        <input type="checkbox" id="toddler" value="Toddler (2T-6T)" v-model="size"/>  Toddler (2T-6T)<br />
-        <input type="checkbox" id="littleK" value="Little Kid (4-6X)" v-model="size"/>  Little Kid (4-6X)<br />
-        <input type="checkbox" id="bigK" value="Big Kid or Tween (7-16)" v-model="size" />  Big Kid or Tween (7-16)<br />
-        <input type="checkbox" id="freeA" value="Free Size (adults)" v-model="size" />  Free Size (adults)<br />
-        <input type="checkbox" id="XXS" value="XXS / EU 32 / UK 4 / US 2" v-model="size" />  XXS / EU 32 / UK 4 / US 2<br />
-        <input type="checkbox" id="XS" value="XS / EU 34 / UK 6 / US 4" v-model="size" />  XS / EU 34 / UK 6 / US 4<br />
-        <input type="checkbox" id="S" value="S / EU 36 / UK 8 / US 6" v-model="size" />  S / EU 36 / UK 8 / US 6<br />
-        <input type="checkbox" id="M" value="M / EU 38 / UK 10 / US 8" v-model="size" />  M / EU 38 / UK 10 / US 8<br />
-        <input type="checkbox" id="L" value="L / EU 40 / UK 12 / US 10" v-model="size" />  L / EU 40 / UK 12 / US 10<br />
-        <input type="checkbox" id="XL" value="XL / EU 42 / UK 14 / US 12" v-model="size" />  XL / EU 42 / UK 14 / US 12<br />
+        <input
+          type="checkbox"
+          id="baby"
+          value="Baby (Preemie, 0-24 months)"
+          v-model="size"
+        />
+        Baby (Preemie, 0-24 months)<br />
+        <input
+          type="checkbox"
+          id="toddler"
+          value="Toddler (2T-6T)"
+          v-model="size"
+        />
+        Toddler (2T-6T)<br />
+        <input
+          type="checkbox"
+          id="littleK"
+          value="Little Kid (4-6X)"
+          v-model="size"
+        />
+        Little Kid (4-6X)<br />
+        <input
+          type="checkbox"
+          id="bigK"
+          value="Big Kid or Tween (7-16)"
+          v-model="size"
+        />
+        Big Kid or Tween (7-16)<br />
+        <input
+          type="checkbox"
+          id="freeA"
+          value="Free Size (adults)"
+          v-model="size"
+        />
+        Free Size (adults)<br />
+        <input
+          type="checkbox"
+          id="XXS"
+          value="XXS / EU 32 / UK 4 / US 2"
+          v-model="size"
+        />
+        XXS / EU 32 / UK 4 / US 2<br />
+        <input
+          type="checkbox"
+          id="XS"
+          value="XS / EU 34 / UK 6 / US 4"
+          v-model="size"
+        />
+        XS / EU 34 / UK 6 / US 4<br />
+        <input
+          type="checkbox"
+          id="S"
+          value="S / EU 36 / UK 8 / US 6"
+          v-model="size"
+        />
+        S / EU 36 / UK 8 / US 6<br />
+        <input
+          type="checkbox"
+          id="M"
+          value="M / EU 38 / UK 10 / US 8"
+          v-model="size"
+        />
+        M / EU 38 / UK 10 / US 8<br />
+        <input
+          type="checkbox"
+          id="L"
+          value="L / EU 40 / UK 12 / US 10"
+          v-model="size"
+        />
+        L / EU 40 / UK 12 / US 10<br />
+        <input
+          type="checkbox"
+          id="XL"
+          value="XL / EU 42 / UK 14 / US 12"
+          v-model="size"
+        />
+        XL / EU 42 / UK 14 / US 12<br />
       </div>
       <div v-on:click="seen5 = !seen5" class="filterTitle">Price Range</div>
       <div v-if="seen5" id="hide" class="filter">
@@ -86,7 +124,9 @@
         <p>Range: $0 - {{ priceRange }}</p>
       </div>
       <br />
-      <button v-on:click="filtered" id="filterButton"> <a id="search">Search!</a></button>
+      <button v-on:click="filtered" id="filterButton">
+        <a id="search">Search!</a>
+      </button>
     </div>
     <div class="content">
       <div>
@@ -99,15 +139,15 @@
               <div class="crop"><img v-bind:src="item[1].picURL" /></div>
               <div class="container">
                 <ul>
-                <li
-                  id="click"
-                  v-bind:docid="item[0]"
-                  v-on:click="pressed($event)"
-                >
-                  {{ item[1].title }}
-                </li>
-                <li id="brand">{{ item[1].brand }}</li>
-                <li id="price">S${{ item[1].price }}</li>
+                  <li
+                    id="click"
+                    v-bind:docid="item[0]"
+                    v-on:click="pressed($event)"
+                  >
+                    {{ item[1].title }}
+                  </li>
+                  <li id="brand">{{ item[1].brand }}</li>
+                  <li id="price">S${{ item[1].price }}</li>
                 </ul>
               </div>
             </div>
@@ -150,59 +190,59 @@ export default {
     };
   },
   methods: {
-    fetchItems: function () {
+    fetchItems: function() {
       database
         .collection("products")
         .get()
         .then((snapshot) => {
           snapshot.docs.forEach((doc) => {
             if (!doc.get("sold")) {
-            let data = doc.data();
-            let category = data["category"];
-            let dressocc = data["dressocc"];
-            let pic = data["pic"];
-            let price = data["price"];
-            let size = data["size"];
-            let title = data["title"];
-            let brand = data["brand"];
-            let shop = data["shop"];
-            this.picUrlsAndTitle.push([title, doc.id]);
-            /*var storageRef = storage.ref();
+              let data = doc.data();
+              let category = data["category"];
+              let dressocc = data["dressocc"];
+              let pic = data["pic"];
+              let price = data["price"];
+              let size = data["size"];
+              let title = data["title"];
+              let brand = data["brand"];
+              let shop = data["shop"];
+              this.picUrlsAndTitle.push([title, doc.id]);
+              /*var storageRef = storage.ref();
 			storageRef.child(pic).getDownloadURL().then(function(url) {
 				var test = url;
 				document.getElementById('imageInStorage').src = test;
 			})*/
-            //console.log(storageRef.child(pic).getDownloadURL());
-            var newitem = [
-              doc.id,
-              {
-                cat: category,
-                occ: dressocc,
-                price: price,
-                size: size,
-                title: title,
-                picURL: pic,
-                brand: brand,
-                shop: shop,
-              },
-            ];
-            firebase
-              .database()
-              .ref("Pictures/")
-              .on("value", function (snapshot) {
-                snapshot.forEach(function (userSnapshot) {
-                  if (userSnapshot.val().Name === title) {
-                    var urlForPic = userSnapshot.val().Link;
-                    newitem[1].picURL = urlForPic;
-                  }
+              //console.log(storageRef.child(pic).getDownloadURL());
+              var newitem = [
+                doc.id,
+                {
+                  cat: category,
+                  occ: dressocc,
+                  price: price,
+                  size: size,
+                  title: title,
+                  picURL: pic,
+                  brand: brand,
+                  shop: shop,
+                },
+              ];
+              firebase
+                .database()
+                .ref("Pictures/")
+                .on("value", function(snapshot) {
+                  snapshot.forEach(function(userSnapshot) {
+                    if (userSnapshot.val().Name === title) {
+                      var urlForPic = userSnapshot.val().Link;
+                      newitem[1].picURL = urlForPic;
+                    }
+                  });
                 });
-              });
-            this.items.push(newitem);
-            this.display.push(newitem);
-            //this.getImages();
-            //this.getImages();
-            console.log(newitem);
-			}
+              this.items.push(newitem);
+              this.display.push(newitem);
+              //this.getImages();
+              //this.getImages();
+              console.log(newitem);
+            }
           });
           console.log(this.picUrlsAndTitle);
         });
@@ -218,7 +258,7 @@ export default {
         },
       });
     },
-    filtered: function () {
+    filtered: function() {
       var updateList = [];
       for (var i = 0; i < this.items.length; i++) {
         var temp = this.items[i];
@@ -241,8 +281,8 @@ export default {
         firebase
           .database()
           .ref("Pictures/" + this.picUrlsAndTitle[i][0])
-          .on("value", function (snapshot) {
-            snapshot.forEach(function (userSnapshot) {
+          .on("value", function(snapshot) {
+            snapshot.forEach(function(userSnapshot) {
               var urlForPic = userSnapshot.val().Link;
               console.log(urlForPic);
               this.items[i][1].picURL = urlForPic;
@@ -262,17 +302,16 @@ export default {
 </script>
 
 <style scoped>
-
 .content {
   margin-left: 300px;
   padding-left: 20px;
 }
 
-.title{
+.title {
   border-bottom: 1px solid black;
-  padding-top:25px;
+  padding-top: 25px;
   padding-bottom: 50px;
-  font-size:25px;
+  font-size: 25px;
 }
 
 .sidenav {
@@ -286,14 +325,14 @@ export default {
 }
 
 .sidenav h2 {
-  color:black;
+  color: black;
   text-align: left;
   padding-left: 5px;
 }
 
 .filter {
-  background-color: #FFFDF2;
-  border: 1px solid #FFFDF2;
+  background-color: #fffdf2;
+  border: 1px solid #fffdf2;
   color: #111;
   padding: 8px;
   margin-left: 5px;
@@ -301,19 +340,20 @@ export default {
 }
 
 .filterTitle {
-  border: 1px solid #FAEDCD;
-  background-color: #FAEDCD;
+  border: 1px solid #faedcd;
+  background-color: #faedcd;
   color: black;
   padding: 5px;
   margin: 1px;
   font-weight: 800;
-  font-size:18px;
+  font-size: 18px;
 }
 
 .filterTitle:hover {
-  border: 2px solid #D4A373;
-  background-color: #D4A373;
+  border: 2px solid #d4a373;
+  background-color: #d4a373;
   color: #111;
+  cursor: pointer;
 }
 
 #filterButton {
@@ -324,15 +364,15 @@ export default {
   font-weight: 800;
   font-size: 20px; */
   background-color: #faedcd;
-	border-color: #faedcd;
-	float:left;
-	padding: 10px;
-	box-sizing: border-box;
-	font-size: 15px;
-	border-radius: 60px;
-	border-width: 1px;
+  border-color: #faedcd;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 60px;
+  border-width: 1px;
   font-weight: 400;
-	/* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-style: italic; */
 }
 
@@ -343,6 +383,7 @@ export default {
   box-sizing: unset;
   border-color: #f3cfab;
   font-weight: 500;
+  cursor: pointer;
 }
 
 ul {
@@ -379,16 +420,16 @@ div.polaroid {
 #brand {
   color: grey;
   text-transform: capitalize;
-  font-size:17px;
-  padding:1px;
-  margin:0px;
+  font-size: 17px;
+  padding: 1px;
+  margin: 0px;
   text-align: left;
 }
 
 #price {
   display: inline-block;
-  padding:1px;
-  margin:0px;
+  padding: 1px;
+  margin: 0px;
   color: #111;
   font-size: 17px;
   text-align: left;
@@ -396,15 +437,16 @@ div.polaroid {
 
 #click {
   color: black;
-  padding:1px;
-  margin:0px;
+  padding: 1px;
+  margin: 0px;
   padding-top: 10px;
-  font-size:18px;
+  font-size: 18px;
   text-align: left;
 }
 
 #click:hover {
-  color: #D4A373;
+  color: #d4a373;
+  cursor: pointer;
 }
 
 .slider {
