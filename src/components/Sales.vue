@@ -13,14 +13,14 @@
       <div id="rightside">
         <a>Check out the latest seasonal donation drive that is happening on </a
         >
-        <b>11th April 2021!</b>
+        <b>11th May 2021!</b>
         <!-- <br> -->
         <p>A spring collaboration with Sunloft</p>
         <p>Location: 1 Tampines Walk, Singapore 528523</p>
         <p>Tampines Hub Level 1 Foyer</p>
         <p>
           From 10am to 8pm, join us in the Fashup community movement by donating
-          your clothings!
+          your clothes!
         </p>
         <p>See you there!</p>
       </div>
@@ -68,13 +68,14 @@ p {
   margin-left: 28px;
 }
 
+
 h3 {
   text-align: left;
   margin-left: 20px;
 }
 
 #leftside img {
-  height: 280px;
+  height: 300px;
 }
 
 section {
