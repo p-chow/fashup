@@ -9,7 +9,7 @@
       Upload an Image
     </span>
     <input
-      id = "myimg"
+      id="myimg"
       class="picInput"
       ref="fileInput"
       type="file"
@@ -32,20 +32,19 @@ export default {
   methods: {
     insertImg() {
       this.$refs.fileInput.click();
-      
     },
     onSelectFile() {
       const input = this.$refs.fileInput;
-      input.type = 'file';
-      input.onchange = e =>{
+      input.type = "file";
+      input.onchange = (e) => {
         var files = e.target.files;
         var reader = new FileReader();
         reader.onload = function() {
-			document.getElementById("myimg").src = reader.result;
-		}
-		reader.readAsDataURL(files[0]);
-		EventPassing.$emit('pass-files', files[0])
-      }
+          document.getElementById("myimg").src = reader.result;
+        };
+        reader.readAsDataURL(files[0]);
+        EventPassing.$emit("pass-files", files[0]);
+      };
       const files = input.files;
       if (files && files[0]) {
         const reader = new FileReader();
@@ -63,8 +62,8 @@ export default {
 <style scoped>
 .imgArea {
   display: block;
-  width: 250px;
-  height: 250px;
+  width: 25vw;
+  height: 25vw;
   cursor: pointer;
   background-size: cover;
   background-position: center center;
@@ -72,8 +71,8 @@ export default {
 
 .placeholder {
   background: #a09b9b;
-  width: 150%;
-  height: 150%;
+  width: 25vw;
+  height: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
