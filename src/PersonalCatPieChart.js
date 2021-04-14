@@ -76,7 +76,7 @@ export default {
                                             totalSum['Bottoms'] += 1;
                                         } else if (cat1 == 'Dress') {
                                             totalSum['Dresses'] += 1;
-                                        } else if (cat == 'Accessories') {
+                                        } else if (cat1 == 'Accessories') {
                                             totalSum['Accessories'] += 1;
                                         }
                                     }
