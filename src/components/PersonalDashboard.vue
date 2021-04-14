@@ -1,7 +1,8 @@
 <template>
   <section>
-    <NavBar></NavBar>
-    <h2 class="title" style="text-transform: uppercase">{{ this.userData.DisplayName }}'S PERSONAL DASHBOARD</h2>
+    <h2 class="title" style="text-transform: uppercase">
+      {{ this.userData.DisplayName }}'S PERSONAL DASHBOARD
+    </h2>
     <br />
     <h3>Total Number of products listed/sold</h3>
     <BarChart></BarChart>
@@ -21,7 +22,7 @@ import { database } from "../firebase.js";
 export default {
   data() {
     return {
-      userData: {}
+      userData: {},
     };
   },
   components: {
@@ -30,9 +31,9 @@ export default {
   },
   methods: {
     loadUserData() {
-      const user = fbase.currentUser
+      const user = fbase.currentUser;
       if (user) {
-        const uid = user.uid
+        const uid = user.uid;
         console.log("userid " + uid);
         database
           .collection("users")
@@ -41,13 +42,13 @@ export default {
           .then((doc) => {
             this.userData = doc.data();
             this.userData.id = doc.id;
-          })
+          });
       }
-    }
+    },
   },
   created() {
-    this.loadUserData()
-  }
+    this.loadUserData();
+  },
 };
 </script>
 
