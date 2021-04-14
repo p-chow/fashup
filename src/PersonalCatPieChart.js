@@ -63,7 +63,7 @@ export default {
                                         } else if (cat == 'Dress') {
                                             totalSum['Dresses'] += 1;
                                             //console.log(totalSum['Dresses']);
-                                        } else {
+                                        } else if (cat == 'Accessories') {
                                             totalSum['Accessories'] += 1;
                                         }
                                     }
@@ -76,7 +76,7 @@ export default {
                                             totalSum['Bottoms'] += 1;
                                         } else if (cat1 == 'Dress') {
                                             totalSum['Dresses'] += 1;
-                                        } else {
+                                        } else if (cat == 'Accessories') {
                                             totalSum['Accessories'] += 1;
                                         }
                                     }
