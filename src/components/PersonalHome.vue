@@ -2,7 +2,7 @@
   <section>
     <div id="personal">
       <NavBar></NavBar>
-      <nav2 id="navbar2">
+      <div>
         <br />
         <img
           id="profilepic"
@@ -74,7 +74,7 @@
             </li>
           </ul>
         </div>
-      </nav2>
+      </div>
     </div>
   </section>
 </template>
@@ -308,12 +308,11 @@ export default {
   height: 100%;
   min-height: 100vh;
 }
+
 #products {
   float: center;
 }
-#navbar2 {
-  float: center;
-}
+
 #username {
   align-self: center;
   /* border-top: #222 solid 1px;
@@ -373,10 +372,13 @@ p {
 
 #itemtitle:hover {
   color: #d4a373;
+  cursor: pointer;
 }
+
 #welcome {
   vertical-align: middle;
 }
+
 button {
   background-color: #f3cfab;
   border-color: #f3cfab;
@@ -403,5 +405,6 @@ button:hover {
   color: white;
   border-color: #f3cfab;
   width: 110px;
+  cursor: pointer;
 }
 </style>

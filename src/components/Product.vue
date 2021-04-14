@@ -4,7 +4,7 @@
     <div id="back">
       <!-- <router-link to="/shop" exact> 
         Back to Shop-->
-        <!-- <span @click="pushtoShop()">Back to Shop</span> -->
+      <!-- <span @click="pushtoShop()">Back to Shop</span> -->
       <!-- </router-link> -->
       <br />
       <br />
@@ -19,16 +19,35 @@
       <p>Size: {{ this.product[0].size }}</p>
       <p>Price: $ {{ this.product[0].price }}</p>
 
-      <p>
+      <p id="tags">
         #{{ this.product[0].shop }} #{{ this.product[0].category }} #{{
           this.product[0].dressocc
         }}
       </p>
       <br />
-      <button v-show="this.product[0].sold == false && this.belongs == false" v-on:click="updateWishList(product[1])">Add to Wishlist</button>
-      <button v-show="this.product[0].sold == false && this.belongs == false" v-on:click="telehandlePopUp(product[0])">Buy it!</button>
-      <button id="edit" v-show="this.belongs" v-bind:docid="product[1]" v-on:click="updateProduct(pressed($event))">Edit</button> <br>
-      <p id="sold" v-show="this.product[0].sold == true">SOLD!</p><br />
+      <button
+        v-show="this.product[0].sold == false && this.belongs == false"
+        v-on:click="updateWishList(product[1])"
+      >
+        Add to Wishlist
+      </button>
+      <button
+        v-show="this.product[0].sold == false && this.belongs == false"
+        v-on:click="telehandlePopUp(product[0])"
+      >
+        Buy it!
+      </button>
+      <button
+        id="edit"
+        v-show="this.belongs"
+        v-bind:docid="product[1]"
+        v-on:click="updateProduct(pressed($event))"
+      >
+        Edit
+      </button>
+      <br />
+      <p id="sold" v-show="this.product[0].sold == true">SOLD!</p>
+      <br />
     </div>
   </div>
 </template>
@@ -44,7 +63,7 @@ export default {
   data() {
     return {
       product: [],
-      belongs: false
+      belongs: false,
       //userId: this.$route.params.user,
     };
   },
@@ -52,10 +71,10 @@ export default {
     NavBar,
   },
   props: {
-    docId: String
+    docId: String,
   },
   methods: {
-    fetchProduct: function () {
+    fetchProduct: function() {
       const user = fbase.currentUser;
       if (user) {
         //console.log(this.doc_id);
@@ -68,7 +87,7 @@ export default {
           });
       }
     },
-    updateWishList: function (productId) {
+    updateWishList: function(productId) {
       var user = fbase.currentUser;
       //console.log(this.userId);
       if (user) {
@@ -95,9 +114,11 @@ export default {
       //alert("Please log into your account to add items to your wishlist");
       //}
     },
-    telehandlePopUp: function (product) {
-      alert("You will be redirected to telegram to start a chat with the seller!")
-      location.href = product.telehandle
+    telehandlePopUp: function(product) {
+      alert(
+        "You will be redirected to telegram to start a chat with the seller!"
+      );
+      location.href = product.telehandle;
     },
     // pushtoShop() {
     //   this.$router.push({
@@ -133,7 +154,7 @@ export default {
           // user: this.$route.params.id
         },
       });
-    }
+    },
   },
   created() {
     this.fetchProduct();
@@ -152,10 +173,11 @@ router-link {
 #pdtPage {
   height: 100vh;
 }
+
 img {
   height: 400px;
   padding-left: -20px;
-  margin-right:18cm;
+  margin-right: 18cm;
   float: left;
 }
 
@@ -179,13 +201,13 @@ button {
   font-style: italic;
 }
 
-
 button:hover {
   border: 2px solid #f3cfab;
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:110px;
+  width: 110px;
+  cursor: pointer;
 }
 
 #back {
@@ -194,16 +216,21 @@ button:hover {
   padding-left: 20%;
   font-size: 20px;
   text-align: left;
-  width: 30%;
+  width: 20vw;
 }
 
 #description {
-  width: 50%;
+  width: 47vw;
   padding-top: 100px;
+  padding-left: 5vw;
   text-align: left;
   float: right;
   font-size: 25px;
   color: black;
+}
+
+#tags {
+  font-size: 20px;
 }
 
 #sold {

@@ -1,29 +1,34 @@
 <template>
   <div id="wish">
     <NavBar></NavBar>
-      <h2 class="title" style="text-transform: uppercase">{{ this.userData.DisplayName }}'s WISHLIST</h2>
-      <ul id="mywishlist">
-        <li v-for="item in productswish" v-bind:key="item.title">
-          <button
-            type="button"
-            v-bind:id="item[0]"
-            v-on:click="deleteItem($event)"
-          >
-            X
-          </button>
-          <br />
-          <p id="avail" v-if="item[4] == false">AVAILABLE!</p>
-          <p id="sold" v-else>SOLD!</p><br />
-          <img
-            v-bind:src="item[2]"
-          /> 
-          <br />
-          <p class="itemtitle" v-bind:id="item[0]"
-            v-on:click="redirectToProduct($event)"> 
-          {{ item[1] }} </p>          
-          <p>S${{ item[3] }}</p>
-        </li>
-      </ul>
+    <h2 class="title" style="text-transform: uppercase">
+      {{ this.userData.DisplayName }}'s WISHLIST
+    </h2>
+    <ul id="mywishlist">
+      <li v-for="item in productswish" v-bind:key="item.title">
+        <button
+          type="button"
+          v-bind:id="item[0]"
+          v-on:click="deleteItem($event)"
+        >
+          X
+        </button>
+        <br />
+        <p id="avail" v-if="item[4] == false">AVAILABLE!</p>
+        <p id="sold" v-else>SOLD!</p>
+        <br />
+        <img v-bind:src="item[2]" />
+        <br />
+        <p
+          class="itemtitle"
+          v-bind:id="item[0]"
+          v-on:click="redirectToProduct($event)"
+        >
+          {{ item[1] }}
+        </p>
+        <p>S${{ item[3] }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -225,8 +230,9 @@ img {
   object-fit: cover;
 }
 
-.itemtitle:hover{
-	color:#D4A373 ;
+.itemtitle:hover {
+  color: #d4a373;
+  cursor: pointer;
 }
 
 button {
@@ -235,7 +241,7 @@ button {
   background-color: #f3cfab;
   color: black;
   border-color: #f3cfab;
-  width:25px;
+  width: 25px;
 }
 
 button:hover {
@@ -243,10 +249,11 @@ button:hover {
   background-color: #f3cfab;
   color: white;
   border-color: #f3cfab;
-  width:25px;
+  width: 25px;
+  cursor: pointer;
 }
 
-p{
+p {
   padding: 0px;
   margin: 4px;
   text-align: left;
@@ -266,5 +273,4 @@ p{
   color: green;
   text-align: center;
 }
-
 </style>
