@@ -84,7 +84,7 @@
           </div>
         </li>
         <li v-show="this.login" @click="logout()" class="label">
-          <p clsss="label">LOGOUT</p>
+          <p id="logoutLabel">LOGOUT</p>
         </li>
       </ul>
     </nav>
@@ -93,7 +93,7 @@
 
 <script>
 import { database, fbase } from "../firebase.js";
-//import { database } from '../firebase.js'
+
 export default {
   data() {
     return {
@@ -264,5 +264,9 @@ li {
 
 .label:hover {
   color: black;
+}
+
+#logoutLabel {
+  cursor: pointer;
 }
 </style>
