@@ -40,7 +40,7 @@
           <option value="Tops">Tops</option>
           <option value="Bottoms">Bottoms</option>
           <option value="Dress">Dress</option>
-          <option value="Accesories">Accesories</option>
+          <option value="Accessories">Accessories</option>
         </select>
         <br /><br />
         <label for="dressocc"> Dressing Occasion: </label><br />
