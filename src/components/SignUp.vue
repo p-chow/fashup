@@ -261,7 +261,7 @@ button:hover {
 }
 
 #imagedp {
-  height: 410px;
+  height: 430px;
   border-radius: 50%;
   margin-left: 8cm;
 }
