@@ -206,7 +206,6 @@ input {
   background-color: white;
   margin-left: 280px;
   float: left;
-  font-size: 25px;
 }
 
 #content {

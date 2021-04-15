@@ -203,7 +203,7 @@ export default {
 #signup {
   color: #b88b5e;
   width: 100%;
-  height: 75vh;
+  height: 100vh;
   float: center;
   max-width: 100%;
   margin-top: 70px;
