@@ -27,10 +27,10 @@ export default [
     { path: '/news', name:'news' , component: News },
 	{ path: '/wishlist', component: WishList, meta: {requiresAuth: true}},
     { path: '/sell', name:'sell', component: Sell , meta: {requiresAuth: true}},
-    { path: '/product', name: 'product', props: true, component: Product , meta: {requiresAuth: true}},
+    { path: '/product/:docId', name: 'product', props: true, component: Product , meta: {requiresAuth: true}},
 	{ path :'/communitystats', name: 'communitystats', component: CommunityStats},
 	{ path: '/sales', name: 'sales', component: Sales},
 	{ path: '/userstats', name:'userstats', component: UserStats},
-    { path: '/editproduct', name: 'editproduct', props: true, component: EditProduct, meta: {requiresAuth: true}}
+    { path: '/editproduct/:docId', name: 'editproduct', props: true, component: EditProduct, meta: {requiresAuth: true}}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
