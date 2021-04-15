@@ -22,23 +22,23 @@
         </li>
         <li>
           <div class="dropdown">
-            <router-link to="/news" exact class="label" id="dropbtn">
+            <router-link to="/articles" exact class="label" id="dropbtn">
               <p class="label">GAIA NEWS</p>
               <!-- <span @click="pushtoNews()"> Gaia News </span> -->
             </router-link>
             <div class="dropdown-content">
               <a href="#">
-                <router-link to="/news" exact class="droplabel">
+                <router-link to="/articles" exact class="droplabel">
                   ARTICLES
                 </router-link>
               </a>
               <a href="#">
-                <router-link to="/communitystats" exact class="droplabel">
+                <router-link to="/learn" exact class="droplabel">
                   LEARN
                 </router-link>
               </a>
               <a href="#">
-                <router-link to="/sales" exact class="droplabel">
+                <router-link to="/announcements" exact class="droplabel">
                   ANNOUNCEMENTS</router-link
                 >
               </a>
@@ -53,7 +53,7 @@
         <li></li>
         <li>
           <div class="dropdown" v-show="this.login">
-            <router-link to="/Personal" exact v-show="this.login" class="label">
+            <router-link to="/personal" exact v-show="this.login" class="label">
               <p class="label" style="text-transform: uppercase">
                 {{ this.userData.DisplayName }}'S HOME
               </p>
@@ -63,12 +63,12 @@
             > -->
             <div class="dropdown-content">
               <a href="#">
-                <router-link to="/Personal" id="profile">
+                <router-link to="/personal" id="profile">
                   PROFILE PAGE
                 </router-link>
               </a>
               <a href="#">
-                <router-link to="/userstats"> YOUR DASHBOARD </router-link>
+                <router-link to="/personaldashboard"> YOUR DASHBOARD </router-link>
               </a>
               <a href="#">
                 <router-link to="/wishlist" id="wishlist">
