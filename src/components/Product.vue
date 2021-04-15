@@ -41,7 +41,7 @@
         id="edit"
         v-show="this.belongs"
         v-bind:docid="product[1]"
-        v-on:click="updateProduct(pressed($event))"
+        v-on:click="updateProduct(pressed($event))" 
       >
         Edit
       </button>
@@ -118,7 +118,8 @@ export default {
       alert(
         "You will be redirected to telegram to start a chat with the seller!"
       );
-      location.href = product.telehandle;
+      window.open(product.telehandle, '_blank').focus()
+      //location.href = product.telehandle;
     },
     // pushtoShop() {
     //   this.$router.push({
