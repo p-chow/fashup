@@ -359,7 +359,8 @@ ul {
 li {
   flex-basis: 300px;
   text-align: center;
-  border: 1px solid #222;
+  border: 1px solid #f3cfab;
+  opacity: 0.5px;
   padding: 10px;
   margin: 10px;
 }

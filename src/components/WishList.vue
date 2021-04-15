@@ -219,6 +219,8 @@ ul {
 li {
   flex-basis: 300px;
   text-align: center;
+  border: 1px solid #f3cfab;
+  opacity: 0.5px;
   padding: 10px;
   margin: 10px;
 }
@@ -262,7 +264,7 @@ p {
 
 #sold {
   font-weight: 800;
-  color: red;
+  color: rgb(235, 173, 173);
   text-align: center;
   margin: 0px;
 }
@@ -270,7 +272,7 @@ p {
 #avail {
   margin: 0px;
   font-weight: 800;
-  color: green;
+  color: rgb(183, 223, 183);
   text-align: center;
 }
 </style>
