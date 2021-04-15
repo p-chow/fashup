@@ -24,13 +24,13 @@ export default [
     { path: '/personal', name: 'personal', component: PersonalHome, meta: {requiresAuth: true} },
     { path: '/change', name:'change', component: Change },
     { path: '/shop', name: 'shop', component: Shop },
-    { path: '/news', name:'news' , component: News },
+    { path: '/articles', name:'news' , component: News },
 	{ path: '/wishlist', component: WishList, meta: {requiresAuth: true}},
     { path: '/sell', name:'sell', component: Sell , meta: {requiresAuth: true}},
     { path: '/product/:docId', name: 'product', props: true, component: Product , meta: {requiresAuth: true}},
-	{ path :'/communitystats', name: 'communitystats', component: CommunityStats},
-	{ path: '/sales', name: 'sales', component: Sales},
-	{ path: '/userstats', name:'userstats', component: UserStats},
+	{ path :'/learn', name: 'communitystats', component: CommunityStats},
+	{ path: '/announcements', name: 'sales', component: Sales},
+	{ path: '/personaldashboard', name:'userstats', component: UserStats},
     { path: '/editproduct/:docId', name: 'editproduct', props: true, component: EditProduct, meta: {requiresAuth: true}}
     //    { path: '/modify', component: Modify, name: 'modify', props: true },
 ]
