@@ -84,9 +84,9 @@ export default {
     },
     check() {
       var password = document.getElementById("pw").value;
-      console.log(this.containsLowerCase(password))
-      console.log(this.containsUppercase(password))
-      console.log(this.hasNumber(password))
+      console.log(this.containsLowerCase(password));
+      console.log(this.containsUppercase(password));
+      console.log(this.hasNumber(password));
       if (password.length < 8) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must be more than 8 characters";
@@ -110,7 +110,7 @@ export default {
       if (
         password.length >= 8 &&
         this.hasNumber(password) &&
-        this.containsUppercase(password)  &&
+        this.containsUppercase(password) &&
         this.containsLowerCase(password)
       ) {
         document.getElementById("passwordcheck").innerHTML = "";
@@ -155,11 +155,11 @@ export default {
         confirmedpw.length > 0
       );
     },
-	checktwice(){
+    checktwice() {
       var password = document.getElementById("pw").value;
-      console.log(this.containsLowerCase(password))
-      console.log(this.containsUppercase(password))
-      console.log(this.hasNumber(password))
+      console.log(this.containsLowerCase(password));
+      console.log(this.containsUppercase(password));
+      console.log(this.hasNumber(password));
       if (password.length < 8) {
         document.getElementById("passwordcheck").innerHTML =
           "Password must be more than 8 characters";
@@ -183,13 +183,13 @@ export default {
       if (
         password.length >= 8 &&
         this.hasNumber(password) &&
-        this.containsUppercase(password)  &&
+        this.containsUppercase(password) &&
         this.containsLowerCase(password)
       ) {
         document.getElementById("passwordcheck").innerHTML = "";
         return true;
       }
-	},
+    },
     createacc() {
       if (this.fieldsFilled() === false) {
         alert("All fields must be filled.");
@@ -241,7 +241,7 @@ export default {
 #signup {
   color: #b88b5e;
   width: 100%;
-  height: 75vh;
+  height: 80vh;
   float: center;
   max-width: 100%;
   margin-top: 70px;
