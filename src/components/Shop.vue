@@ -305,6 +305,7 @@ export default {
 .content {
   margin-left: 300px;
   padding-left: 20px;
+  min-height: 100vh;
 }
 
 .title {
@@ -316,7 +317,7 @@ export default {
 
 .sidenav {
   width: 300px;
-  height: 1000px;
+  min-height: 100vh;
   padding: 10px;
   float: left;
   font-size: 20px;
