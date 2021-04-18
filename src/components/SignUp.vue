@@ -15,7 +15,7 @@
       <label for="dname">Display Name </label>
       <input type="text" id="dname" name="name" /> <br /><br />
       <label for="email">Email </label>
-      <input type="text" id="email" name="email" /> <br /><br />
+      <input type="email" id="email" name="email" /> <br /><br />
       <label for="num">Contact No </label>
       <input type="text" id="num" name="num" /> <br /><br />
       <label for="pw">Password </label>
