@@ -47,13 +47,13 @@ export default {
   data() {
     return {
       urls: [
-        "https://previews.123rf.com/images/knstart/knstart1905/knstart190500045/122551365-modern-art-seamless-pattern-with-abstract-shapes-vector-clip-art.jpg",
-        "https://previews.123rf.com/images/lenanikolaeva/lenanikolaeva1812/lenanikolaeva181200171/114154362-simple-seamless-pattern-with-colorful-abstract-shapes-navy-grenn-and-pink-creative-geometric-backgro.jpg",
-        "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
-        "https://wallpaperaccess.com/full/4827438.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/fashup-6031a.appspot.com/o/Display%20Pictures%2Fwallpaper1.jpg?alt=media&token=00ab8e4f-da3b-42d6-a184-1fd79eb71ac4",
+        "https://firebasestorage.googleapis.com/v0/b/fashup-6031a.appspot.com/o/Display%20Pictures%2Fwallpaper2.jpg?alt=media&token=48130241-abe7-4669-99cb-2211ff4883e6",
+        "https://firebasestorage.googleapis.com/v0/b/fashup-6031a.appspot.com/o/Display%20Pictures%2Fwallpaper3.jpg?alt=media&token=5fc083e9-eab5-4239-85de-617df5a1ed77",
+        "https://firebasestorage.googleapis.com/v0/b/fashup-6031a.appspot.com/o/Display%20Pictures%2Fwallpaper4.jpg?alt=media&token=b9919d3e-e507-49bb-b71f-534d3d0a0c5b",
       ],
       imageSource:
-        "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/fashup-6031a.appspot.com/o/Display%20Pictures%2Fwallpaper2.jpg?alt=media&token=48130241-abe7-4669-99cb-2211ff4883e6",
     };
   },
   components: {
