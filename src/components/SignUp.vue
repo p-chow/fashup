@@ -49,7 +49,6 @@ export default {
       urls: [
         "https://previews.123rf.com/images/knstart/knstart1905/knstart190500045/122551365-modern-art-seamless-pattern-with-abstract-shapes-vector-clip-art.jpg",
         "https://previews.123rf.com/images/lenanikolaeva/lenanikolaeva1812/lenanikolaeva181200171/114154362-simple-seamless-pattern-with-colorful-abstract-shapes-navy-grenn-and-pink-creative-geometric-backgro.jpg",
-        "https://thumbs.dreamstime.com/b/little-flower-seamless-pattern-vintage-scandinavian-minimalism-aesthetic-retro-background-nature-fantasy-plant-floral-retro-180080548.jpg",
         "https://thumbs.dreamstime.com/b/one-line-drawing-abstract-faces-seamless-pattern-modern-aesthetic-print-minimalism-contour-art-continuous-people-vector-152110829.jpg",
         "https://wallpaperaccess.com/full/4827438.jpg",
       ],
